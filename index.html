@@ -148,12 +148,10 @@
   .filter-tabs {
     display: flex; gap: 0.5rem; flex-wrap: nowrap; overflow-x: auto;
     justify-content: flex-start; margin-bottom: 2.5rem; padding-bottom: 10px;
-    -webkit-overflow-scrolling: touch; scrollbar-width: none; /* Hide scrollbar Firefox */
+    -webkit-overflow-scrolling: touch; scrollbar-width: none; 
   }
-  .filter-tabs::-webkit-scrollbar { display: none; /* Hide scrollbar Chrome/Safari */ }
-  @media (min-width: 768px) {
-    .filter-tabs { justify-content: center; }
-  }
+  .filter-tabs::-webkit-scrollbar { display: none; }
+  @media (min-width: 768px) { .filter-tabs { justify-content: center; } }
   
   .filter-tab {
     padding: 8px 18px; border-radius: 20px; font-size: 0.82rem;
@@ -272,66 +270,89 @@
   .lb-next { right: 20px; }
   .lb-hint { position: absolute; bottom: 20px; color: white; font-size: 0.9rem; z-index: 10001; background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px;}
 
-  /* ORDER FORM (DISIMPLIFIKASI & TEMA TERANG) */
-  #order { background: var(--dark); } /* Latar belakang section luar tetap gelap */
+  /* ORDER FORM (TEMA HIJAU SOFT) */
+  #order { background: var(--dark); } 
   .order-wrap { display:grid; grid-template-columns: 1fr 1.3fr; gap:3rem; align-items:start; }
   .order-info { position: sticky; top: 80px; }
   
-  /* Kartu form diubah menjadi terang */
   .form-card {
-    background: #FFFFFF; border: 1px solid #EAEAEA;
+    background: #E8F5E9; /* Hijau pastel/soft */
+    border: 1px solid #C8E6C9; /* Hijau border lembut */
     border-radius: 12px; padding: 2rem;
   }
-  .form-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.3rem; color:#1A1A1A; margin-bottom:1.5rem; }
+  .form-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.3rem; color:#1B5E20; margin-bottom:1.5rem; }
   .form-group { margin-bottom:1.1rem; }
-  label { display:block; font-size:0.8rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#555; margin-bottom:0.4rem; }
+  .form-card label { display:block; font-size:0.8rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#2E7D32; margin-bottom:0.4rem; }
   
   .form-card input[type=text], .form-card input[type=tel], .form-card textarea, .form-card select {
-    width:100%; background: #F9F9F9; border: 1px solid #DDDDDD;
-    color: #1A1A1A; padding: 10px 13px; border-radius: 5px;
+    width:100%; background: #FFFFFF; border: 1px solid #A5D6A7;
+    color: #1B5E20; padding: 10px 13px; border-radius: 5px;
     font-family: 'Barlow', sans-serif; font-size:0.92rem;
     outline:none; transition: all 0.3s;
     -webkit-appearance: none;
   }
-  .form-card input:focus, .form-card textarea:focus, .form-card select:focus { border-color: var(--red); }
-  .form-card select option { background: #FFFFFF; color: #1A1A1A; }
+  .form-card input:focus, .form-card textarea:focus, .form-card select:focus { border-color: #4CAF50; }
+  .form-card select option { background: #FFFFFF; color: #1B5E20; }
   .form-card textarea { resize:vertical; min-height:60px; }
   
   .form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
   .form-row-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem; }
 
-  /* PILL BUTTONS Form (Light Mode) */
+  /* PILL BUTTONS Form (Hijau Mode) */
   .pill-group { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.4rem; }
   .form-card .pill {
     padding: 8px 16px; border-radius: 20px; font-size:0.82rem; font-weight:600;
-    border: 1px solid #DDDDDD; background: #F5F5F5; color: #666;
+    border: 1px solid #A5D6A7; background: #FFFFFF; color: #2E7D32;
     cursor: pointer; transition: all 0.2s; letter-spacing:0.04em;
     display:flex; align-items:center; gap:6px;
   }
-  .form-card .pill:hover { border-color: var(--red-light); color: var(--red); }
-  .form-card .pill.selected { background: var(--red); border-color: var(--red); color: #fff; }
+  .form-card .pill:hover { border-color: #4CAF50; color: #4CAF50; }
+  .form-card .pill.selected { background: #4CAF50; border-color: #4CAF50; color: #fff; }
   .form-card .pill input[type=radio] { display:none; }
 
-  /* Bank & QRIS info panel (Light Mode) */
-  .bank-info, .qris-info {
-    display:none; background: #F9F9F9; border:1px solid #DDDDDD;
-    border-radius:6px; padding:1rem; margin-top:0.75rem; font-size:0.85rem; color: #1A1A1A;
+  .form-submit { width:100%; margin-top:1.25rem; padding:14px; font-size:1rem; background: var(--red); color: white; border:none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+  .form-submit:hover { background: var(--red-light); }
+
+  /* MODAL / POPUP DETAIL ORDER */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+    z-index: 10000; align-items: center; justify-content: center; padding: 1rem;
+    backdrop-filter: blur(4px);
   }
-  .bank-info.visible, .qris-info.visible { display:block; }
+  .modal-overlay.active { display: flex; }
+  .modal-content {
+    background: #fff; width: 100%; max-width: 500px; border-radius: 12px;
+    padding: 1.5rem; position: relative; max-height: 90vh; overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
+  .modal-close {
+    position: absolute; top: 1rem; right: 1.2rem; font-size: 1.8rem;
+    cursor: pointer; color: #999; line-height: 1; transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--red); }
+  .modal-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 1rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.5rem; }
+  
+  .summary-box { background: #F9F9F9; padding: 1rem; border-radius: 8px; border: 1px solid #EAEAEA; margin-bottom: 1.5rem; font-size: 0.85rem; color: #444; line-height: 1.6; }
+  .summary-box strong { color: var(--dark); }
+
+  /* ACCORDION METODE PEMBAYARAN DI MODAL */
+  .acc-item { border: 1px solid #EAEAEA; border-radius: 8px; margin-bottom: 0.5rem; overflow: hidden; }
+  .acc-header {
+    background: #F5F5F5; padding: 12px 15px; font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; display: flex; align-items: center; gap: 10px; color: #444;
+    transition: background 0.2s; margin: 0;
+  }
+  .acc-header input[type="radio"] { cursor: pointer; }
+  .acc-header:hover { background: #EFEFEF; }
+  .acc-content {
+    display: none; padding: 15px; background: #FFF; border-top: 1px solid #EAEAEA;
+    font-size: 0.85rem; color: #555; line-height: 1.6;
+  }
+  .acc-item.active .acc-content { display: block; }
+  .acc-item.active .acc-header { background: #E8F5E9; border-color: #4CAF50; color: #1B5E20; }
+  
   .bank-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid #EEEEEE; }
   .bank-row:last-child { border:none; }
-  .bank-label { color:#666; font-size:0.78rem; }
-  .bank-val { color:#1A1A1A; font-weight:600; font-size:0.88rem; }
-
-  .qris-info { text-align:center; }
-  .qris-placeholder {
-    width:120px; height:120px; background:#FFFFFF; border:1px solid #DDDDDD; border-radius:6px;
-    margin:0 auto 0.75rem; display:flex; align-items:center; justify-content:center;
-    font-size:0.7rem; color:#333; font-weight:600;
-  }
-  .qris-note { font-size:0.78rem; color:#666; }
-
-  .form-submit { width:100%; margin-top:1.25rem; padding:14px; font-size:1rem; }
 
   /* TENTANG KAMI */
   #tentang { background: var(--dark2); }
@@ -420,7 +441,6 @@
 
     #katalog { padding: 3rem 1rem; }
     
-    /* Grid di HP Menjadi 2 Kolom */
     .product-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
     
     .product-card { border-radius: 6px; }
@@ -499,7 +519,7 @@
       <p class="section-sub" style="margin:0 auto;">Berbagai pilihan knalpot racing untuk motor matic, bebek, dan sport. Klik judul untuk reset pilihan, klik gambar untuk zoom.</p>
     </div>
 
-    <!-- Filter Tab Sekarang 1 Baris (Scrollable di HP) -->
+    <!-- Filter Tab -->
     <div class="filter-tabs reveal">
       <button class="filter-tab active" onclick="filterCat(this,'semua')">Semua</button>
       <button class="filter-tab" onclick="filterCat(this,'matic')">Matic</button>
@@ -808,10 +828,10 @@
       <div class="order-info reveal">
         <div class="section-label">Pemesanan</div>
         <h2 class="section-title">Form Order</h2>
-        <p class="section-sub">Silakan lengkapi detail pemesanan di samping. Data Anda akan langsung diteruskan via WhatsApp secara otomatis ke admin kami.</p>
+        <p class="section-sub">Silakan lengkapi detail pemesanan di samping. Anda bisa mengecek kembali detail pesanan Anda sebelum dikirim.</p>
       </div>
 
-      <!-- Form kanan (Light Theme) -->
+      <!-- Form kanan (Tema Hijau Soft) -->
       <div class="form-card reveal">
         <div class="form-title">Detail Pemesanan</div>
 
@@ -881,67 +901,15 @@
           </div>
         </div>
 
-        <!-- Pilihan Metode Pembayaran -->
-        <div class="form-group">
-          <label>Metode Pembayaran *</label>
-          <div class="pill-group">
-            <label class="pill">
-              <input type="radio" name="metode" value="bank_transfer" onchange="showPayInfo('bank')"> 🏦 Transfer
-            </label>
-            <label class="pill">
-              <input type="radio" name="metode" value="qris" onchange="showPayInfo('qris')"> ⬜ QRIS
-            </label>
-            <label class="pill">
-              <input type="radio" name="metode" value="cod" onchange="showPayInfo('cod')"> 🏠 COD
-            </label>
-          </div>
-        </div>
-
-        <!-- Bank Transfer Info -->
-        <div class="bank-info" id="bankInfo">
-          <div style="font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#666; margin-bottom:0.6rem;">Rekening Tujuan</div>
-          <div class="bank-row">
-            <span class="bank-label">BRI</span>
-            <span class="bank-val">1234-XXXXX-XX (a.n Nesone Racing)</span>
-          </div>
-          <div class="bank-row">
-            <span class="bank-label">BCA</span>
-            <span class="bank-val">XXXX-XXXXX (a.n Nesone Racing)</span>
-          </div>
-          <div style="margin-top:0.6rem; font-size:0.76rem; color:#666;">* Konfirmasi transfer via WhatsApp setelah pembayaran</div>
-        </div>
-
-        <!-- QRIS Info -->
-        <div class="qris-info" id="qrisInfo">
-          <div class="qris-placeholder">
-            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="80">
-              <rect x="5" y="5" width="20" height="20" rx="2" stroke="#DDDDDD" stroke-width="2" fill="none"/>
-              <rect x="9" y="9" width="12" height="12" rx="1" fill="#DDDDDD"/>
-              <rect x="35" y="5" width="20" height="20" rx="2" stroke="#DDDDDD" stroke-width="2" fill="none"/>
-              <rect x="39" y="9" width="12" height="12" rx="1" fill="#DDDDDD"/>
-              <rect x="5" y="35" width="20" height="20" rx="2" stroke="#DDDDDD" stroke-width="2" fill="none"/>
-              <rect x="9" y="39" width="12" height="12" rx="1" fill="#DDDDDD"/>
-              <rect x="35" y="35" width="4" height="4" fill="#DDDDDD"/>
-              <rect x="41" y="35" width="4" height="4" fill="#DDDDDD"/>
-              <rect x="47" y="35" width="8" height="4" fill="#DDDDDD"/>
-              <rect x="35" y="41" width="8" height="4" fill="#DDDDDD"/>
-              <rect x="47" y="41" width="8" height="4" fill="#DDDDDD"/>
-              <rect x="43" y="47" width="12" height="8" fill="#DDDDDD"/>
-            </svg>
-            <div style="font-size:0.6rem; color:#666; margin-top:4px;">QRIS Nesone Racing</div>
-          </div>
-          <div class="qris-note">Scan QRIS di atas, lalu kirim bukti pembayaran ke WhatsApp kami.</div>
-        </div>
-
         <div class="form-group" style="margin-top:0.75rem;">
           <label>Catatan Opsional</label>
           <textarea id="fCatatan" placeholder="Contoh: warna silencer hitam, dll..." rows="2"></textarea>
         </div>
 
-        <button class="btn btn-wa form-submit" onclick="kirimOrder()">
-          💬 Konfirmasi Pesanan
+        <button class="btn form-submit" onclick="cekDetailOrder()">
+          📋 Lanjut ke Pembayaran
         </button>
-        <p style="font-size:0.75rem; color:var(--gray); text-align:center; margin-top:0.75rem;">Data Anda aman dan hanya digunakan untuk keperluan pemesanan.</p>
+        <p style="font-size:0.75rem; color:#666; text-align:center; margin-top:0.75rem;">Klik untuk melihat ringkasan order & metode pembayaran.</p>
       </div>
     </div>
   </div>
@@ -1100,7 +1068,7 @@
   </div>
 </footer>
 
-<!-- LIGHTBOX ELEMENT -->
+<!-- LIGHTBOX ELEMENT (ZOOM FOTO) -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
   <span class="lb-close" onclick="closeLightbox(event)">&times;</span>
   <div class="lb-nav lb-prev" onclick="changeLbSlide(-1, event)">&#10094;</div>
@@ -1111,29 +1079,73 @@
   <div class="lb-hint">Klik gambar untuk Zoom</div>
 </div>
 
+<!-- MODAL / POP-UP DETAIL ORDER & PEMBAYARAN -->
+<div id="orderModal" class="modal-overlay" onclick="tutupModal(event)">
+  <div class="modal-content">
+    <span class="modal-close" onclick="tutupModal(event)">&times;</span>
+    <div class="modal-title">Konfirmasi Detail Pesanan</div>
+    
+    <!-- Ringkasan Data -->
+    <div class="summary-box" id="summaryBox"></div>
+
+    <div style="font-weight:600; font-size:0.95rem; color:var(--dark); margin-bottom:0.75rem;">Pilih Metode Pembayaran:</div>
+    
+    <!-- Accordion Bank -->
+    <div class="acc-item">
+      <label class="acc-header" onclick="pilihMetodePembayaran(this)">
+        <input type="radio" name="metode_modal" value="Bank Transfer"> 🏦 Transfer Bank
+      </label>
+      <div class="acc-content">
+        <div style="font-size:0.78rem; font-weight:700; color:#666; margin-bottom:0.6rem;">Rekening Tujuan:</div>
+        <div class="bank-row"><span>BRI</span><strong>1234-XXXXX-XX (a.n Nesone)</strong></div>
+        <div class="bank-row"><span>BCA</span><strong>XXXX-XXXXX (a.n Nesone)</strong></div>
+        <p style="margin-top:0.6rem; font-size:0.75rem;">* Lakukan transfer setelah Anda mengirim pesanan via WhatsApp.</p>
+      </div>
+    </div>
+
+    <!-- Accordion QRIS -->
+    <div class="acc-item">
+      <label class="acc-header" onclick="pilihMetodePembayaran(this)">
+        <input type="radio" name="metode_modal" value="QRIS"> ⬜ QRIS / E-Wallet
+      </label>
+      <div class="acc-content" style="text-align:center;">
+        <div style="width:120px; height:120px; background:#F0F0F0; border:1px solid #CCC; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; color:#666; font-weight:bold;">Gambar QRIS</div>
+        <p style="font-size:0.75rem;">Scan kode QRIS di atas melalui aplikasi Mobile Banking atau E-Wallet (Dana, OVO, dll).</p>
+      </div>
+    </div>
+
+    <!-- Accordion COD -->
+    <div class="acc-item">
+      <label class="acc-header" onclick="pilihMetodePembayaran(this)">
+        <input type="radio" name="metode_modal" value="COD (Bayar di Tempat)"> 🏠 COD / Bayar di Tempat
+      </label>
+      <div class="acc-content">
+        <p>Anda bisa membayar langsung ke kurir saat barang pesanan sampai di lokasi Anda.</p>
+      </div>
+    </div>
+
+    <button class="btn btn-wa" style="width:100%; margin-top:1.25rem; padding:12px; font-size:1rem; border-radius:6px;" onclick="kirimOrderWA()">
+      💬 Kirim Order via WhatsApp
+    </button>
+  </div>
+</div>
+
 <script>
   // HAMBURGER MENU
-  function toggleMenu(){
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
+  function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
 
   // FILTER KATALOG
   function filterCat(btn, cat){
     document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
     btn.classList.add('active');
     document.querySelectorAll('#productGrid .product-card').forEach(card=>{
-      if(cat==='semua' || card.dataset.cat.includes(cat)){
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
+      if(cat==='semua' || card.dataset.cat.includes(cat)) card.classList.remove('hidden');
+      else card.classList.add('hidden');
     });
   }
 
   // FORMAT RUPIAH
-  function formatRupiah(angka) {
-      return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }
+  function formatRupiah(angka) { return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
 
   // SLIDER FOTO PRODUK
   function changeSlide(btn, dir, event) {
@@ -1147,53 +1159,40 @@
   }
 
   // LIGHTBOX & ZOOM FOTO
-  let currentLbImages = [];
-  let currentLbIndex = 0;
-
+  let currentLbImages = [], currentLbIndex = 0;
   function openLightbox(imgElement) {
     let wrapper = imgElement.closest('.slider-wrapper');
     currentLbImages = Array.from(wrapper.querySelectorAll('.knalpot-img')).map(img => img.src);
     currentLbIndex = Array.from(wrapper.children).indexOf(imgElement);
-
     updateLightboxImage();
     document.getElementById('lightbox').classList.add('active');
   }
-
   function closeLightbox(event) {
     if (event.target !== event.currentTarget && !event.target.classList.contains('lb-close')) return;
     document.getElementById('lightbox').classList.remove('active');
     document.getElementById('lbImage').classList.remove('zoomed');
   }
-
   function changeLbSlide(dir, event) {
     if(event) event.stopPropagation();
     currentLbIndex = (currentLbIndex + dir + currentLbImages.length) % currentLbImages.length;
     updateLightboxImage();
   }
-
   function updateLightboxImage() {
     let img = document.getElementById('lbImage');
     img.src = currentLbImages[currentLbIndex];
     img.classList.remove('zoomed'); 
   }
-
   function toggleZoom(event) {
     event.stopPropagation();
     let img = document.getElementById('lbImage');
-    if (event.target === img || event.currentTarget.classList.contains('lb-img-container')) {
-        img.classList.toggle('zoomed');
-    }
+    if (event.target === img || event.currentTarget.classList.contains('lb-img-container')) img.classList.toggle('zoomed');
   }
 
   // RESET VARIAN (KLIK JUDUL KEMBALI KE STANDAR TANPA ADDON)
   function resetVarian(element) {
       let card = element.closest('.product-card');
       let basePrice = parseInt(card.getAttribute('data-baseprice'));
-      
-      // Hapus semua status aktif dari pilihan
       card.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
-      
-      // Kembalikan harga dan varian ke standar
       card.querySelector('.product-price').innerHTML = formatRupiah(basePrice);
       card.setAttribute('data-selected-var', 'Standar/Tanpa Add-on');
       card.setAttribute('data-final-price', basePrice);
@@ -1205,18 +1204,14 @@
       let basePrice = parseInt(card.getAttribute('data-baseprice'));
       let parent = btn.parentElement;
 
-      // Jika tombol yang diklik sudah aktif, matikan (deselect)
       if (btn.classList.contains('active')) {
           btn.classList.remove('active');
-          let finalPrice = basePrice;
-          card.querySelector('.product-price').innerHTML = formatRupiah(finalPrice);
+          card.querySelector('.product-price').innerHTML = formatRupiah(basePrice);
           card.setAttribute('data-selected-var', 'Standar/Tanpa Add-on');
-          card.setAttribute('data-final-price', finalPrice);
+          card.setAttribute('data-final-price', basePrice);
       } else {
-          // Jika belum aktif, matikan yang lain, lalu aktifkan ini
           parent.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
           btn.classList.add('active'); 
-          
           let finalPrice = basePrice + addPrice;
           card.querySelector('.product-price').innerHTML = formatRupiah(finalPrice);
           card.setAttribute('data-selected-var', varName);
@@ -1227,61 +1222,34 @@
   // PROSES CHECKOUT (OTOMATIS MENGISI FORM)
   function prosesCheckout(btn) {
       let card = btn.closest('.product-card');
-      
       let baseName = card.getAttribute('data-name');
-      // Default jika belum ada varian yang dipilih sama sekali
       let varName = card.getAttribute('data-selected-var') || 'Standar/Tanpa Add-on';
       let finalPrice = card.getAttribute('data-final-price') || card.getAttribute('data-baseprice');
-      
-      let formatPrice = formatRupiah(parseInt(finalPrice));
-      
-      let fullName = `${baseName} (${varName}) – ${formatPrice}`;
+      let fullName = `${baseName} (${varName}) – ${formatRupiah(parseInt(finalPrice))}`;
 
       let select = document.getElementById('fProduk');
-      
       let exists = Array.from(select.options).some(opt => opt.value === fullName);
-      if (!exists) {
-          let newOpt = new Option(fullName, fullName);
-          select.add(newOpt);
-      }
-      
+      if (!exists) select.add(new Option(fullName, fullName));
       select.value = fullName;
       
-      select.style.borderColor = '#E84030';
-      select.style.boxShadow = '0 0 10px rgba(232, 64, 48, 0.4)';
-      setTimeout(() => {
-        select.style.borderColor = '#DDDDDD';
-        select.style.boxShadow = 'none';
-      }, 1500);
+      select.style.borderColor = '#4CAF50';
+      select.style.boxShadow = '0 0 10px rgba(76, 175, 80, 0.3)';
+      setTimeout(() => { select.style.borderColor = '#A5D6A7'; select.style.boxShadow = 'none'; }, 1500);
 
       window.location.href = '#order';
   }
 
-  // UPDATE STYLE PILL YANG DIPILIH
+  // UPDATE STYLE PILL EKSPEDISI YANG DIPILIH
   function updatePills(radioName) {
       document.querySelectorAll(`input[name="${radioName}"]`).forEach(input => {
           let pill = input.closest('.pill');
-          if(input.checked) {
-              pill.classList.add('selected');
-          } else {
-              pill.classList.remove('selected');
-          }
+          if(input.checked) pill.classList.add('selected');
+          else pill.classList.remove('selected');
       });
   }
 
-  // METODE PEMBAYARAN KHUSUS (TAMPILKAN INFO BANK/QRIS)
-  function showPayInfo(type){
-    document.getElementById('bankInfo').classList.remove('visible');
-    document.getElementById('qrisInfo').classList.remove('visible');
-    
-    updatePills('metode');
-    
-    if(type==='bank') document.getElementById('bankInfo').classList.add('visible');
-    if(type==='qris') document.getElementById('qrisInfo').classList.add('visible');
-  }
-
-  // ORDER VIA WHATSAPP (SUBMIT)
-  function kirimOrder(){
+  // -- ALUR BARU: KLIK "LANJUT KE PEMBAYARAN" (TAMPIL MODAL) -- //
+  function cekDetailOrder() {
     const nama = document.getElementById('fNama').value.trim();
     const wa = document.getElementById('fWA').value.trim();
     const produk = document.getElementById('fProduk').value;
@@ -1290,33 +1258,85 @@
     const kabupaten = document.getElementById('fKabupaten').value.trim();
     const provinsi = document.getElementById('fProvinsi').value;
     const catatan = document.getElementById('fCatatan').value.trim();
-    
     const ekspedisiSel = document.querySelector('input[name="ekspedisi"]:checked');
-    const metodeSel = document.querySelector('input[name="metode"]:checked');
 
-    if(!nama || !wa || !produk || !alamat || !kodepos || !kabupaten || !provinsi || !ekspedisiSel || !metodeSel){
-      alert('Mohon lengkapi semua kolom yang wajib diisi (*)');
+    // Validasi input
+    if(!nama || !wa || !produk || !alamat || !kodepos || !kabupaten || !provinsi || !ekspedisiSel){
+      alert('Mohon lengkapi semua kolom yang wajib diisi (*), termasuk Ekspedisi.');
       return;
     }
 
-    const metodeMap = { bank_transfer:'Bank Transfer', qris:'QRIS', cod:'COD / Ambil Langsung' };
+    // Injeksi data ringkasan ke dalam Modal
+    const summaryHtml = `
+      <strong>👤 Data Pemesan:</strong><br>
+      Nama: ${nama}<br>
+      No WA: ${wa}<br>
+      Alamat: ${alamat}, ${kabupaten}, ${provinsi} (Kode Pos: ${kodepos})<br><br>
+      
+      <strong>📦 Detail Pesanan:</strong><br>
+      Produk: <span style="color:var(--red); font-weight:600;">${produk}</span><br>
+      Ekspedisi: ${ekspedisiSel.value}<br>
+      Catatan: ${catatan || '-'}
+    `;
+    document.getElementById('summaryBox').innerHTML = summaryHtml;
+
+    // Munculkan Modal
+    document.getElementById('orderModal').classList.add('active');
+  }
+
+  // LOGIKA ACCORDION METODE PEMBAYARAN DI MODAL
+  function pilihMetodePembayaran(headerElem) {
+    // Tutup semua item yang aktif
+    document.querySelectorAll('.acc-item').forEach(item => item.classList.remove('active'));
+    // Buka item yang baru diklik
+    headerElem.closest('.acc-item').classList.add('active');
+    // Centang radio button-nya
+    headerElem.querySelector('input[type="radio"]').checked = true;
+  }
+
+  // TUTUP MODAL
+  function tutupModal(event) {
+    if (event.target === event.currentTarget || event.target.classList.contains('modal-close')) {
+      document.getElementById('orderModal').classList.remove('active');
+    }
+  }
+
+  // ORDER VIA WHATSAPP (SUBMIT FINAL DARI MODAL)
+  function kirimOrderWA(){
+    const metodeSel = document.querySelector('input[name="metode_modal"]:checked');
+    if(!metodeSel){
+      alert('Silakan pilih Metode Pembayaran terlebih dahulu.');
+      return;
+    }
+
+    // Ambil ulang data dari form
+    const nama = document.getElementById('fNama').value.trim();
+    const wa = document.getElementById('fWA').value.trim();
+    const produk = document.getElementById('fProduk').value;
+    const alamat = document.getElementById('fAlamat').value.trim();
+    const kodepos = document.getElementById('fKodePos').value.trim();
+    const kabupaten = document.getElementById('fKabupaten').value.trim();
+    const provinsi = document.getElementById('fProvinsi').value;
+    const catatan = document.getElementById('fCatatan').value.trim();
+    const ekspedisi = document.querySelector('input[name="ekspedisi"]:checked').value;
     
-    // Format Pesan WA
+    // Format Pesan WA yang Rapi
     const msg =
 `*ORDER NESONE RACING EXHAUST*
 ━━━━━━━━━━━━━━━━━━━━━
-*Form Nama:*
+*Data Pemesan:*
 - Nama: ${nama}
 - No. WA: ${wa}
+- Alamat: ${alamat}, ${kabupaten}, ${provinsi}
+- Kode Pos: ${kodepos}
 
 *Detail Pesanan:*
 - Produk: ${produk}
-- Alamat: ${alamat}, ${kabupaten}, ${provinsi} (Kode Pos: ${kodepos})
-- Ekspedisi: ${ekspedisiSel.value}
+- Ekspedisi: ${ekspedisi}
 - Catatan: ${catatan || '-'}
 
 *Metode Pembayaran:*
-- ${metodeMap[metodeSel.value]}
+- ${metodeSel.value}
 ━━━━━━━━━━━━━━━━━━━━━
 Terima kasih! 🏍`;
 
