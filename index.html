@@ -471,6 +471,7 @@
 
     <div class="product-grid" id="productGrid">
 
+      <!-- PRODUK 1 -->
       <div class="product-card reveal" data-cat="matic slipon" data-baseprice="385000" data-name="NSR-1 Oval Matic">
         <div class="product-img">
           <div class="slider-container">
@@ -503,6 +504,7 @@
         </div>
       </div>
 
+      <!-- PRODUK 2 -->
       <div class="product-card reveal" data-cat="matic fullsystem" data-baseprice="680000" data-name="NSR-PRO Full System Matic">
         <div class="product-img">
           <div class="slider-container">
@@ -535,6 +537,7 @@
         </div>
       </div>
 
+      <!-- PRODUK 3 -->
       <div class="product-card reveal" data-cat="bebek slipon" data-baseprice="320000" data-name="NSR-B1 Bebek Standar">
         <div class="product-img">
           <div class="slider-container">
@@ -566,6 +569,7 @@
         </div>
       </div>
 
+      <!-- PRODUK 4 -->
       <div class="product-card reveal" data-cat="bebek fullsystem" data-baseprice="520000" data-name="NSR-B PRO Full Bebek">
         <div class="product-img">
           <div class="slider-container">
@@ -598,6 +602,7 @@
         </div>
       </div>
 
+      <!-- PRODUK 5 -->
       <div class="product-card reveal" data-cat="sport slipon" data-baseprice="850000" data-name="NSR-S Carbon Sport">
         <div class="product-img">
           <div class="slider-container">
@@ -630,6 +635,7 @@
         </div>
       </div>
 
+      <!-- PRODUK 6 -->
       <div class="product-card reveal" data-cat="sport fullsystem" data-baseprice="1450000" data-name="NSR-S PRO Full Sport Ti">
         <div class="product-img">
           <div class="slider-container">
@@ -662,6 +668,7 @@
         </div>
       </div>
 
+      <!-- PRODUK 7 -->
       <div class="product-card reveal" data-cat="matic slipon" data-baseprice="375000" data-name="NSR-M Yamaha Mio Series">
         <div class="product-img">
           <div class="slider-container">
@@ -693,6 +700,7 @@
         </div>
       </div>
 
+      <!-- PRODUK 8 -->
       <div class="product-card reveal" data-cat="bebek slipon" data-baseprice="295000" data-name="NSR-Shogun 125 Series">
         <div class="product-img">
           <div class="slider-container">
@@ -858,6 +866,7 @@
 
 <hr class="divider">
 
+<!-- SECTION TESTIMONI -->
 <section id="testimoni">
   <div class="container">
     <div class="section-label reveal">Apa Kata Mereka</div>
@@ -999,6 +1008,7 @@
   <div class="lb-nav lb-next" onclick="changeLbSlide(1, event)">❯</div>
 </div>
 
+<!-- MODAL SUMMARY ORDER -->
 <div id="orderModal" class="modal-overlay" onclick="tutupModal(event)">
   <div class="modal-content">
     <span class="modal-close" onclick="tutupModal(event)">×</span>
@@ -1064,6 +1074,7 @@
   </div>
 </div>
 
+<!-- MODAL PILIH WAKTU PEMBAYARAN -->
 <div id="paymentTimingModal" class="modal-overlay" onclick="tutupTimingModal(event)">
   <div class="modal-content" style="max-width: 400px; text-align: center;">
     <span class="modal-close" onclick="tutupTimingModal(event)">×</span>
@@ -1253,7 +1264,6 @@
       return;
     }
 
-    // Bug Fix: Ambil data harga HANYA dari opsi yang SEDANG terpilih di dropdown
     let selOpt = produkSel.options[produkSel.selectedIndex];
     let info = selOpt.getAttribute('data-info');
     let prodInfo = info ? JSON.parse(info) : null;
@@ -1261,7 +1271,6 @@
     if (prodInfo) {
         baseOrderPrice = prodInfo.finalPrice;
     } else {
-        // Untuk custom order atau jika tidak ada data info
         let hargaMatch = produk.match(/Rp\s*([\d\.]+)/);
         baseOrderPrice = hargaMatch ? parseInt(hargaMatch[1].replace(/\./g, '')) : 0;
     }
@@ -1289,13 +1298,13 @@
             detailHargaHtml += `Potongan Promo: <span style="color:var(--red); font-weight:bold;">-Rp ${promoDiscount.toLocaleString('id-ID')}</span><br>`; 
         }
         
-        detailHargaHtml += `<strong style="font-size:1.1rem; color:var(--red);">Total Bayar: Rp ${finalTotal.toLocaleString('id-ID')}</strong> <br><em style="font-size:0.7rem; color:#666;">(Belum termasuk ongkir, akan dihitung Admin)</em>`;
+        detailHargaHtml += `<strong style="font-size:1.1rem; color:#2E7D32;">Total Bayar: Rp ${finalTotal.toLocaleString('id-ID')}</strong> <br><em style="font-size:0.7rem; color:#666;">(Belum termasuk ongkir, akan dihitung Admin)</em>`;
     }
 
     let pNama = orderData.prodInfo ? orderData.prodInfo.nama : orderData.produk;
-    let hargaProduk = orderData.prodInfo ? ` - <strong>Rp ${orderData.prodInfo.basePrice.toLocaleString('id-ID')}</strong>` : "";
-    let pAddon = orderData.prodInfo ? orderData.prodInfo.varian : "-";
-    let hargaAddon = (orderData.prodInfo && orderData.prodInfo.addPrice > 0) ? ` <strong>(+Rp ${orderData.prodInfo.addPrice.toLocaleString('id-ID')})</strong>` : "";
+    let hargaProduk = orderData.prodInfo ? ` - <strong style="color:#2E7D32;">Rp ${orderData.prodInfo.basePrice.toLocaleString('id-ID')}</strong>` : "";
+    let pAddon = orderData.prodInfo ? (orderData.prodInfo.varian === 'Standar/Tanpa Add-on' ? '-' : orderData.prodInfo.varian) : "-";
+    let hargaAddon = (orderData.prodInfo && orderData.prodInfo.addPrice > 0) ? ` <strong style="color:#2E7D32;">(+Rp ${orderData.prodInfo.addPrice.toLocaleString('id-ID')})</strong>` : "";
 
     document.getElementById('summaryBox').innerHTML = `
       <strong>👤 Data Pemesan:</strong><br>
@@ -1304,7 +1313,7 @@
       Alamat: ${orderData.alamat}, Kel. ${orderData.kelurahan}, Kec. ${orderData.kecamatan}, ${orderData.kabupaten}, ${orderData.provKodepos}<br><br>
       
       <strong>📦 Detail Pesanan:</strong><br>
-      Produk: <span style="color:var(--red); font-weight:600;">${pNama}</span>${hargaProduk}<br>
+      Produk: <span style="color:var(--dark); font-weight:600;">${pNama}</span>${hargaProduk}<br>
       Add-on: <strong>${pAddon}</strong>${hargaAddon}<br>
       Ekspedisi: ${orderData.ekspedisi}<br>
       Catatan: ${orderData.catatan || '-'}
@@ -1381,8 +1390,13 @@
 
     if (orderData.prodInfo) {
         prodWA = `${orderData.prodInfo.nama} _*Rp ${orderData.prodInfo.basePrice.toLocaleString('id-ID')}*_`;
-        let addonPriceText = orderData.prodInfo.addPrice > 0 ? ` _*+Rp ${orderData.prodInfo.addPrice.toLocaleString('id-ID')}*_` : ` _*Rp 0*_`;
-        addonWA = `${orderData.prodInfo.varian}${addonPriceText}`;
+        
+        if (orderData.prodInfo.varian === 'Standar/Tanpa Add-on') {
+            addonWA = `-`;
+        } else {
+            let addonPriceText = orderData.prodInfo.addPrice > 0 ? ` _*+Rp ${orderData.prodInfo.addPrice.toLocaleString('id-ID')}*_` : ``;
+            addonWA = `${orderData.prodInfo.varian}${addonPriceText}`;
+        }
     } else {
         prodWA = `${orderData.produk}`;
         addonWA = `-`;
@@ -1390,6 +1404,8 @@
 
     let finalTotalStr = baseOrderPrice > 0 ? `*Rp ${(baseOrderPrice - promoDiscount).toLocaleString('id-ID')}* (+ Ongkir)` : "-";
     let promoStr = promoDiscount > 0 ? `\n- *Promo Dipakai:* NESONE20 (Diskon Rp 20rb)` : "";
+
+    let catatanWA = orderData.catatan ? `\n*CATATAN:*\n- ${orderData.catatan}\n` : "";
 
     const msg =
 `_*ORDER NESONE RACING EXHAUST*_
@@ -1413,9 +1429,8 @@
 *METODE PEMBAYARAN:*
 - *Via:* ${metodeSel}
 - *Waktu Transfer:* ${waktuPembayaranStr}
-
-*CATATAN:*
-- ${orderData.catatan || '-'}
+${catatanWA}
+_Tolong hitungkan biaya ongkir ke alamat saya di Kel. ${orderData.kelurahan}, Kec. ${orderData.kecamatan}, ${orderData.kabupaten}._
 `;
 
     const waLink = 'https://api.whatsapp.com/send/?phone=6285868872566&text=' + encodeURIComponent(msg) + '&type=phone_number&app_absent=0';
