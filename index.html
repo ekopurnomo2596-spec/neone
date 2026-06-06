@@ -234,7 +234,7 @@
     font-size: 1.35rem; color: var(--red-dark); margin-bottom: 0.75rem; margin-top: auto;
   }
 
-  /* Checkout Button Baru */
+  /* Checkout Button */
   .btn-checkout {
     width: 100%; padding: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
     background: var(--red); color: #fff; border: none; border-radius: 4px;
@@ -270,17 +270,16 @@
   .lb-next { right: 20px; }
   .lb-hint { position: absolute; bottom: 20px; color: white; font-size: 0.9rem; z-index: 10001; background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px;}
 
-  /* ORDER FORM (TEMA HIJAU SOFT) */
-  #order { background: var(--dark); } 
-  .order-wrap { display:grid; grid-template-columns: 1fr 1.3fr; gap:3rem; align-items:start; }
-  .order-info { position: sticky; top: 80px; }
+  /* ORDER FORM (TEMA HIJAU SOFT & CENTERED) */
+  #order { background: var(--dark); padding: 5rem 1rem; } 
+  .order-wrap { max-width: 700px; margin: 0 auto; display: block; }
   
   .form-card {
     background: #E8F5E9; /* Hijau pastel/soft */
     border: 1px solid #C8E6C9; /* Hijau border lembut */
     border-radius: 12px; padding: 2rem;
   }
-  .form-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.3rem; color:#1B5E20; margin-bottom:1.5rem; }
+  .form-title { text-align:center; font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.6rem; color:#1B5E20; margin-bottom:1.5rem; }
   .form-group { margin-bottom:1.1rem; }
   .form-card label { display:block; font-size:0.8rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:#2E7D32; margin-bottom:0.4rem; }
   
@@ -296,19 +295,18 @@
   .form-card textarea { resize:vertical; min-height:60px; }
   
   .form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
-  .form-row-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem; }
 
-  /* PILL BUTTONS Form (Hijau Mode) */
+  /* PILL BUTTONS Form */
   .pill-group { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.4rem; }
-  .form-card .pill {
+  .form-card .pill, .modal-content .pill {
     padding: 8px 16px; border-radius: 20px; font-size:0.82rem; font-weight:600;
     border: 1px solid #A5D6A7; background: #FFFFFF; color: #2E7D32;
     cursor: pointer; transition: all 0.2s; letter-spacing:0.04em;
     display:flex; align-items:center; gap:6px;
   }
-  .form-card .pill:hover { border-color: #4CAF50; color: #4CAF50; }
-  .form-card .pill.selected { background: #4CAF50; border-color: #4CAF50; color: #fff; }
-  .form-card .pill input[type=radio] { display:none; }
+  .form-card .pill:hover, .modal-content .pill:hover { border-color: #4CAF50; color: #4CAF50; }
+  .form-card .pill.selected, .modal-content .pill.selected { background: #4CAF50; border-color: #4CAF50; color: #fff; }
+  .form-card .pill input[type=radio], .modal-content .pill input[type=radio] { display:none; }
 
   .form-submit { width:100%; margin-top:1.25rem; padding:14px; font-size:1rem; background: var(--red); color: white; border:none; border-radius: 5px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
   .form-submit:hover { background: var(--red-light); }
@@ -342,7 +340,7 @@
     cursor: pointer; display: flex; align-items: center; gap: 10px; color: #444;
     transition: background 0.2s; margin: 0;
   }
-  .acc-header input[type="radio"] { cursor: pointer; }
+  .acc-header input[type="radio"] { cursor: pointer; pointer-events: none; }
   .acc-header:hover { background: #EFEFEF; }
   .acc-content {
     display: none; padding: 15px; background: #FFF; border-top: 1px solid #EAEAEA;
@@ -431,18 +429,14 @@
   @media (max-width: 768px) {
     .nav-links { display:none; }
     .hamburger { display:flex; }
-    .order-wrap, .about-grid, .lokasi-grid, .footer-grid { grid-template-columns:1fr; }
-    .form-row, .form-row-3 { grid-template-columns:1fr; }
-    .order-info { position:static; }
+    .about-grid, .lokasi-grid, .footer-grid { grid-template-columns:1fr; }
     .value-grid { grid-template-columns:1fr; }
     
     .hero-btns { flex-wrap: nowrap; gap: 6px; justify-content: space-between; width: 100%; }
     .hero-btns .btn { flex: 1; padding: 8px 4px; font-size: 0.6rem; letter-spacing: 0; white-space: nowrap; text-align: center; }
 
     #katalog { padding: 3rem 1rem; }
-    
     .product-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
-    
     .product-card { border-radius: 6px; }
     .product-body { padding: 8px; }
     .product-name { font-size: 0.85rem; margin-bottom: 4px; line-height: 1.2; }
@@ -450,15 +444,22 @@
     .variant-pills { gap: 4px; margin-bottom: 6px; }
     .v-pill { font-size: 0.55rem; padding: 4px 6px; letter-spacing: 0; }
     .product-price { font-size: 0.95rem; margin-bottom: 8px; }
-    
     .btn-checkout { padding: 8px; font-size: 0.75rem; border-radius: 3px; gap: 6px; }
     .btn-checkout svg { width: 14px; height: 14px; }
-    
     .badge-new, .badge-hot { top: 6px; left: 6px; font-size: 0.5rem; padding: 3px 6px; }
     .product-type { bottom: 6px; right: 6px; font-size: 0.5rem; padding: 3px 6px; }
     
     .lb-nav { font-size: 2rem; padding: 10px; }
     .lb-close { right: 15px; top: 15px; font-size: 2rem; }
+
+    /* Penyesuaian Form HP agar tidak kepanjangan */
+    .form-card { padding: 1.2rem; }
+    .form-group { margin-bottom: 0.75rem; }
+    .form-card label { font-size: 0.75rem; margin-bottom: 0.2rem; }
+    .form-card input[type=text], .form-card input[type=tel], .form-card textarea, .form-card select {
+        padding: 8px 10px; font-size: 0.85rem;
+    }
+    .form-row { grid-template-columns: 1fr 1fr; gap: 0.5rem; } /* Tetap 2 kolom di HP */
   }
 
   .product-card.hidden { display:none !important; }
@@ -824,21 +825,15 @@
 <section id="order">
   <div class="container">
     <div class="order-wrap">
-      <!-- Info kiri -->
-      <div class="order-info reveal">
-        <div class="section-label">Pemesanan</div>
-        <h2 class="section-title">Form Order</h2>
-        <p class="section-sub">Silakan lengkapi detail pemesanan di samping. Anda bisa mengecek kembali detail pesanan Anda sebelum dikirim.</p>
-      </div>
-
-      <!-- Form kanan (Tema Hijau Soft) -->
+      
+      <!-- Form Pemesanan (Tanpa teks instruksi kiri, berada di tengah) -->
       <div class="form-card reveal">
         <div class="form-title">Detail Pemesanan</div>
 
         <div class="form-row">
           <div class="form-group">
             <label>Nama Penerima *</label>
-            <input type="text" id="fNama" placeholder="Nama penerima paket">
+            <input type="text" id="fNama" placeholder="Nama lengkap">
           </div>
           <div class="form-group">
             <label>No. WhatsApp *</label>
@@ -856,10 +851,10 @@
 
         <div class="form-group">
           <label>Alamat Lengkap *</label>
-          <textarea id="fAlamat" placeholder="Nama jalan, nomor rumah, RT/RW, kelurahan/kecamatan..."></textarea>
+          <textarea id="fAlamat" placeholder="Jalan, No. Rumah, RT/RW, Kel/Kec..."></textarea>
         </div>
 
-        <div class="form-row-3">
+        <div class="form-row">
           <div class="form-group">
             <label>Provinsi *</label>
             <select id="fProvinsi">
@@ -876,10 +871,15 @@
             <label>Kabupaten / Kota *</label>
             <input type="text" id="fKabupaten" placeholder="Contoh: Purbalingga">
           </div>
+        </div>
+
+        <div class="form-row">
           <div class="form-group">
             <label>Kode Pos *</label>
             <input type="text" id="fKodePos" placeholder="53XXX" maxlength="5">
           </div>
+          <!-- Kosong untuk menjaga grid agar rata di desktop/hp -->
+          <div class="form-group"></div> 
         </div>
 
         <!-- Pilihan Ekspedisi -->
@@ -909,7 +909,6 @@
         <button class="btn form-submit" onclick="cekDetailOrder()">
           📋 Lanjut ke Pembayaran
         </button>
-        <p style="font-size:0.75rem; color:#666; text-align:center; margin-top:0.75rem;">Klik untuk melihat ringkasan order & metode pembayaran.</p>
       </div>
     </div>
   </div>
@@ -1099,7 +1098,27 @@
         <div style="font-size:0.78rem; font-weight:700; color:#666; margin-bottom:0.6rem;">Rekening Tujuan:</div>
         <div class="bank-row"><span>BRI</span><strong>1234-XXXXX-XX (a.n Nesone)</strong></div>
         <div class="bank-row"><span>BCA</span><strong>XXXX-XXXXX (a.n Nesone)</strong></div>
-        <p style="margin-top:0.6rem; font-size:0.75rem;">* Lakukan transfer setelah Anda mengirim pesanan via WhatsApp.</p>
+        
+        <!-- Pilihan Sudah/Belum Transfer -->
+        <div style="margin-top:1.2rem; border-top: 1px solid #EAEAEA; padding-top: 1rem;">
+          <label style="display:block; font-size:0.8rem; font-weight:700; color:#444; margin-bottom:0.5rem;">Apakah Anda sudah transfer?</label>
+          <div class="pill-group" style="margin-bottom:0.75rem;">
+            <label class="pill">
+              <input type="radio" name="status_tf" value="Belum" onchange="toggleUpload()" checked> Belum
+            </label>
+            <label class="pill">
+              <input type="radio" name="status_tf" value="Sudah" onchange="toggleUpload()"> Sudah
+            </label>
+          </div>
+          
+          <!-- Box Upload Bukti (Hanya muncul jika klik Sudah) -->
+          <div id="uploadBox" style="display:none; margin-top:0.5rem;">
+            <label style="display:block; font-size:0.75rem; margin-bottom:0.3rem; font-weight:600;">Pilih File Bukti Transfer</label>
+            <input type="file" id="fBukti" accept="image/*" style="width:100%; font-size:0.8rem; padding:8px; border:1px dashed #A5D6A7; border-radius:4px; background:#F9F9F9; color:#333;">
+            <div style="font-size:0.7rem; color:#888; margin-top:4px;">*Pilih gambar bukti untuk diinformasikan ke WA.</div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -1110,17 +1129,7 @@
       </label>
       <div class="acc-content" style="text-align:center;">
         <div style="width:120px; height:120px; background:#F0F0F0; border:1px solid #CCC; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; color:#666; font-weight:bold;">Gambar QRIS</div>
-        <p style="font-size:0.75rem;">Scan kode QRIS di atas melalui aplikasi Mobile Banking atau E-Wallet (Dana, OVO, dll).</p>
-      </div>
-    </div>
-
-    <!-- Accordion COD -->
-    <div class="acc-item">
-      <label class="acc-header" onclick="pilihMetodePembayaran(this)">
-        <input type="radio" name="metode_modal" value="COD (Bayar di Tempat)"> 🏠 COD / Bayar di Tempat
-      </label>
-      <div class="acc-content">
-        <p>Anda bisa membayar langsung ke kurir saat barang pesanan sampai di lokasi Anda.</p>
+        <p style="font-size:0.75rem;">Scan kode QRIS di atas melalui aplikasi Mobile Banking atau E-Wallet (Dana, OVO, dll). Lalu konfirmasi WA.</p>
       </div>
     </div>
 
@@ -1260,13 +1269,13 @@
     const catatan = document.getElementById('fCatatan').value.trim();
     const ekspedisiSel = document.querySelector('input[name="ekspedisi"]:checked');
 
-    // Validasi input
+    // Validasi input form utama
     if(!nama || !wa || !produk || !alamat || !kodepos || !kabupaten || !provinsi || !ekspedisiSel){
       alert('Mohon lengkapi semua kolom yang wajib diisi (*), termasuk Ekspedisi.');
       return;
     }
 
-    // Injeksi data ringkasan ke dalam Modal
+    // Tampilkan ringkasan pada Modal
     const summaryHtml = `
       <strong>👤 Data Pemesan:</strong><br>
       Nama: ${nama}<br>
@@ -1279,6 +1288,9 @@
       Catatan: ${catatan || '-'}
     `;
     document.getElementById('summaryBox').innerHTML = summaryHtml;
+    
+    // Setel ulang tombol toggle Status Transfer
+    toggleUpload();
 
     // Munculkan Modal
     document.getElementById('orderModal').classList.add('active');
@@ -1286,12 +1298,24 @@
 
   // LOGIKA ACCORDION METODE PEMBAYARAN DI MODAL
   function pilihMetodePembayaran(headerElem) {
-    // Tutup semua item yang aktif
     document.querySelectorAll('.acc-item').forEach(item => item.classList.remove('active'));
-    // Buka item yang baru diklik
     headerElem.closest('.acc-item').classList.add('active');
-    // Centang radio button-nya
     headerElem.querySelector('input[type="radio"]').checked = true;
+  }
+
+  // LOGIKA MUNCUL/HILANGNYA UPLOAD BUKTI TRANSFER
+  function toggleUpload() {
+     const tfChecked = document.querySelector('input[name="status_tf"]:checked');
+     if (!tfChecked) return;
+     
+     const isSudah = tfChecked.value === 'Sudah';
+     document.getElementById('uploadBox').style.display = isSudah ? 'block' : 'none';
+     
+     // Update style pill "Sudah/Belum"
+     document.querySelectorAll('input[name="status_tf"]').forEach(el => {
+        if(el.checked) el.closest('.pill').classList.add('selected');
+        else el.closest('.pill').classList.remove('selected');
+     });
   }
 
   // TUTUP MODAL
@@ -1305,11 +1329,11 @@
   function kirimOrderWA(){
     const metodeSel = document.querySelector('input[name="metode_modal"]:checked');
     if(!metodeSel){
-      alert('Silakan pilih Metode Pembayaran terlebih dahulu.');
+      alert('Silakan pilih Metode Pembayaran terlebih dahulu (klik pada salah satu opsi).');
       return;
     }
 
-    // Ambil ulang data dari form
+    // Ambil ulang data dari form di belakang layar
     const nama = document.getElementById('fNama').value.trim();
     const wa = document.getElementById('fWA').value.trim();
     const produk = document.getElementById('fProduk').value;
@@ -1320,7 +1344,21 @@
     const catatan = document.getElementById('fCatatan').value.trim();
     const ekspedisi = document.querySelector('input[name="ekspedisi"]:checked').value;
     
-    // Format Pesan WA yang Rapi
+    // Cek info tambahan dari status transfer bank
+    let infoTambahan = "";
+    if (metodeSel.value === "Bank Transfer") {
+        const statusTf = document.querySelector('input[name="status_tf"]:checked').value;
+        infoTambahan += `\n- Status Transfer: *${statusTf}*`;
+        if (statusTf === 'Sudah') {
+            const fileInput = document.getElementById('fBukti');
+            if (fileInput.files.length > 0) {
+                // WA URL API tidak bisa kirim gambar langsung dari form lokal web
+                infoTambahan += `\n- File Bukti: ${fileInput.files[0].name} (Silakan kirimkan fotonya di chat ini)`;
+            }
+        }
+    }
+
+    // Format Pesan WA
     const msg =
 `*ORDER NESONE RACING EXHAUST*
 ━━━━━━━━━━━━━━━━━━━━━
@@ -1336,7 +1374,7 @@
 - Catatan: ${catatan || '-'}
 
 *Metode Pembayaran:*
-- ${metodeSel.value}
+- ${metodeSel.value}${infoTambahan}
 ━━━━━━━━━━━━━━━━━━━━━
 Terima kasih! 🏍`;
 
