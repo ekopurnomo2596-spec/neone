@@ -218,7 +218,7 @@
   
   .product-motor { font-size: 0.78rem; color: var(--gray); margin-bottom: 0.6rem; }
   
-  /* GRID VARIAN ADD-ON (Dibuat Rapi 2 Kolom) */
+  /* GRID VARIAN ADD-ON */
   .variant-pills { 
     display: grid; 
     grid-template-columns: repeat(2, 1fr); 
@@ -226,7 +226,6 @@
     margin-bottom: 0.85rem; 
   }
   
-  /* Kunci varian add-on sebelum judul diklik */
   .variant-pills.locked {
     opacity: 0.4;
     pointer-events: none;
@@ -282,7 +281,7 @@
   .lb-next { right: 20px; }
   .lb-hint { position: absolute; bottom: 20px; color: white; font-size: 0.9rem; z-index: 10001; background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px;}
 
-  /* ORDER FORM (TEMA MEWAH MINIMALIS) */
+  /* ORDER FORM */
   #order { background: #FAFAFA; padding: 5rem 1rem; } 
   .order-wrap { max-width: 700px; margin: 0 auto; display: block; }
   
@@ -324,8 +323,13 @@
   .form-card .pill:hover, .modal-content .pill:hover { border-color: var(--dark); color: var(--dark); }
   .form-card .pill.selected, .modal-content .pill.selected { background: var(--dark); border-color: var(--dark); color: #fff; }
 
-  .form-submit { width:100%; margin-top:1.25rem; padding:14px; font-size:1rem; background: var(--red); color: white; border:none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
-  .form-submit:hover { background: var(--red-light); }
+  /* TOMBOL LANJUT PEMBAYARAN WARNA HIJAU */
+  .form-submit { 
+    width:100%; margin-top:1.25rem; padding:14px; font-size:1rem; 
+    background: #2E7D32; color: white; border:none; border-radius: 8px; 
+    cursor: pointer; font-weight: 600; transition: background 0.2s; 
+  }
+  .form-submit:hover { background: #1B5E20; }
 
   /* MODAL / POPUP DETAIL ORDER */
   .modal-overlay {
@@ -444,7 +448,6 @@
 
     #katalog { padding: 3rem 1rem; }
     
-    /* Filter Grid HP */
     .filter-tabs { gap: 6px; margin-bottom: 1.5rem; }
     .filter-tab { font-size: 0.65rem; padding: 8px 2px; border-radius: 15px; letter-spacing: 0; }
 
@@ -454,7 +457,6 @@
     .product-name { font-size: 0.85rem; margin-bottom: 4px; line-height: 1.2; }
     .product-motor { font-size: 0.65rem; margin-bottom: 6px; line-height: 1.2; }
     
-    /* Variant grid on HP keeps 2 columns */
     .variant-pills { gap: 4px; margin-bottom: 6px; }
     .v-pill { font-size: 0.55rem; padding: 6px 2px; letter-spacing: 0; border-radius: 4px;}
     
@@ -467,7 +469,7 @@
     .lb-nav { font-size: 2rem; padding: 10px; }
     .lb-close { right: 15px; top: 15px; font-size: 2rem; }
 
-    /* PENYESUAIAN FORM HP (Padat & Rapi) */
+    /* PENYESUAIAN FORM HP */
     #order { padding: 1.5rem 0.5rem; }
     .form-card { padding: 1rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
     .form-title { font-size: 1.3rem; margin-bottom: 0.8rem; }
@@ -550,7 +552,7 @@
       <button class="filter-tab" onclick="filterCat(this,'fullsystem')">Full System</button>
     </div>
 
-    <!-- SELURUH KATALOG 1 - 8 DIKEMBALIKAN -->
+    <!-- KATALOG PRODUK 1 - 8 -->
     <div class="product-grid" id="productGrid">
 
       <!-- Produk 1 -->
@@ -831,7 +833,7 @@
   <div class="container">
     <div class="order-wrap">
       
-      <!-- Form Pemesanan (Desain Premium) -->
+      <!-- Form Pemesanan -->
       <div class="form-card reveal">
         <div class="form-title">Detail Pemesanan</div>
 
@@ -1097,7 +1099,7 @@
       </div>
     </div>
 
-    <button class="btn btn-wa" style="width:100%; margin-top:1.25rem; padding:12px; font-size:1rem; border-radius:6px;" onclick="kirimOrderWA()">
+    <button class="btn form-submit" style="margin-top:1.25rem;" onclick="kirimOrderWA()">
       💬 Kirim Order via WhatsApp
     </button>
   </div>
@@ -1171,6 +1173,7 @@
           pillsContainer.classList.remove('locked');
       }
 
+      card.setAttribute('data-add-price', 0); // Reset harga addon ke 0
       card.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
       card.querySelector('.product-price').innerHTML = formatRupiah(basePrice);
       card.setAttribute('data-selected-var', 'Standar/Tanpa Add-on');
@@ -1185,6 +1188,7 @@
 
       if (btn.classList.contains('active')) {
           btn.classList.remove('active');
+          card.setAttribute('data-add-price', 0);
           card.querySelector('.product-price').innerHTML = formatRupiah(basePrice);
           card.setAttribute('data-selected-var', 'Standar/Tanpa Add-on');
           card.setAttribute('data-final-price', basePrice);
@@ -1192,6 +1196,8 @@
           parent.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
           btn.classList.add('active'); 
           let finalPrice = basePrice + addPrice;
+          
+          card.setAttribute('data-add-price', addPrice); // Simpan harga addon
           card.querySelector('.product-price').innerHTML = formatRupiah(finalPrice);
           card.setAttribute('data-selected-var', varName);
           card.setAttribute('data-final-price', finalPrice);
@@ -1204,16 +1210,38 @@
       let baseName = card.getAttribute('data-name');
       let varName = card.getAttribute('data-selected-var') || 'Standar/Tanpa Add-on';
       let finalPrice = card.getAttribute('data-final-price') || card.getAttribute('data-baseprice');
+      let basePrice = parseInt(card.getAttribute('data-baseprice'));
+      let addPrice = parseInt(card.getAttribute('data-add-price') || 0);
+
       let fullName = `${baseName} (${varName}) – ${formatRupiah(parseInt(finalPrice))}`;
+
+      // Simpan rincian data harga agar mudah diambil di WA
+      let dataObj = {
+          nama: baseName,
+          varian: varName,
+          basePrice: basePrice,
+          addPrice: addPrice,
+          finalPrice: parseInt(finalPrice)
+      };
 
       let select = document.getElementById('fProduk');
       let exists = Array.from(select.options).some(opt => opt.value === fullName);
-      if (!exists) select.add(new Option(fullName, fullName));
+      
+      if (!exists) {
+        let option = new Option(fullName, fullName);
+        option.setAttribute('data-info', JSON.stringify(dataObj));
+        select.add(option);
+      } else {
+        // Update data-info jika pilihan sudah ada
+        let existingOpt = Array.from(select.options).find(opt => opt.value === fullName);
+        existingOpt.setAttribute('data-info', JSON.stringify(dataObj));
+      }
+
       select.value = fullName;
       
       select.style.borderColor = '#4CAF50';
       select.style.boxShadow = '0 0 10px rgba(76, 175, 80, 0.3)';
-      setTimeout(() => { select.style.borderColor = '#A5D6A7'; select.style.boxShadow = 'none'; }, 1500);
+      setTimeout(() => { select.style.borderColor = '#E0E0E0'; select.style.boxShadow = 'none'; }, 1500);
 
       window.location.href = '#order';
   }
@@ -1253,10 +1281,18 @@
     baseOrderPrice = hargaMatch ? parseInt(hargaMatch[1].replace(/\./g, '')) : 0;
     promoDiscount = 0;
     
+    // Ambil rincian info produk tersembunyi
+    let selOpt = document.getElementById('fProduk').selectedOptions[0];
+    let info = selOpt.getAttribute('data-info');
+    let prodInfo = info ? JSON.parse(info) : null;
+    
     document.getElementById('fPromo').value = '';
     document.getElementById('promoPesan').innerText = '';
 
-    orderData = { nama, wa, produk, alamat, kelurahan, kecamatan, kabupaten, provKodepos, catatan, ekspedisi: ekspedisiSel.value };
+    orderData = { 
+      nama, wa, produk, alamat, kelurahan, kecamatan, kabupaten, provKodepos, 
+      catatan, ekspedisi: ekspedisiSel.value, prodInfo: prodInfo 
+    };
     
     renderSummary();
     document.getElementById('orderModal').classList.add('active');
@@ -1331,16 +1367,25 @@
       return;
     }
 
-    let namaProduk = orderData.produk.split(' (')[0];
-    let varianMatch = orderData.produk.match(/\((.*)\) –/); 
-    let varianProduk = varianMatch ? varianMatch[1] : 'Standar/Tanpa Add-on';
+    let prodWA = "";
+    let addonWA = "";
 
-    let finalTotalStr = baseOrderPrice > 0 ? `Rp ${(baseOrderPrice - promoDiscount).toLocaleString('id-ID')} (+ Ongkir)` : "";
-    let promoStr = promoDiscount > 0 ? `\n- Promo Dipakai: NESONE20 (Diskon Rp 20rb)` : "";
+    // Pengecekan apakah data harga rincian tersedia
+    if (orderData.prodInfo) {
+        prodWA = `${orderData.prodInfo.nama} _(*Rp ${orderData.prodInfo.basePrice.toLocaleString('id-ID')}*)_`;
+        let addonPriceText = orderData.prodInfo.addPrice > 0 ? ` _(*+Rp ${orderData.prodInfo.addPrice.toLocaleString('id-ID')}*)_` : ` _(*Rp 0*)_`;
+        addonWA = `${orderData.prodInfo.varian}${addonPriceText}`;
+    } else {
+        prodWA = `${orderData.produk}`;
+        addonWA = `-`;
+    }
+
+    let finalTotalStr = baseOrderPrice > 0 ? `*Rp ${(baseOrderPrice - promoDiscount).toLocaleString('id-ID')}* (+ Ongkir)` : "-";
+    let promoStr = promoDiscount > 0 ? `\n- *Promo Dipakai:* NESONE20 (Diskon Rp 20rb)` : "";
 
     const msg =
 `*ORDER NESONE RACING EXHAUST*
-━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
 *DATA PEMESAN:*
 - *Nama Penerima:* ${orderData.nama}
 - *No. Telepon:* ${orderData.wa}
@@ -1351,8 +1396,8 @@
 - *Provinsi & Kode Pos:* ${orderData.provKodepos}
 
 *DETAIL PESANAN:*
-- *Produk:* ${namaProduk}
-- *Add-on:* ${varianProduk}${promoStr}
+- *Produk:* ${prodWA}
+- *Add-on:* ${addonWA}${promoStr}
 - *Total Tagihan:* ${finalTotalStr}
 
 - *Ekspedisi:* ${orderData.ekspedisi}
@@ -1362,11 +1407,29 @@
 
 *CATATAN:*
 - ${orderData.catatan || '-'}
-━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
     const waLink = 'https://api.whatsapp.com/send/?phone=6285868872566&text=' + encodeURIComponent(msg) + '&type=phone_number&app_absent=0';
     window.open(waLink, '_blank');
   }
+
+  // AUTO TITLE CASE LISTENER (Membuat huruf pertama menjadi besar saat diketik)
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('input[type="text"], textarea').forEach(el => {
+      el.addEventListener('input', function(e) {
+        if(this.id === 'fPromo') return; // Lewati untuk kolom kode promo
+        let start = this.selectionStart;
+        let end = this.selectionEnd;
+        let val = this.value;
+        // Kapitalisasi awal kata atau kata setelah spasi/tanda hubung
+        let newVal = val.replace(/(^\w|[\s-]\w)/g, m => m.toUpperCase());
+        if(val !== newVal) {
+            this.value = newVal;
+            this.setSelectionRange(start, end);
+        }
+      });
+    });
+  });
 
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries)=>{
