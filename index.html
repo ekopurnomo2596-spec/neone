@@ -143,7 +143,6 @@
   #katalog .section-title { color: var(--dark); margin-bottom: 0; }
   .katalog-header { text-align: center; margin-bottom: 2rem; }
   
-  /* Filter Tabs Grid */
   .filter-tabs {
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
@@ -174,15 +173,9 @@
     aspect-ratio: 4/3; background: #F9F9F9;
     position: relative; overflow: hidden; border-bottom: 1px solid #F0F0F0;
   }
-  .slider-container {
-    width: 100%; height: 100%; overflow: hidden; position: absolute; inset: 0;
-  }
-  .slider-wrapper {
-    display: flex; width: 100%; height: 100%; transition: transform 0.3s ease-in-out;
-  }
-  .knalpot-img {
-    flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;
-  }
+  .slider-container { width: 100%; height: 100%; overflow: hidden; position: absolute; inset: 0; }
+  .slider-wrapper { display: flex; width: 100%; height: 100%; transition: transform 0.3s ease-in-out; }
+  .knalpot-img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
   .slide-nav {
     position: absolute; top: 50%; transform: translateY(-50%);
     background: rgba(0,0,0,0.4); color: white; border: none;
@@ -208,33 +201,18 @@
   }
   
   .product-body { padding: 1rem 1.1rem; flex:1; display:flex; flex-direction:column; }
-  
   .product-name {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
     font-size: 1.05rem; color: var(--dark); letter-spacing: 0.02em;
     margin-bottom: 0.25rem; line-height: 1.2; cursor: pointer; transition: color 0.2s;
   }
   .product-name:hover { color: var(--red); }
-  
   .product-motor { font-size: 0.78rem; color: var(--gray); margin-bottom: 0.6rem; }
   
-  /* GRID VARIAN ADD-ON */
-  .variant-pills { 
-    display: grid; 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 6px; 
-    margin-bottom: 0.85rem; 
-  }
-  
-  .variant-pills.locked {
-    opacity: 0.4;
-    pointer-events: none;
-    filter: grayscale(100%);
-  }
-
+  .variant-pills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 0.85rem; }
+  .variant-pills.locked { opacity: 0.4; pointer-events: none; filter: grayscale(100%); }
   .v-pill {
-    width: 100%;
-    display: flex; align-items: center; justify-content: center; text-align: center;
+    width: 100%; display: flex; align-items: center; justify-content: center; text-align: center;
     font-size: 0.65rem; font-weight: 600; padding: 6px 4px; border-radius: 4px; 
     border: 1px solid #EAEAEA; background: #F5F5F5; color: var(--gray); 
     cursor: pointer; transition: all 0.2s; text-transform: uppercase;
@@ -255,27 +233,14 @@
   .btn-checkout:hover { background: var(--red-light); transform: translateY(-2px); }
   .btn-checkout svg { width: 16px; height: 16px; fill: currentColor; }
 
-  /* LIGHTBOX ZOOM CSS */
-  .lightbox {
-    display: none; position: fixed; z-index: 9999; inset: 0;
-    background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
-  }
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
   .lightbox.active { display: flex; }
-  .lb-close {
-    position: absolute; top: 20px; right: 30px; color: white;
-    font-size: 2.5rem; cursor: pointer; z-index: 10001; font-weight: bold;
-  }
-  .lb-img-container {
-    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: auto; position: relative;
-  }
-  .lb-img {
-    max-width: 90%; max-height: 85vh; transition: transform 0.3s ease; cursor: zoom-in; object-fit: contain;
-  }
+  .lb-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 2.5rem; cursor: pointer; z-index: 10001; font-weight: bold; }
+  .lb-img-container { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: auto; position: relative; }
+  .lb-img { max-width: 90%; max-height: 85vh; transition: transform 0.3s ease; cursor: zoom-in; object-fit: contain; }
   .lb-img.zoomed { transform: scale(2.5); cursor: zoom-out; }
-  .lb-nav {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    font-size: 3rem; color: white; cursor: pointer; padding: 20px; user-select: none; z-index: 10001; opacity: 0.7; transition: opacity 0.2s;
-  }
+  .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); font-size: 3rem; color: white; cursor: pointer; padding: 20px; user-select: none; z-index: 10001; opacity: 0.7; transition: opacity 0.2s; }
   .lb-nav:hover { opacity: 1; }
   .lb-prev { left: 20px; }
   .lb-next { right: 20px; }
@@ -284,32 +249,22 @@
   /* ORDER FORM */
   #order { background: #FAFAFA; padding: 5rem 1rem; } 
   .order-wrap { max-width: 700px; margin: 0 auto; display: block; }
-  
   .form-card {
-    background: #FFFFFF; 
-    border: 1px solid #EAEAEA; 
-    border-radius: 16px; 
-    padding: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 16px; 
+    padding: 2.5rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   }
   .form-title { text-align:center; font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.8rem; color:var(--dark); margin-bottom:1.5rem; letter-spacing:0.02em; }
   .form-group { margin-bottom:1.25rem; }
   .form-card label { display:block; font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); margin-bottom:0.5rem; }
   
-  .form-card input[type=text], .form-card input[type=tel], .form-card textarea, .form-card select {
+  .form-card input[type=text], .form-card input[type=tel], .form-card input[type=number], .form-card textarea, .form-card select {
     width:100%; background: #F8F8F8; border: 1px solid #E0E0E0;
     color: var(--dark); padding: 12px 15px; border-radius: 8px;
     font-family: 'Barlow', sans-serif; font-size:0.95rem;
-    outline:none; transition: all 0.3s;
-    -webkit-appearance: none;
+    outline:none; transition: all 0.3s; -webkit-appearance: none;
   }
-  .form-card input:focus, .form-card textarea:focus, .form-card select:focus { 
-    border-color: var(--dark); background: #FFFFFF; 
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.03);
-  }
-  .form-card select option { background: #FFFFFF; color: var(--dark); }
+  .form-card input:focus, .form-card textarea:focus, .form-card select:focus { border-color: var(--dark); background: #FFFFFF; box-shadow: 0 0 0 3px rgba(0,0,0,0.03); }
   .form-card textarea { resize:vertical; min-height:80px; }
-  
   .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
 
   /* PILL BUTTONS Form */
@@ -323,7 +278,6 @@
   .form-card .pill:hover, .modal-content .pill:hover { border-color: var(--dark); color: var(--dark); }
   .form-card .pill.selected, .modal-content .pill.selected { background: var(--dark); border-color: var(--dark); color: #fff; }
 
-  /* TOMBOL LANJUT PEMBAYARAN */
   .form-submit { 
     width:100%; margin-top:1.25rem; padding:14px; font-size:1rem; 
     background: #2E7D32; color: white; border:none; border-radius: 8px; 
@@ -331,7 +285,7 @@
   }
   .form-submit:hover { background: #1B5E20; }
 
-  /* MODAL / POPUP DETAIL ORDER */
+  /* MODALS */
   .modal-overlay {
     display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75);
     z-index: 10000; align-items: center; justify-content: center; padding: 1rem;
@@ -343,17 +297,13 @@
     padding: 1.5rem; position: relative; max-height: 90vh; overflow-y: auto;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   }
-  .modal-close {
-    position: absolute; top: 1rem; right: 1.2rem; font-size: 1.8rem;
-    cursor: pointer; color: #999; line-height: 1; transition: color 0.2s;
-  }
+  .modal-close { position: absolute; top: 1rem; right: 1.2rem; font-size: 1.8rem; cursor: pointer; color: #999; line-height: 1; transition: color 0.2s; }
   .modal-close:hover { color: var(--red); }
   .modal-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--dark); margin-bottom: 1rem; border-bottom: 2px solid #f0f0f0; padding-bottom: 0.5rem; }
   
   .summary-box { background: #F9F9F9; padding: 1rem; border-radius: 8px; border: 1px solid #EAEAEA; margin-bottom: 1.5rem; font-size: 0.85rem; color: #444; line-height: 1.6; }
   .summary-box strong { color: var(--dark); }
 
-  /* ACCORDION METODE PEMBAYARAN DI MODAL */
   .acc-item { border: 1px solid #EAEAEA; border-radius: 8px; margin-bottom: 0.5rem; overflow: hidden; }
   .acc-header {
     background: #F5F5F5; padding: 12px 15px; font-weight: 600; font-size: 0.9rem;
@@ -364,14 +314,10 @@
   .acc-header:hover { background: #EFEFEF; }
   .acc-icon { font-size: 0.75rem; transition: transform 0.3s; color: #666; }
   .acc-item.active .acc-icon { transform: rotate(180deg); color: var(--dark); }
-  .acc-content {
-    display: none; padding: 15px; background: #FFF; border-top: 1px solid #EAEAEA;
-    font-size: 0.85rem; color: #555; line-height: 1.6;
-  }
+  .acc-content { display: none; padding: 15px; background: #FFF; border-top: 1px solid #EAEAEA; font-size: 0.85rem; color: #555; line-height: 1.6; }
   .acc-item.active .acc-content { display: block; }
   .acc-item.active .acc-header { background: #FAFAFA; border-color: var(--dark); color: var(--dark); }
   
-  /* TOMBOL SALIN REKENING */
   .bank-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #EEEEEE; }
   .bank-row:last-child { border:none; padding-bottom: 0; }
   .btn-copy { background: #F0F0F0; border: 1px solid #DDD; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; color: var(--dark); cursor: pointer; transition: all 0.2s; }
@@ -381,59 +327,39 @@
   /* TENTANG KAMI */
   #tentang { background: var(--dark2); }
   .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center; }
-  .about-visual {
-    background: var(--dark3); border: 1px solid var(--dark4);
-    border-radius: 12px; padding: 2.5rem; text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .about-visual::before {
-    content:''; position:absolute; inset:0;
-    background: radial-gradient(ellipse at center, rgba(192,40,26,0.12) 0%, transparent 70%);
-  }
-  .about-logo-big {
-    font-family:'Barlow Condensed', sans-serif; font-weight:900;
-    font-size: 3.5rem; text-transform:uppercase; color:var(--white);
-    letter-spacing:0.02em; line-height:1; margin-bottom:0.5rem;
-  }
+  .about-visual { background: var(--dark3); border: 1px solid var(--dark4); border-radius: 12px; padding: 2.5rem; text-align: center; position: relative; overflow: hidden; }
+  .about-visual::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at center, rgba(192,40,26,0.12) 0%, transparent 70%); }
+  .about-logo-big { font-family:'Barlow Condensed', sans-serif; font-weight:900; font-size: 3.5rem; text-transform:uppercase; color:var(--white); letter-spacing:0.02em; line-height:1; margin-bottom:0.5rem; }
   .about-logo-big span { color:var(--red-light); }
   .about-logo-sub { font-size:0.78rem; color:var(--gray); letter-spacing:0.2em; text-transform:uppercase; }
   .about-divider { width:60px; height:3px; background:var(--red); margin:1.5rem auto; }
   .about-tagline { font-size:1rem; color:var(--gold-light); font-style:italic; }
 
+  /* TESTIMONI */
+  #testimoni { background: var(--dark); border-bottom: 1px solid var(--dark4); }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .testi-card { background: var(--dark2); border: 1px solid var(--dark4); border-radius: 10px; padding: 1.5rem; position: relative; }
+  .testi-star { color: #F0C040; margin-bottom: 0.8rem; font-size: 1rem; }
+  .testi-text { font-size: 0.95rem; color: var(--gray-light); font-style: italic; margin-bottom: 1.2rem; line-height: 1.6; }
+  .testi-user { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--dark4); padding-top: 1rem;}
+  .testi-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--dark4); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--white); font-size: 1rem; }
+  .testi-name { font-size: 0.9rem; font-weight: bold; color: var(--white); margin-bottom: 2px;}
+  .testi-motor { font-size: 0.75rem; color: var(--red-light); }
+
   /* LOKASI */
-  #lokasi { background: var(--dark); }
+  #lokasi { background: var(--dark2); }
   .lokasi-grid { display:grid; grid-template-columns:1fr 1.6fr; gap:2.5rem; align-items:start; }
-  .lokasi-info { }
   .lokasi-detail { display:flex; flex-direction:column; gap:1.1rem; margin-top:1.5rem; }
   .lokasi-item { display:flex; gap:1rem; align-items:flex-start; }
-  .lokasi-item-icon {
-    width:40px; height:40px; flex-shrink:0;
-    background:rgba(192,40,26,0.15); border:1px solid rgba(192,40,26,0.3);
-    border-radius:8px; display:flex; align-items:center; justify-content:center;
-    font-size:1.1rem;
-  }
+  .lokasi-item-icon { width:40px; height:40px; flex-shrink:0; background:rgba(192,40,26,0.15); border:1px solid rgba(192,40,26,0.3); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; }
   .lokasi-item-text strong { display:block; color:var(--white); font-size:0.88rem; margin-bottom:2px; }
   .lokasi-item-text span { font-size:0.82rem; color:var(--gray-light); line-height:1.5; }
-  .map-embed {
-    background: var(--dark3); border:1px solid var(--dark4); border-radius:10px;
-    overflow:hidden; aspect-ratio: 4/3; position:relative;
-  }
+  .map-embed { background: var(--dark3); border:1px solid var(--dark4); border-radius:10px; overflow:hidden; aspect-ratio: 4/3; position:relative; }
   .map-embed iframe { width:100%; height:100%; border:none; display:block; }
-  .map-fallback {
-    width:100%; height:100%; display:flex; flex-direction:column;
-    align-items:center; justify-content:center; gap:1rem;
-    color:var(--gray-light); font-size:0.9rem; padding:2rem; text-align:center;
-  }
-  .map-fallback svg { width:48px; opacity:0.3; }
-  .map-fallback a { color:var(--red-light); }
 
   /* FOOTER */
-  footer {
-    background: var(--dark2); border-top: 1px solid var(--dark4);
-    padding: 3rem 2rem 1.5rem;
-  }
+  footer { background: var(--dark); border-top: 1px solid var(--dark4); padding: 3rem 2rem 1.5rem; }
   .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:2rem; max-width:1100px; margin:0 auto 2rem; }
-  .footer-brand { }
   .footer-logo { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.5rem; color:var(--white); margin-bottom:0.75rem; }
   .footer-logo span { color:var(--red-light); }
   .footer-desc { font-size:0.85rem; color:var(--gray); line-height:1.7; }
@@ -443,47 +369,34 @@
   .footer-col ul li a:hover { color:var(--red-light); }
   .footer-bottom { border-top:1px solid var(--dark4); padding-top:1.5rem; text-align:center; font-size:0.78rem; color:var(--gray); max-width:1100px; margin:0 auto; }
 
-  /* RESPONSIVE: KHUSUS TAMPILAN HP */
+  /* RESPONSIVE */
   @media (max-width: 768px) {
     .nav-links { display:none; }
     .hamburger { display:flex; }
     .about-grid, .lokasi-grid, .footer-grid { grid-template-columns:1fr; }
-    
     .hero-btns { flex-wrap: nowrap; gap: 6px; justify-content: space-between; width: 100%; }
     .hero-btns .btn { flex: 1; padding: 8px 4px; font-size: 0.6rem; letter-spacing: 0; white-space: nowrap; text-align: center; }
-
     #katalog { padding: 3rem 1rem; }
-    
     .filter-tabs { gap: 6px; margin-bottom: 1.5rem; }
     .filter-tab { font-size: 0.65rem; padding: 8px 2px; border-radius: 15px; letter-spacing: 0; }
-
     .product-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
     .product-card { border-radius: 6px; }
     .product-body { padding: 8px; }
     .product-name { font-size: 0.85rem; margin-bottom: 4px; line-height: 1.2; }
     .product-motor { font-size: 0.65rem; margin-bottom: 6px; line-height: 1.2; }
-    
     .variant-pills { gap: 4px; margin-bottom: 6px; }
     .v-pill { font-size: 0.55rem; padding: 6px 2px; letter-spacing: 0; border-radius: 4px;}
-    
     .product-price { font-size: 0.95rem; margin-bottom: 8px; }
     .btn-checkout { padding: 8px; font-size: 0.75rem; border-radius: 3px; gap: 6px; }
     .btn-checkout svg { width: 14px; height: 14px; }
     .badge-new, .badge-hot { top: 6px; left: 6px; font-size: 0.5rem; padding: 3px 6px; }
     .product-type { bottom: 6px; right: 6px; font-size: 0.5rem; padding: 3px 6px; }
-    
     .lb-nav { font-size: 2rem; padding: 10px; }
     .lb-close { right: 15px; top: 15px; font-size: 2rem; }
-
-    /* PENYESUAIAN FORM HP */
     #order { padding: 1.5rem 0.5rem; }
     .form-card { padding: 1rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
     .form-title { font-size: 1.3rem; margin-bottom: 0.8rem; }
-    .form-group { margin-bottom: 0.5rem; }
-    .form-card label { font-size: 0.65rem; margin-bottom: 0.2rem; }
-    .form-card input[type=text], .form-card input[type=tel], .form-card textarea, .form-card select {
-        padding: 6px 10px; font-size: 0.75rem; height: 32px; border-radius: 6px;
-    }
+    .form-card input[type=text], .form-card input[type=tel], .form-card input[type=number], .form-card textarea, .form-card select { padding: 6px 10px; font-size: 0.75rem; height: 32px; border-radius: 6px; }
     .form-card textarea { height: auto !important; min-height: 40px !important; }
     .form-row { grid-template-columns: 1fr 1fr; gap: 0.4rem; } 
     .pill-group { gap: 0.3rem; margin-top: 0.1rem; }
@@ -505,6 +418,7 @@
     <li><a href="#katalog">Katalog</a></li>
     <li><a href="#order">Order</a></li>
     <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#testimoni">Testimoni</a></li>
     <li><a href="#lokasi">Lokasi</a></li>
     <li><a href="#order" class="nav-cta">Order Sekarang</a></li>
   </ul>
@@ -517,6 +431,7 @@
   <a href="#katalog" onclick="toggleMenu()">Katalog</a>
   <a href="#order" onclick="toggleMenu()">Order</a>
   <a href="#tentang" onclick="toggleMenu()">Tentang Kami</a>
+  <a href="#testimoni" onclick="toggleMenu()">Testimoni</a>
   <a href="#lokasi" onclick="toggleMenu()">Lokasi</a>
 </div>
 
@@ -531,7 +446,7 @@
     <div class="hero-btns">
       <a href="#katalog" class="btn btn-red">Lihat Katalog</a>
       <a href="#order" class="btn btn-outline">Order Sekarang</a>
-      <a href="https://api.whatsapp.com/send/?phone=6285868872566&text=&type=phone_number&app_absent=0" target="_blank" class="btn btn-wa">WhatsApp Kami</a>
+      <a href="#testimoni" class="btn btn-wa" style="background:var(--dark3); border:1px solid var(--dark4);">Lihat Testimoni</a>
     </div>
   </div>
 </section>
@@ -556,7 +471,6 @@
 
     <div class="product-grid" id="productGrid">
 
-      <!-- Katalog Produk Tetap Sama -->
       <div class="product-card reveal" data-cat="matic slipon" data-baseprice="385000" data-name="NSR-1 Oval Matic">
         <div class="product-img">
           <div class="slider-container">
@@ -811,7 +725,9 @@
         </div>
       </div>
 
-    </div><div style="text-align:center; margin-top:2.5rem;" class="reveal">
+    </div>
+    
+    <div style="text-align:center; margin-top:2.5rem;" class="reveal">
       <p style="color:var(--dark3); font-size:0.88rem; margin-bottom:1rem;">Tidak menemukan tipe motor Anda? Hubungi kami untuk konsultasi custom order.</p>
       <a href="https://api.whatsapp.com/send/?phone=6285868872566&text=&type=phone_number&app_absent=0" target="_blank" class="btn btn-wa">💬 Tanya Custom Order</a>
     </div>
@@ -942,6 +858,54 @@
 
 <hr class="divider">
 
+<section id="testimoni">
+  <div class="container">
+    <div class="section-label reveal">Apa Kata Mereka</div>
+    <h2 class="section-title reveal">Testimoni Pelanggan</h2>
+    <p class="section-sub reveal">Ratusan pelanggan telah membuktikan performa dan kualitas dari Nesone Racing Exhaust.</p>
+    
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <div class="testi-star">★★★★★</div>
+        <div class="testi-text">"Kualitas suaranya pas banget! Bassnya padat, gak pecah waktu ditarik tinggi. Pemasangan di Vario 160 juga PNP banget."</div>
+        <div class="testi-user">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Andi Setiawan</div>
+            <div class="testi-motor">Honda Vario 160</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testi-card">
+        <div class="testi-star">★★★★★</div>
+        <div class="testi-text">"Pesan yang NSR-S Full Carbon buat R15. Tarikan mesin jadi lebih enteng. Admin responsif dan packingnya aman pakai bubble wrap tebal."</div>
+        <div class="testi-user">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Rizky Pratama</div>
+            <div class="testi-motor">Yamaha R15 V3</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-star">★★★★★</div>
+        <div class="testi-text">"Barang bagus, asli buatan Purbalingga. Harga sangat merakyat tapi finishing las cacingnya rapi seperti knalpot jutaan."</div>
+        <div class="testi-user">
+          <div class="testi-avatar">B</div>
+          <div>
+            <div class="testi-name">Budi Santoso</div>
+            <div class="testi-motor">Yamaha NMAX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
 <section id="lokasi">
   <div class="container">
     <div class="lokasi-grid">
@@ -1001,10 +965,6 @@
     <div class="footer-brand">
       <div class="footer-logo">NE<span>S</span>ONE Racing</div>
       <p class="footer-desc">Knalpot racing lokal berkualitas dari Purbalingga, Jawa Tengah. Suara gahar, performa maksimal, harga terjangkau.</p>
-      <div style="display:flex; gap:0.75rem; margin-top:1rem;">
-        <a href="https://shopee.co.id/nesone_racingexhaust" target="_blank" style="display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; color:var(--gray-light); text-decoration:none; padding:6px 12px; border:1px solid var(--dark4); border-radius:4px;">🛒 Shopee</a>
-        <a href="https://api.whatsapp.com/send/?phone=6285868872566&text=&type=phone_number&app_absent=0" target="_blank" style="display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; color:var(--gray-light); text-decoration:none; padding:6px 12px; border:1px solid var(--dark4); border-radius:4px;">💬 WhatsApp</a>
-      </div>
     </div>
     <div class="footer-col">
       <h4>Navigasi</h4>
@@ -1012,8 +972,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#katalog">Katalog Produk</a></li>
         <li><a href="#order">Form Order</a></li>
-        <li><a href="#tentang">Tentang Kami</a></li>
-        <li><a href="#lokasi">Lokasi</a></li>
+        <li><a href="#testimoni">Testimoni</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1038,7 +997,6 @@
      <img id="lbImage" class="lb-img">
   </div>
   <div class="lb-nav lb-next" onclick="changeLbSlide(1, event)">❯</div>
-  <div class="lb-hint">Klik gambar untuk Zoom</div>
 </div>
 
 <div id="orderModal" class="modal-overlay" onclick="tutupModal(event)">
@@ -1068,7 +1026,6 @@
       </div>
       <div class="acc-content">
         <div style="font-size:0.78rem; font-weight:700; color:#666; margin-bottom:0.6rem;">Rekening Tujuan:</div>
-        
         <div class="bank-row">
           <div style="line-height:1.2;">
             <span style="font-weight:bold; color:var(--dark);">Bank BRI</span><br>
@@ -1077,7 +1034,6 @@
           </div>
           <button class="btn-copy" onclick="copyText('123401000000500', this)">Salin</button>
         </div>
-
         <div class="bank-row" style="margin-top:8px;">
           <div style="line-height:1.2;">
             <span style="font-weight:bold; color:var(--dark);">Bank BCA</span><br>
@@ -1086,7 +1042,6 @@
           </div>
           <button class="btn-copy" onclick="copyText('1234567890', this)">Salin</button>
         </div>
-
       </div>
     </div>
 
@@ -1103,13 +1058,33 @@
       </div>
     </div>
 
-    <p style="text-align:center; font-size:0.8rem; color:var(--gray); margin-top:1.5rem; margin-bottom:0.5rem;">
-      Silakan transfer <strong>sekarang</strong> atau <strong>nanti</strong>, lalu konfirmasi via WhatsApp.
-    </p>
-
-    <button class="btn form-submit" style="margin-top:0; background:#25D366;" onclick="kirimOrderWA()">
-      💬 Konfirmasi Pesanan & Bayar (WA)
+    <button class="btn form-submit" style="margin-top:1.5rem; background:#25D366;" onclick="bukaModalTiming()">
+      💬 Lanjut Konfirmasi (Pilih Waktu Bayar)
     </button>
+  </div>
+</div>
+
+<div id="paymentTimingModal" class="modal-overlay" onclick="tutupTimingModal(event)">
+  <div class="modal-content" style="max-width: 400px; text-align: center;">
+    <span class="modal-close" onclick="tutupTimingModal(event)">×</span>
+    <div class="modal-title" style="font-size: 1.2rem;">Waktu Pembayaran</div>
+    <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 1.5rem;">Kapan Anda akan melakukan transfer untuk pesanan ini?</p>
+    
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <button class="pill" style="justify-content:center; padding:12px; background:var(--dark); color:#fff;" onclick="finalisasiOrder('Sekarang (Akan segera transfer)')">Sekarang (Akan Segera Transfer)</button>
+      <button class="pill" style="justify-content:center; padding:12px;" onclick="tampilkanOpsiNanti()">Nanti</button>
+    </div>
+
+    <div id="opsiWaktuNanti" style="display: none; margin-top: 15px; text-align: left; background:#F9F9F9; padding:1rem; border-radius:8px; border:1px solid #EAEAEA;">
+      <label style="font-size: 0.75rem; font-weight: bold; color: var(--gray);">Silakan pilih durasi:</label>
+      <select id="fPilihanNanti" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; margin-top: 5px; margin-bottom: 15px;">
+        <option value="Nanti (Dalam 1-3 Jam)">Dalam 1 - 3 Jam Kedepan</option>
+        <option value="Nanti (Malam ini)">Malam Ini</option>
+        <option value="Nanti (Besok Pagi)">Besok Pagi</option>
+        <option value="Nanti (Dalam 2 Hari)">Dalam 1-2 Hari</option>
+      </select>
+      <button class="btn form-submit" style="margin-top: 0; padding: 10px; background:#25D366;" onclick="finalisasiOrderNanti()">Kirim WhatsApp</button>
+    </div>
   </div>
 </div>
 
@@ -1130,7 +1105,7 @@
   // FORMAT RUPIAH
   function formatRupiah(angka) { return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
 
-  // SLIDER FOTO PRODUK
+  // SLIDER FOTO
   function changeSlide(btn, dir, event) {
     event.stopPropagation();
     let wrapper = btn.closest('.product-img').querySelector('.slider-wrapper');
@@ -1141,7 +1116,7 @@
     wrapper.style.transform = `translateX(-${current * 100}%)`;
   }
 
-  // LIGHTBOX & ZOOM FOTO
+  // LIGHTBOX
   let currentLbImages = [], currentLbIndex = 0;
   function openLightbox(imgElement) {
     let wrapper = imgElement.closest('.slider-wrapper');
@@ -1171,16 +1146,12 @@
     if (event.target === img || event.currentTarget.classList.contains('lb-img-container')) img.classList.toggle('zoomed');
   }
 
-  // RESET VARIAN 
+  // VARIAN KNALPOT
   function resetVarian(element) {
       let card = element.closest('.product-card');
       let basePrice = parseInt(card.getAttribute('data-baseprice'));
-      
       let pillsContainer = card.querySelector('.variant-pills');
-      if (pillsContainer) {
-          pillsContainer.classList.remove('locked');
-      }
-
+      if (pillsContainer) pillsContainer.classList.remove('locked');
       card.setAttribute('data-add-price', 0); 
       card.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
       card.querySelector('.product-price').innerHTML = formatRupiah(basePrice);
@@ -1188,7 +1159,6 @@
       card.setAttribute('data-final-price', basePrice);
   }
 
-  // PILIH VARIAN 
   function pilihVarian(btn, addPrice, varName) {
       let card = btn.closest('.product-card');
       let basePrice = parseInt(card.getAttribute('data-baseprice'));
@@ -1204,7 +1174,6 @@
           parent.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
           btn.classList.add('active'); 
           let finalPrice = basePrice + addPrice;
-          
           card.setAttribute('data-add-price', addPrice); 
           card.querySelector('.product-price').innerHTML = formatRupiah(finalPrice);
           card.setAttribute('data-selected-var', varName);
@@ -1212,7 +1181,6 @@
       }
   }
 
-  // PROSES CHECKOUT 
   function prosesCheckout(btn) {
       let card = btn.closest('.product-card');
       let baseName = card.getAttribute('data-name');
@@ -1223,14 +1191,7 @@
 
       let fullName = `${baseName} (${varName}) – ${formatRupiah(parseInt(finalPrice))}`;
 
-      // Simpan rincian data harga agar mudah diambil di WA
-      let dataObj = {
-          nama: baseName,
-          varian: varName,
-          basePrice: basePrice,
-          addPrice: addPrice,
-          finalPrice: parseInt(finalPrice)
-      };
+      let dataObj = { nama: baseName, varian: varName, basePrice: basePrice, addPrice: addPrice, finalPrice: parseInt(finalPrice) };
 
       let select = document.getElementById('fProduk');
       let exists = Array.from(select.options).some(opt => opt.value === fullName);
@@ -1243,7 +1204,6 @@
         let existingOpt = Array.from(select.options).find(opt => opt.value === fullName);
         existingOpt.setAttribute('data-info', JSON.stringify(dataObj));
       }
-
       select.value = fullName;
       
       select.style.borderColor = '#4CAF50';
@@ -1253,7 +1213,6 @@
       window.location.href = '#order';
   }
 
-  // UPDATE STYLE PILL EKSPEDISI
   function updatePills(radioName) {
       document.querySelectorAll(`input[name="${radioName}"]`).forEach(input => {
           let pill = input.closest('.pill');
@@ -1262,22 +1221,16 @@
       });
   }
 
-  // COPY TEXT FUNCTION
   function copyText(text, btn) {
       navigator.clipboard.writeText(text).then(() => {
           let originalText = btn.innerText;
           btn.innerText = 'Tersalin!';
           btn.classList.add('copied');
-          setTimeout(() => {
-              btn.innerText = originalText;
-              btn.classList.remove('copied');
-          }, 2000);
-      }).catch(err => {
-          console.error('Gagal menyalin teks: ', err);
+          setTimeout(() => { btn.innerText = originalText; btn.classList.remove('copied'); }, 2000);
       });
   }
 
-  // Variabel Global Order
+  // --- LOGIKA ORDER ---
   let orderData = {};
   let baseOrderPrice = 0;
   let promoDiscount = 0;
@@ -1285,7 +1238,8 @@
   function cekDetailOrder() {
     const nama = document.getElementById('fNama').value.trim();
     const wa = document.getElementById('fWA').value.trim();
-    const produk = document.getElementById('fProduk').value;
+    const produkSel = document.getElementById('fProduk');
+    const produk = produkSel.value;
     const alamat = document.getElementById('fAlamat').value.trim();
     const kelurahan = document.getElementById('fKelurahan').value.trim();
     const kecamatan = document.getElementById('fKecamatan').value.trim();
@@ -1299,21 +1253,26 @@
       return;
     }
 
-    let hargaMatch = produk.match(/Rp\s*([\d\.]+)/);
-    baseOrderPrice = hargaMatch ? parseInt(hargaMatch[1].replace(/\./g, '')) : 0;
-    promoDiscount = 0;
-    
-    // Ambil rincian info produk tersembunyi
-    let selOpt = document.getElementById('fProduk').selectedOptions[0];
+    // Bug Fix: Ambil data harga HANYA dari opsi yang SEDANG terpilih di dropdown
+    let selOpt = produkSel.options[produkSel.selectedIndex];
     let info = selOpt.getAttribute('data-info');
     let prodInfo = info ? JSON.parse(info) : null;
     
+    if (prodInfo) {
+        baseOrderPrice = prodInfo.finalPrice;
+    } else {
+        // Untuk custom order atau jika tidak ada data info
+        let hargaMatch = produk.match(/Rp\s*([\d\.]+)/);
+        baseOrderPrice = hargaMatch ? parseInt(hargaMatch[1].replace(/\./g, '')) : 0;
+    }
+
+    promoDiscount = 0;
     document.getElementById('fPromo').value = '';
     document.getElementById('promoPesan').innerText = '';
 
     orderData = { 
       nama, wa, produk, alamat, kelurahan, kecamatan, kabupaten, provKodepos, 
-      catatan, ekspedisi: ekspedisiSel.value, prodInfo: prodInfo 
+      catatan, ekspedisi: ekspedisiSel.value, prodInfo: prodInfo
     };
     
     renderSummary();
@@ -1325,11 +1284,12 @@
     let detailHargaHtml = "";
     
     if (baseOrderPrice > 0) {
-        detailHargaHtml = `<br><br><strong>Rincian Pembayaran:</strong><br>Harga Produk: Rp ${baseOrderPrice.toLocaleString('id-ID')}<br>`;
+        detailHargaHtml = `<br><br><strong>Rincian Tagihan:</strong><br>Harga Produk: Rp ${baseOrderPrice.toLocaleString('id-ID')}<br>`;
         if (promoDiscount > 0) { 
             detailHargaHtml += `Potongan Promo: <span style="color:var(--red); font-weight:bold;">-Rp ${promoDiscount.toLocaleString('id-ID')}</span><br>`; 
         }
-        detailHargaHtml += `<strong style="font-size:1.1rem; color:var(--red);">Total Tagihan: Rp ${finalTotal.toLocaleString('id-ID')}</strong> <br><em style="font-size:0.7rem; color:#666;">(Belum termasuk ongkir)</em>`;
+        
+        detailHargaHtml += `<strong style="font-size:1.1rem; color:var(--red);">Total Bayar: Rp ${finalTotal.toLocaleString('id-ID')}</strong> <br><em style="font-size:0.7rem; color:#666;">(Belum termasuk ongkir, akan dihitung Admin)</em>`;
     }
 
     let pNama = orderData.prodInfo ? orderData.prodInfo.nama : orderData.produk;
@@ -1387,18 +1347,38 @@
     }
   }
 
-  // KIRIM ORDER WA
-  function kirimOrderWA(){
+  // --- LOGIKA WAKTU PEMBAYARAN & WA ---
+  function bukaModalTiming(){
     const metodeSel = document.querySelector('input[name="metode_modal"]:checked');
     if(!metodeSel){
       alert('Silakan buka dan pilih Metode Pembayaran terlebih dahulu (klik Transfer Bank atau QRIS).');
       return;
     }
+    document.getElementById('orderModal').classList.remove('active');
+    document.getElementById('paymentTimingModal').classList.add('active');
+  }
 
+  function tutupTimingModal(event) {
+    if (event.target === event.currentTarget || event.target.classList.contains('modal-close')) {
+      document.getElementById('paymentTimingModal').classList.remove('active');
+    }
+  }
+
+  function tampilkanOpsiNanti() {
+    document.getElementById('opsiWaktuNanti').style.display = 'block';
+  }
+
+  function finalisasiOrderNanti() {
+    const pilihanLama = document.getElementById('fPilihanNanti').value;
+    finalisasiOrder(pilihanLama);
+  }
+
+  function finalisasiOrder(waktuPembayaranStr){
+    const metodeSel = document.querySelector('input[name="metode_modal"]:checked').value;
+    
     let prodWA = "";
     let addonWA = "";
 
-    // Memanfaatkan data object untuk format Harga WA yang miring dan tebal
     if (orderData.prodInfo) {
         prodWA = `${orderData.prodInfo.nama} _*Rp ${orderData.prodInfo.basePrice.toLocaleString('id-ID')}*_`;
         let addonPriceText = orderData.prodInfo.addPrice > 0 ? ` _*+Rp ${orderData.prodInfo.addPrice.toLocaleString('id-ID')}*_` : ` _*Rp 0*_`;
@@ -1412,8 +1392,8 @@
     let promoStr = promoDiscount > 0 ? `\n- *Promo Dipakai:* NESONE20 (Diskon Rp 20rb)` : "";
 
     const msg =
-`*ORDER NESONE RACING EXHAUST*
-__________
+`_*ORDER NESONE RACING EXHAUST*_
+
 *DATA PEMESAN:*
 - *Nama Penerima:* ${orderData.nama}
 - *No. Telepon:* ${orderData.wa}
@@ -1431,25 +1411,26 @@ __________
 - *Ekspedisi:* ${orderData.ekspedisi}
 
 *METODE PEMBAYARAN:*
-- *Via:* ${metodeSel.value} (Mohon segera lampirkan bukti bayar di chat ini)
+- *Via:* ${metodeSel}
+- *Waktu Transfer:* ${waktuPembayaranStr}
 
 *CATATAN:*
 - ${orderData.catatan || '-'}
-__________`;
+`;
 
     const waLink = 'https://api.whatsapp.com/send/?phone=6285868872566&text=' + encodeURIComponent(msg) + '&type=phone_number&app_absent=0';
     window.open(waLink, '_blank');
+    document.getElementById('paymentTimingModal').classList.remove('active');
   }
 
-  // AUTO TITLE CASE LISTENER (Membuat huruf pertama otomatis besar)
+  // AUTO TITLE CASE LISTENER 
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[type="text"], textarea').forEach(el => {
       el.addEventListener('input', function(e) {
-        if(this.id === 'fPromo') return; // Abaikan untuk kolom kode promo
+        if(this.id === 'fPromo') return; 
         let start = this.selectionStart;
         let end = this.selectionEnd;
         let val = this.value;
-        // Kapitalisasi awal kata atau kata setelah spasi/tanda hubung
         let newVal = val.replace(/(^\w|[\s-]\w)/g, m => m.toUpperCase());
         if(val !== newVal) {
             this.value = newVal;
@@ -1467,11 +1448,8 @@ __________`;
   }, { threshold: 0.1 });
   revealEls.forEach(el=>observer.observe(el));
 
-  // Mengunci add-on saat web dimuat
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.variant-pills').forEach(vp => {
-      vp.classList.add('locked');
-    });
+    document.querySelectorAll('.variant-pills').forEach(vp => { vp.classList.add('locked'); });
   });
 </script>
 </body>
