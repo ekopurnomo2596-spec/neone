@@ -22,7 +22,7 @@
     --gray-light: #B0B0B0;
     --white: #F5F5F0;
     --text: #E8E8E0;
-    --neon-green: #39FF14; /* Warna hijau neon untuk logo */
+    --neon-green: #39FF14;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior: smooth; }
@@ -420,7 +420,6 @@
 <body>
 
 <nav>
-  <!-- LOGO CSS UNTUK NAVBAR -->
   <a href="#home" class="nav-logo">
     <div class="css-logo">
       <span class="logo-main"><span class="logo-n">N</span>ESONE</span>
@@ -452,7 +451,6 @@
   <div class="hero-grid"></div>
   <div class="hero-content reveal">
     <h1 class="hero-title" style="margin-bottom: 1.5rem; display: flex; justify-content: center; width: 100%;">
-      <!-- LOGO CSS UNTUK HERO (BESAR) -->
       <div class="css-logo">
         <span class="logo-main"><span class="logo-n">N</span>ESONE</span>
         <span class="logo-sub">EXHAUST SYSTEM</span>
@@ -487,7 +485,6 @@
 
     <div class="product-grid" id="productGrid">
 
-      <!-- PRODUK 1 -->
       <div class="product-card reveal" data-cat="matic slipon" data-baseprice="385000" data-name="NSR-1 Oval Matic">
         <div class="product-img">
           <div class="slider-container">
@@ -520,7 +517,6 @@
         </div>
       </div>
 
-      <!-- PRODUK 2 -->
       <div class="product-card reveal" data-cat="matic fullsystem" data-baseprice="680000" data-name="NSR-PRO Full System Matic">
         <div class="product-img">
           <div class="slider-container">
@@ -553,7 +549,6 @@
         </div>
       </div>
 
-      <!-- PRODUK 3 -->
       <div class="product-card reveal" data-cat="bebek slipon" data-baseprice="320000" data-name="NSR-B1 Bebek Standar">
         <div class="product-img">
           <div class="slider-container">
@@ -585,7 +580,6 @@
         </div>
       </div>
 
-      <!-- PRODUK 4 -->
       <div class="product-card reveal" data-cat="bebek fullsystem" data-baseprice="520000" data-name="NSR-B PRO Full Bebek">
         <div class="product-img">
           <div class="slider-container">
@@ -618,7 +612,6 @@
         </div>
       </div>
 
-      <!-- PRODUK 5 -->
       <div class="product-card reveal" data-cat="sport slipon" data-baseprice="850000" data-name="NSR-S Carbon Sport">
         <div class="product-img">
           <div class="slider-container">
@@ -651,7 +644,6 @@
         </div>
       </div>
 
-      <!-- PRODUK 6 -->
       <div class="product-card reveal" data-cat="sport fullsystem" data-baseprice="1450000" data-name="NSR-S PRO Full Sport Ti">
         <div class="product-img">
           <div class="slider-container">
@@ -684,7 +676,6 @@
         </div>
       </div>
 
-      <!-- PRODUK 7 -->
       <div class="product-card reveal" data-cat="matic slipon" data-baseprice="375000" data-name="NSR-M Yamaha Mio Series">
         <div class="product-img">
           <div class="slider-container">
@@ -716,7 +707,6 @@
         </div>
       </div>
 
-      <!-- PRODUK 8 -->
       <div class="product-card reveal" data-cat="bebek slipon" data-baseprice="295000" data-name="NSR-Shogun 125 Series">
         <div class="product-img">
           <div class="slider-container">
@@ -846,7 +836,6 @@
 
 <hr class="divider">
 
-<!-- SECTION TESTIMONI -->
 <section id="testimoni">
   <div class="container">
     <div class="section-label reveal">Apa Kata Mereka</div>
@@ -953,7 +942,6 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="footer-logo">
-        <!-- LOGO CSS UNTUK FOOTER -->
         <div class="css-logo">
           <span class="logo-main"><span class="logo-n">N</span>ESONE</span>
           <span class="logo-sub">EXHAUST SYSTEM</span>
@@ -994,7 +982,6 @@
   <div class="lb-nav lb-next" onclick="changeLbSlide(1, event)">❯</div>
 </div>
 
-<!-- MODAL SUMMARY ORDER -->
 <div id="orderModal" class="modal-overlay" onclick="tutupModal(event)">
   <div class="modal-content">
     <span class="modal-close" onclick="tutupModal(event)">×</span>
@@ -1021,7 +1008,18 @@
         <span class="acc-icon">▼</span>
       </div>
       <div class="acc-content">
-        <div style="font-size:0.78rem; font-weight:700; color:#666; margin-bottom:0.6rem;">Rekening Tujuan:</div>
+        
+        <div style="font-size:0.85rem; font-weight:600; margin-bottom:0.5rem; color:var(--dark);">Pilih Rekening Tujuan:</div>
+        <div class="pill-group" style="margin-bottom:1rem;">
+          <label class="pill">
+            <input type="radio" name="bank_pilihan" value="BRI (1234-01-000000-50-0 a.n Nesone Racing)" onchange="updatePills('bank_pilihan')"> Bank BRI
+          </label>
+          <label class="pill">
+            <input type="radio" name="bank_pilihan" value="BCA (1234567890 a.n Nesone Racing)" onchange="updatePills('bank_pilihan')"> Bank BCA
+          </label>
+        </div>
+
+        <div style="font-size:0.75rem; font-weight:700; color:#666; margin-bottom:0.6rem; border-top:1px solid #EEE; padding-top:10px;">Detail Rekening (Bisa Disalin):</div>
         <div class="bank-row">
           <div style="line-height:1.2;">
             <span style="font-weight:bold; color:var(--dark);">Bank BRI</span><br>
@@ -1060,7 +1058,6 @@
   </div>
 </div>
 
-<!-- MODAL PILIH WAKTU PEMBAYARAN -->
 <div id="paymentTimingModal" class="modal-overlay" onclick="tutupTimingModal(event)">
   <div class="modal-content" style="max-width: 400px; text-align: center;">
     <span class="modal-close" onclick="tutupTimingModal(event)">×</span>
@@ -1349,6 +1346,16 @@
       alert('Silakan buka dan pilih Metode Pembayaran terlebih dahulu (klik Transfer Bank atau QRIS).');
       return;
     }
+    
+    // Validasi Jika Memilih Bank Transfer Wajib Pilih Salah Satu Bank
+    if(metodeSel.value === 'Bank Transfer') {
+      const bankSel = document.querySelector('input[name="bank_pilihan"]:checked');
+      if(!bankSel) {
+        alert('Silakan pilih Rekening Tujuan (BRI / BCA) terlebih dahulu.');
+        return;
+      }
+    }
+
     document.getElementById('orderModal').classList.remove('active');
     document.getElementById('paymentTimingModal').classList.add('active');
   }
@@ -1371,6 +1378,14 @@
   function finalisasiOrder(waktuPembayaranStr){
     const metodeSel = document.querySelector('input[name="metode_modal"]:checked').value;
     
+    let metodePilihanText = metodeSel;
+
+    // Jika yang dipilih adalah Bank Transfer, ambil detail bank yang dipilih
+    if (metodeSel === 'Bank Transfer') {
+      const bankPilihan = document.querySelector('input[name="bank_pilihan"]:checked').value;
+      metodePilihanText = `Transfer Bank ke ${bankPilihan}`;
+    }
+
     let prodWA = "";
     let addonWA = "";
 
@@ -1413,7 +1428,7 @@
 - *Ekspedisi:* ${orderData.ekspedisi}
 
 *METODE PEMBAYARAN:*
-- *Via:* ${metodeSel}
+- *Via:* ${metodePilihanText}
 - *Waktu Transfer:* ${waktuPembayaranStr}
 ${catatanWA}
 _Tolong hitungkan biaya ongkir ke alamat saya di Kel. ${orderData.kelurahan}, Kec. ${orderData.kecamatan}, ${orderData.kabupaten}._
