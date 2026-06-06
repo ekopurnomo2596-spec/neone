@@ -66,7 +66,7 @@
 
   /* HERO */
   #home {
-    min-height: 100vh; padding-top: 60px;
+    min-height: 50vh; padding-top: 80px; padding-bottom: 40px;
     display: flex; flex-direction: column; justify-content: center;
     position: relative; overflow: hidden;
   }
@@ -114,19 +114,6 @@
   .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
   .btn-wa { background: #25D366; color: #fff; }
   .btn-wa:hover { background: #1fbb59; transform: translateY(-2px); }
-  .hero-stats {
-    position: relative; z-index:2;
-    display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
-    padding: 2.5rem 2rem; margin-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.07);
-  }
-  .stat { text-align: center; }
-  .stat-num {
-    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-    font-size: 2.2rem; color: var(--white); letter-spacing: -0.02em;
-  }
-  .stat-num span { color: var(--red-light); }
-  .stat-label { font-size: 0.78rem; color: var(--gray); letter-spacing: 0.08em; text-transform: uppercase; }
 
   /* SECTION BASE */
   section { padding: 5rem 2rem; }
@@ -381,7 +368,6 @@
     .form-row { grid-template-columns:1fr; }
     .order-info { position:static; }
     .value-grid { grid-template-columns:1fr; }
-    .hero-stats { gap:1.5rem; }
     
     /* Layout 3 Kolom Khusus HP untuk Katalog */
     #katalog { padding: 3rem 1rem; }
@@ -451,12 +437,6 @@
       <a href="#order" class="btn btn-outline">Order Sekarang</a>
       <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn btn-wa">WhatsApp Kami</a>
     </div>
-  </div>
-  <div class="hero-stats reveal">
-    <div class="stat"><div class="stat-num">500<span>+</span></div><div class="stat-label">Produk Terjual</div></div>
-    <div class="stat"><div class="stat-num">4.9<span>★</span></div><div class="stat-label">Rating Toko</div></div>
-    <div class="stat"><div class="stat-num">30<span>+</span></div><div class="stat-label">Varian Motor</div></div>
-    <div class="stat"><div class="stat-num">100<span>%</span></div><div class="stat-label">Garansi Kualitas</div></div>
   </div>
 </section>
 
