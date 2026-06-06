@@ -323,7 +323,7 @@
   .form-card .pill:hover, .modal-content .pill:hover { border-color: var(--dark); color: var(--dark); }
   .form-card .pill.selected, .modal-content .pill.selected { background: var(--dark); border-color: var(--dark); color: #fff; }
 
-  /* TOMBOL LANJUT PEMBAYARAN WARNA HIJAU */
+  /* TOMBOL LANJUT PEMBAYARAN WARNA HIJAU ELEGANT */
   .form-submit { 
     width:100%; margin-top:1.25rem; padding:14px; font-size:1rem; 
     background: #2E7D32; color: white; border:none; border-radius: 8px; 
@@ -369,8 +369,12 @@
   .acc-item.active .acc-content { display: block; }
   .acc-item.active .acc-header { background: #FAFAFA; border-color: var(--dark); color: var(--dark); }
   
-  .bank-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid #EEEEEE; }
-  .bank-row:last-child { border:none; }
+  /* TOMBOL SALIN REKENING */
+  .bank-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #EEEEEE; }
+  .bank-row:last-child { border:none; padding-bottom: 0; }
+  .btn-copy { background: #F0F0F0; border: 1px solid #DDD; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; color: var(--dark); cursor: pointer; transition: all 0.2s; }
+  .btn-copy:hover { background: #E0E0E0; border-color: #CCC; }
+  .btn-copy.copied { background: var(--dark); color: white; border-color: var(--dark); }
 
   /* TENTANG KAMI */
   #tentang { background: var(--dark2); }
@@ -492,7 +496,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#home" class="nav-logo">NE<span>S</span>ONE <span style="color:var(--gray);font-weight:400;font-size:0.9rem;margin-left:4px;">RACING</span></a>
   <ul class="nav-links">
@@ -515,7 +518,6 @@
   <a href="#lokasi" onclick="toggleMenu()">Lokasi</a>
 </div>
 
-<!-- HERO -->
 <section id="home">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -534,7 +536,6 @@
 
 <hr class="divider">
 
-<!-- KATALOG -->
 <section id="katalog">
   <div class="container">
     <div class="katalog-header reveal">
@@ -542,7 +543,6 @@
       <h2 class="section-title">Katalog Produk</h2>
     </div>
 
-    <!-- Filter Tab -->
     <div class="filter-tabs reveal">
       <button class="filter-tab active" onclick="filterCat(this,'semua')">Semua</button>
       <button class="filter-tab" onclick="filterCat(this,'matic')">Matic</button>
@@ -552,10 +552,8 @@
       <button class="filter-tab" onclick="filterCat(this,'fullsystem')">Full System</button>
     </div>
 
-    <!-- KATALOG PRODUK 1 - 8 -->
     <div class="product-grid" id="productGrid">
 
-      <!-- Produk 1 -->
       <div class="product-card reveal" data-cat="matic slipon" data-baseprice="385000" data-name="NSR-1 Oval Matic">
         <div class="product-img">
           <div class="slider-container">
@@ -565,8 +563,8 @@
               <img src="knalpot.webp" alt="NSR-1 Oval Matic - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
             </div>
           </div>
-          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
-          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">❮</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">❯</button>
           <div class="badge-hot">Hot</div>
           <div class="product-type">Slip-On</div>
         </div>
@@ -588,7 +586,6 @@
         </div>
       </div>
 
-      <!-- Produk 2 -->
       <div class="product-card reveal" data-cat="matic fullsystem" data-baseprice="680000" data-name="NSR-PRO Full System Matic">
         <div class="product-img">
           <div class="slider-container">
@@ -598,8 +595,8 @@
               <img src="knalpot.webp" alt="NSR-PRO Full System Matic - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
             </div>
           </div>
-          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
-          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">❮</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">❯</button>
           <div class="badge-new">New</div>
           <div class="product-type">Full System</div>
         </div>
@@ -621,7 +618,6 @@
         </div>
       </div>
 
-      <!-- Produk 3 -->
       <div class="product-card reveal" data-cat="bebek slipon" data-baseprice="320000" data-name="NSR-B1 Bebek Standar">
         <div class="product-img">
           <div class="slider-container">
@@ -631,8 +627,8 @@
               <img src="knalpot.webp" alt="NSR-B1 Bebek Standar - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
             </div>
           </div>
-          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
-          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">❮</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">❯</button>
           <div class="product-type">Slip-On</div>
         </div>
         <div class="product-body">
@@ -653,7 +649,6 @@
         </div>
       </div>
 
-      <!-- Produk 4 -->
       <div class="product-card reveal" data-cat="bebek fullsystem" data-baseprice="520000" data-name="NSR-B PRO Full Bebek">
         <div class="product-img">
           <div class="slider-container">
@@ -663,8 +658,8 @@
               <img src="knalpot.webp" alt="NSR-B PRO Full Bebek - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
             </div>
           </div>
-          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
-          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">❮</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">❯</button>
           <div class="badge-hot">Laris</div>
           <div class="product-type">Full System</div>
         </div>
@@ -686,7 +681,6 @@
         </div>
       </div>
 
-      <!-- Produk 5 -->
       <div class="product-card reveal" data-cat="sport slipon" data-baseprice="850000" data-name="NSR-S Carbon Sport">
         <div class="product-img">
           <div class="slider-container">
@@ -696,8 +690,8 @@
               <img src="knalpot.webp" alt="NSR-S Carbon Sport - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
             </div>
           </div>
-          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
-          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">❮</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">❯</button>
           <div class="badge-new">New</div>
           <div class="product-type">Slip-On</div>
         </div>
@@ -719,7 +713,6 @@
         </div>
       </div>
 
-      <!-- Produk 6 -->
       <div class="product-card reveal" data-cat="sport fullsystem" data-baseprice="1450000" data-name="NSR-S PRO Full Sport Ti">
         <div class="product-img">
           <div class="slider-container">
@@ -729,8 +722,8 @@
               <img src="knalpot.webp" alt="NSR-S PRO Full Sport Ti - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
             </div>
           </div>
-          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
-          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">❮</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">❯</button>
           <div class="badge-hot">Premium</div>
           <div class="product-type">Full System</div>
         </div>
@@ -752,7 +745,6 @@
         </div>
       </div>
 
-      <!-- Produk 7 -->
       <div class="product-card reveal" data-cat="matic slipon" data-baseprice="375000" data-name="NSR-M Yamaha Mio Series">
         <div class="product-img">
           <div class="slider-container">
@@ -762,8 +754,8 @@
               <img src="knalpot.webp" alt="NSR-M Yamaha Mio Series - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
             </div>
           </div>
-          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
-          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">❮</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">❯</button>
           <div class="product-type">Slip-On</div>
         </div>
         <div class="product-body">
@@ -784,7 +776,6 @@
         </div>
       </div>
 
-      <!-- Produk 8 -->
       <div class="product-card reveal" data-cat="bebek slipon" data-baseprice="295000" data-name="NSR-Shogun 125 Series">
         <div class="product-img">
           <div class="slider-container">
@@ -794,8 +785,8 @@
               <img src="knalpot.webp" alt="NSR-Shogun 125 Series - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
             </div>
           </div>
-          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
-          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">❮</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">❯</button>
           <div class="badge-new">New</div>
           <div class="product-type">Slip-On</div>
         </div>
@@ -817,9 +808,7 @@
         </div>
       </div>
 
-    </div><!-- /product-grid -->
-
-    <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+    </div><div style="text-align:center; margin-top:2.5rem;" class="reveal">
       <p style="color:var(--dark3); font-size:0.88rem; margin-bottom:1rem;">Tidak menemukan tipe motor Anda? Hubungi kami untuk konsultasi custom order.</p>
       <a href="https://api.whatsapp.com/send/?phone=6285868872566&text=&type=phone_number&app_absent=0" target="_blank" class="btn btn-wa">💬 Tanya Custom Order</a>
     </div>
@@ -828,12 +817,10 @@
 
 <hr class="divider">
 
-<!-- ORDER FORM -->
 <section id="order">
   <div class="container">
     <div class="order-wrap">
       
-      <!-- Form Pemesanan -->
       <div class="form-card reveal">
         <div class="form-title">Detail Pemesanan</div>
 
@@ -883,7 +870,6 @@
           </div>
         </div>
 
-        <!-- Pilihan Ekspedisi -->
         <div class="form-group">
           <label>Ekspedisi Pengiriman *</label>
           <div class="pill-group">
@@ -917,7 +903,6 @@
 
 <hr class="divider">
 
-<!-- TENTANG KAMI -->
 <section id="tentang">
   <div class="container">
     <div class="about-grid">
@@ -954,7 +939,6 @@
 
 <hr class="divider">
 
-<!-- LOKASI -->
 <section id="lokasi">
   <div class="container">
     <div class="lokasi-grid">
@@ -1009,7 +993,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -1045,21 +1028,19 @@
   </div>
 </footer>
 
-<!-- LIGHTBOX ELEMENT -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-  <span class="lb-close" onclick="closeLightbox(event)">&times;</span>
-  <div class="lb-nav lb-prev" onclick="changeLbSlide(-1, event)">&#10094;</div>
+  <span class="lb-close" onclick="closeLightbox(event)">×</span>
+  <div class="lb-nav lb-prev" onclick="changeLbSlide(-1, event)">❮</div>
   <div class="lb-img-container" onclick="toggleZoom(event)">
      <img id="lbImage" class="lb-img">
   </div>
-  <div class="lb-nav lb-next" onclick="changeLbSlide(1, event)">&#10095;</div>
+  <div class="lb-nav lb-next" onclick="changeLbSlide(1, event)">❯</div>
   <div class="lb-hint">Klik gambar untuk Zoom</div>
 </div>
 
-<!-- MODAL / POP-UP DETAIL ORDER & PEMBAYARAN -->
 <div id="orderModal" class="modal-overlay" onclick="tutupModal(event)">
   <div class="modal-content">
-    <span class="modal-close" onclick="tutupModal(event)">&times;</span>
+    <span class="modal-close" onclick="tutupModal(event)">×</span>
     <div class="modal-title">Konfirmasi Detail Pesanan</div>
     
     <div style="margin-bottom: 1rem; background: #FFF9E6; border: 1px solid #FFE082; padding: 10px; border-radius: 6px;">
@@ -1071,24 +1052,38 @@
       <div id="promoPesan" style="font-size:0.75rem; color:var(--red); font-weight:bold; margin-top:6px;"></div>
     </div>
 
-    <!-- Ringkasan Data -->
     <div class="summary-box" id="summaryBox"></div>
 
     <div style="font-weight:600; font-size:0.95rem; color:var(--dark); margin-bottom:0.75rem;">Pilih Metode Pembayaran:</div>
     
-    <!-- Accordion Bank -->
     <div class="acc-item">
       <div class="acc-header" onclick="togglePaymentAccordion(this)">
         <input type="radio" name="metode_modal" value="Bank Transfer"> 🏦 Transfer Bank
       </div>
       <div class="acc-content">
         <div style="font-size:0.78rem; font-weight:700; color:#666; margin-bottom:0.6rem;">Rekening Tujuan:</div>
-        <div class="bank-row"><span>BRI</span><strong>1234-XXXXX-XX (a.n Nesone)</strong></div>
-        <div class="bank-row"><span>BCA</span><strong>XXXX-XXXXX (a.n Nesone)</strong></div>
+        
+        <div class="bank-row">
+          <div style="line-height:1.2;">
+            <span style="font-weight:bold; color:var(--dark);">Bank BRI</span><br>
+            <strong style="font-size:1.1rem; letter-spacing:1px;">1234-01-000000-50-0</strong><br>
+            <span style="font-size:0.75rem; color:#888;">a.n. Nesone Racing</span>
+          </div>
+          <button class="btn-copy" onclick="copyText('123401000000500', this)">Salin</button>
+        </div>
+
+        <div class="bank-row" style="margin-top:8px;">
+          <div style="line-height:1.2;">
+            <span style="font-weight:bold; color:var(--dark);">Bank BCA</span><br>
+            <strong style="font-size:1.1rem; letter-spacing:1px;">1234567890</strong><br>
+            <span style="font-size:0.75rem; color:#888;">a.n. Nesone Racing</span>
+          </div>
+          <button class="btn-copy" onclick="copyText('1234567890', this)">Salin</button>
+        </div>
+
       </div>
     </div>
 
-    <!-- Accordion QRIS -->
     <div class="acc-item">
       <div class="acc-header" onclick="togglePaymentAccordion(this)">
         <input type="radio" name="metode_modal" value="QRIS"> ⬜ QRIS / E-Wallet
@@ -1099,8 +1094,12 @@
       </div>
     </div>
 
-    <button class="btn form-submit" style="margin-top:1.25rem;" onclick="kirimOrderWA()">
-      💬 Kirim Order via WhatsApp
+    <p style="text-align:center; font-size:0.8rem; color:var(--gray); margin-top:1.5rem; margin-bottom:0.5rem;">
+      Silakan transfer <strong>sekarang</strong> atau <strong>nanti</strong>, lalu konfirmasi via WhatsApp.
+    </p>
+
+    <button class="btn form-submit" style="margin-top:0; background:#25D366;" onclick="kirimOrderWA()">
+      💬 Konfirmasi Pesanan & Bayar (WA)
     </button>
   </div>
 </div>
@@ -1163,7 +1162,7 @@
     if (event.target === img || event.currentTarget.classList.contains('lb-img-container')) img.classList.toggle('zoomed');
   }
 
-  // RESET VARIAN (Dan Membuka Kunci Add-on)
+  // RESET VARIAN 
   function resetVarian(element) {
       let card = element.closest('.product-card');
       let basePrice = parseInt(card.getAttribute('data-baseprice'));
@@ -1173,7 +1172,7 @@
           pillsContainer.classList.remove('locked');
       }
 
-      card.setAttribute('data-add-price', 0); // Reset harga addon ke 0
+      card.setAttribute('data-add-price', 0); 
       card.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
       card.querySelector('.product-price').innerHTML = formatRupiah(basePrice);
       card.setAttribute('data-selected-var', 'Standar/Tanpa Add-on');
@@ -1197,7 +1196,7 @@
           btn.classList.add('active'); 
           let finalPrice = basePrice + addPrice;
           
-          card.setAttribute('data-add-price', addPrice); // Simpan harga addon
+          card.setAttribute('data-add-price', addPrice); 
           card.querySelector('.product-price').innerHTML = formatRupiah(finalPrice);
           card.setAttribute('data-selected-var', varName);
           card.setAttribute('data-final-price', finalPrice);
@@ -1232,7 +1231,6 @@
         option.setAttribute('data-info', JSON.stringify(dataObj));
         select.add(option);
       } else {
-        // Update data-info jika pilihan sudah ada
         let existingOpt = Array.from(select.options).find(opt => opt.value === fullName);
         existingOpt.setAttribute('data-info', JSON.stringify(dataObj));
       }
@@ -1252,6 +1250,21 @@
           let pill = input.closest('.pill');
           if(input.checked) pill.classList.add('selected');
           else pill.classList.remove('selected');
+      });
+  }
+
+  // COPY TEXT FUNCTION
+  function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+          let originalText = btn.innerText;
+          btn.innerText = 'Tersalin!';
+          btn.classList.add('copied');
+          setTimeout(() => {
+              btn.innerText = originalText;
+              btn.classList.remove('copied');
+          }, 2000);
+      }).catch(err => {
+          console.error('Gagal menyalin teks: ', err);
       });
   }
 
@@ -1310,6 +1323,9 @@
         detailHargaHtml += `<strong style="font-size:1.1rem; color:var(--red);">Total Tagihan: Rp ${finalTotal.toLocaleString('id-ID')}</strong> <br><em style="font-size:0.7rem; color:#666;">(Belum termasuk ongkir)</em>`;
     }
 
+    let pNama = orderData.prodInfo ? orderData.prodInfo.nama : orderData.produk;
+    let pAddon = orderData.prodInfo ? orderData.prodInfo.varian : "-";
+
     document.getElementById('summaryBox').innerHTML = `
       <strong>👤 Data Pemesan:</strong><br>
       Nama: ${orderData.nama}<br>
@@ -1317,7 +1333,8 @@
       Alamat: ${orderData.alamat}, Kel. ${orderData.kelurahan}, Kec. ${orderData.kecamatan}, ${orderData.kabupaten}, ${orderData.provKodepos}<br><br>
       
       <strong>📦 Detail Pesanan:</strong><br>
-      Produk: <span style="color:var(--red); font-weight:600;">${orderData.produk}</span><br>
+      Produk: <span style="color:var(--red); font-weight:600;">${pNama}</span><br>
+      Add-on: <strong>${pAddon}</strong><br>
       Ekspedisi: ${orderData.ekspedisi}<br>
       Catatan: ${orderData.catatan || '-'}
       ${detailHargaHtml}
@@ -1370,10 +1387,10 @@
     let prodWA = "";
     let addonWA = "";
 
-    // Pengecekan apakah data harga rincian tersedia
+    // Memanfaatkan data object untuk format Harga WA yang miring dan tebal
     if (orderData.prodInfo) {
-        prodWA = `${orderData.prodInfo.nama} _(*Rp ${orderData.prodInfo.basePrice.toLocaleString('id-ID')}*)_`;
-        let addonPriceText = orderData.prodInfo.addPrice > 0 ? ` _(*+Rp ${orderData.prodInfo.addPrice.toLocaleString('id-ID')}*)_` : ` _(*Rp 0*)_`;
+        prodWA = `${orderData.prodInfo.nama} _*Rp ${orderData.prodInfo.basePrice.toLocaleString('id-ID')}*_`;
+        let addonPriceText = orderData.prodInfo.addPrice > 0 ? ` _*+Rp ${orderData.prodInfo.addPrice.toLocaleString('id-ID')}*_` : ` _*Rp 0*_`;
         addonWA = `${orderData.prodInfo.varian}${addonPriceText}`;
     } else {
         prodWA = `${orderData.produk}`;
@@ -1413,11 +1430,11 @@
     window.open(waLink, '_blank');
   }
 
-  // AUTO TITLE CASE LISTENER (Membuat huruf pertama menjadi besar saat diketik)
+  // AUTO TITLE CASE LISTENER (Membuat huruf pertama otomatis besar)
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('input[type="text"], textarea').forEach(el => {
       el.addEventListener('input', function(e) {
-        if(this.id === 'fPromo') return; // Lewati untuk kolom kode promo
+        if(this.id === 'fPromo') return; // Abaikan untuk kolom kode promo
         let start = this.selectionStart;
         let end = this.selectionEnd;
         let val = this.value;
