@@ -166,20 +166,12 @@
     aspect-ratio: 4/3; background: #F9F9F9;
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden; border-bottom: 1px solid #F0F0F0;
-    cursor: pointer; /* Memberi tanda bahwa gambar bisa diklik */
   }
   
-  /* Styling gambar produk */
   .knalpot-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s;
+    width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s;
   }
-  .product-img:hover .knalpot-img {
-    transform: scale(1.05); /* Efek zoom saat gambar dihover */
-  }
+  .product-img:hover .knalpot-img { transform: scale(1.05); }
 
   .badge-new, .badge-hot {
     position: absolute; top: 10px; left: 10px;
@@ -200,34 +192,29 @@
     margin-bottom: 0.25rem; line-height: 1.2;
   }
   .product-motor { font-size: 0.78rem; color: var(--gray); margin-bottom: 0.6rem; }
-  .product-specs { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.75rem; }
-  .spec-tag {
-    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 3px 8px; border-radius: 3px;
-    background: rgba(192,40,26,0.1); color: var(--red); border: 1px solid rgba(192,40,26,0.2);
+  
+  /* Variant Pills Baru */
+  .variant-pills { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .v-pill {
+    font-size: 0.65rem; font-weight: 600; padding: 4px 8px; border-radius: 4px; border: 1px solid #EAEAEA;
+    background: #F5F5F5; color: var(--gray); cursor: pointer; transition: all 0.2s; text-transform: uppercase;
   }
+  .v-pill.active, .v-pill:hover { background: var(--red); color: #fff; border-color: var(--red); }
+  
   .product-price {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
     font-size: 1.35rem; color: var(--red-dark); margin-bottom: 0.75rem; margin-top: auto;
   }
-  .product-price .price-before {
-    font-size: 0.85rem; font-weight: 400; color: var(--gray-light);
-    text-decoration: line-through; margin-right: 0.4rem;
+
+  /* Checkout Button Baru */
+  .btn-checkout {
+    width: 100%; padding: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--red); color: #fff; border: none; border-radius: 4px;
+    font-family: 'Barlow', sans-serif; font-size: 0.85rem; font-weight: 600; 
+    text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: background 0.2s;
   }
-  .product-actions { display:flex; gap:0.5rem; }
-  .btn-order {
-    flex:1; padding: 9px; text-align: center; font-size: 0.82rem; font-weight: 600;
-    letter-spacing: 0.05em; text-transform: uppercase; border-radius: 4px; cursor: pointer;
-    background: var(--red); color: #fff; border: none; text-decoration:none;
-    transition: background 0.2s;
-  }
-  .btn-order:hover { background: var(--red-light); }
-  .btn-detail {
-    padding: 9px 12px; font-size: 0.82rem; font-weight: 600;
-    border: 1px solid #D0D0D0; border-radius: 4px; cursor: pointer;
-    background: transparent; color: var(--gray); transition: all 0.2s;
-  }
-  .btn-detail:hover { border-color: var(--dark); color: var(--dark); }
+  .btn-checkout:hover { background: var(--red-light); transform: translateY(-2px); }
+  .btn-checkout svg { width: 16px; height: 16px; fill: currentColor; }
 
   /* ORDER FORM */
   #order { background: var(--dark); }
@@ -382,11 +369,11 @@
       width: 100%;
     }
     .hero-btns .btn {
-      flex: 1; /* Membagi ruang sama rata */
+      flex: 1; /* Membagi ukuran rata untuk 3 tombol */
       padding: 8px 4px;
-      font-size: 0.6rem; /* Ukuran font lebih kecil agar muat */
+      font-size: 0.6rem;
       letter-spacing: 0;
-      white-space: nowrap; /* Mencegah teks turun ke baris baru */
+      white-space: nowrap;
       text-align: center;
     }
 
@@ -397,21 +384,22 @@
     .product-body { padding: 6px; }
     .product-name { font-size: 0.7rem; margin-bottom: 3px; line-height: 1.1; }
     .product-motor { font-size: 0.55rem; margin-bottom: 4px; line-height: 1.1; }
-    .product-specs { gap: 2px; margin-bottom: 4px; }
-    .spec-tag { font-size: 0.45rem; padding: 2px 3px; border-radius: 2px; letter-spacing: 0; }
+    .variant-pills { gap: 2px; margin-bottom: 4px; }
+    .v-pill { font-size: 0.45rem; padding: 2px 4px; letter-spacing: -0.2px; }
     .product-price { font-size: 0.75rem; margin-bottom: 6px; }
-    .product-price .price-before { font-size: 0.55rem; display: block; margin-right: 0; margin-bottom: 2px; }
-    .product-actions { flex-direction: column; gap: 4px; }
-    .btn-order, .btn-detail { padding: 4px; font-size: 0.6rem; border-radius: 3px; }
+    
+    /* Penyesuaian Checkout Mobile */
+    .btn-checkout { padding: 5px; font-size: 0.6rem; border-radius: 3px; gap: 4px; }
+    .btn-checkout svg { width: 12px; height: 12px; }
+    
     .badge-new, .badge-hot { top: 4px; left: 4px; font-size: 0.45rem; padding: 2px 4px; }
     .product-type { bottom: 4px; right: 4px; font-size: 0.45rem; padding: 2px 4px; }
     .filter-tabs { gap: 0.3rem; }
     .filter-tab { padding: 6px 12px; font-size: 0.7rem; }
   }
 
-  /* HIDDEN PRODUCTS */
-  .product-card[data-cat]:not([data-cat="semua"]) { }
-  .product-card.hidden { display:none; }
+  /* HIDDEN PRODUCTS FIX */
+  .product-card.hidden { display:none !important; }
 
   /* SCROLL REVEAL */
   .reveal { opacity:0; transform:translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -484,8 +472,8 @@
     <div class="product-grid" id="productGrid">
 
       <!-- Produk 1 -->
-      <div class="product-card reveal" data-cat="matic slipon">
-        <div class="product-img" onclick="pilihProduk('NSR-1 Oval Matic – Rp 385.000')">
+      <div class="product-card reveal" data-cat="matic slipon" data-baseprice="385000" data-name="NSR-1 Oval Matic">
+        <div class="product-img">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-1 Oval Matic" class="knalpot-img">
           <div class="badge-hot">Hot</div>
           <div class="product-type">Slip-On</div>
@@ -493,22 +481,27 @@
         <div class="product-body">
           <div class="product-name">NSR-1 Oval Matic</div>
           <div class="product-motor">Honda Beat / Vario / Scoopy / PCX</div>
-          <div class="product-specs">
-            <span class="spec-tag">Stainless</span>
-            <span class="spec-tag">Slip-On</span>
-            <span class="spec-tag">Garansi 3 Bln</span>
+          
+          <!-- Varian Harga Berubah -->
+          <div class="variant-pills">
+            <button class="v-pill active" onclick="pilihVarian(this, 0, 'Stainless')">Stainless</button>
+            <button class="v-pill" onclick="pilihVarian(this, 10000, 'Slip-On (+10k)')">Slip-On (+10k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 20000, 'Full System (+20k)')">FullSys (+20k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 30000, 'Titanium (+30k)')">Titanium (+30k)</button>
           </div>
-          <div class="product-price"><span class="price-before">Rp 450.000</span>Rp 385.000</div>
+
+          <div class="product-price">Rp 385.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-1 Oval Matic – Rp 385.000')">Order</a>
-            <button class="btn-detail" onclick="pesan('NSR-1 Oval Matic – Rp 385.000')">WA</button>
+            <button class="btn-checkout" onclick="prosesCheckout(this)">
+              <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Checkout
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Produk 2 -->
-      <div class="product-card reveal" data-cat="matic fullsystem">
-        <div class="product-img" onclick="pilihProduk('NSR-PRO Full System Matic – Rp 680.000')">
+      <div class="product-card reveal" data-cat="matic fullsystem" data-baseprice="680000" data-name="NSR-PRO Full System Matic">
+        <div class="product-img">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-PRO Full System Matic" class="knalpot-img">
           <div class="badge-new">New</div>
           <div class="product-type">Full System</div>
@@ -516,44 +509,52 @@
         <div class="product-body">
           <div class="product-name">NSR-PRO Full System Matic</div>
           <div class="product-motor">Honda Beat / Vario 110-160 / Genio</div>
-          <div class="product-specs">
-            <span class="spec-tag">Stainless</span>
-            <span class="spec-tag">Full System</span>
-            <span class="spec-tag">Garansi 6 Bln</span>
+          
+          <div class="variant-pills">
+            <button class="v-pill active" onclick="pilihVarian(this, 0, 'Stainless')">Stainless</button>
+            <button class="v-pill" onclick="pilihVarian(this, 10000, 'Slip-On (+10k)')">Slip-On (+10k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 20000, 'Full System (+20k)')">FullSys (+20k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 30000, 'Titanium (+30k)')">Titanium (+30k)</button>
           </div>
+
           <div class="product-price">Rp 680.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-PRO Full System Matic – Rp 680.000')">Order</a>
-            <button class="btn-detail" onclick="pesan('NSR-PRO Full System Matic – Rp 680.000')">WA</button>
+            <button class="btn-checkout" onclick="prosesCheckout(this)">
+              <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Checkout
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Produk 3 -->
-      <div class="product-card reveal" data-cat="bebek slipon">
-        <div class="product-img" onclick="pilihProduk('NSR-B1 Bebek Standar – Rp 320.000')">
+      <div class="product-card reveal" data-cat="bebek slipon" data-baseprice="320000" data-name="NSR-B1 Bebek Standar">
+        <div class="product-img">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-B1 Bebek Standar" class="knalpot-img">
           <div class="product-type">Slip-On</div>
         </div>
         <div class="product-body">
           <div class="product-name">NSR-B1 Bebek Standar</div>
           <div class="product-motor">Jupiter Z / Revo / Supra X 125 / Smash</div>
-          <div class="product-specs">
-            <span class="spec-tag">Stainless</span>
-            <span class="spec-tag">Slip-On</span>
-            <span class="spec-tag">Garansi 3 Bln</span>
+          
+          <div class="variant-pills">
+            <button class="v-pill active" onclick="pilihVarian(this, 0, 'Stainless')">Stainless</button>
+            <button class="v-pill" onclick="pilihVarian(this, 10000, 'Slip-On (+10k)')">Slip-On (+10k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 20000, 'Full System (+20k)')">FullSys (+20k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 30000, 'Titanium (+30k)')">Titanium (+30k)</button>
           </div>
+
           <div class="product-price">Rp 320.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-B1 Bebek Standar – Rp 320.000')">Order</a>
-            <button class="btn-detail" onclick="pesan('NSR-B1 Bebek Standar – Rp 320.000')">WA</button>
+            <button class="btn-checkout" onclick="prosesCheckout(this)">
+              <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Checkout
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Produk 4 -->
-      <div class="product-card reveal" data-cat="bebek fullsystem">
-        <div class="product-img" onclick="pilihProduk('NSR-B PRO Full Bebek – Rp 520.000')">
+      <div class="product-card reveal" data-cat="bebek fullsystem" data-baseprice="520000" data-name="NSR-B PRO Full Bebek">
+        <div class="product-img">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-B PRO Full Bebek" class="knalpot-img">
           <div class="badge-hot">Laris</div>
           <div class="product-type">Full System</div>
@@ -561,22 +562,26 @@
         <div class="product-body">
           <div class="product-name">NSR-B PRO Full Bebek</div>
           <div class="product-motor">Jupiter MX / Satria FU / Vega R</div>
-          <div class="product-specs">
-            <span class="spec-tag">Stainless</span>
-            <span class="spec-tag">Full System</span>
-            <span class="spec-tag">Garansi 6 Bln</span>
+          
+          <div class="variant-pills">
+            <button class="v-pill active" onclick="pilihVarian(this, 0, 'Stainless')">Stainless</button>
+            <button class="v-pill" onclick="pilihVarian(this, 10000, 'Slip-On (+10k)')">Slip-On (+10k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 20000, 'Full System (+20k)')">FullSys (+20k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 30000, 'Titanium (+30k)')">Titanium (+30k)</button>
           </div>
-          <div class="product-price"><span class="price-before">Rp 600.000</span>Rp 520.000</div>
+
+          <div class="product-price">Rp 520.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-B PRO Full Bebek – Rp 520.000')">Order</a>
-            <button class="btn-detail" onclick="pesan('NSR-B PRO Full Bebek – Rp 520.000')">WA</button>
+            <button class="btn-checkout" onclick="prosesCheckout(this)">
+              <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Checkout
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Produk 5 -->
-      <div class="product-card reveal" data-cat="sport slipon">
-        <div class="product-img" onclick="pilihProduk('NSR-S Carbon Sport – Rp 850.000')">
+      <div class="product-card reveal" data-cat="sport slipon" data-baseprice="850000" data-name="NSR-S Carbon Sport">
+        <div class="product-img">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-S Carbon Sport" class="knalpot-img">
           <div class="badge-new">New</div>
           <div class="product-type">Slip-On</div>
@@ -584,22 +589,26 @@
         <div class="product-body">
           <div class="product-name">NSR-S Carbon Sport</div>
           <div class="product-motor">CBR 150 / R15 / GSX-R150 / Ninja 150</div>
-          <div class="product-specs">
-            <span class="spec-tag">Carbon</span>
-            <span class="spec-tag">Slip-On</span>
-            <span class="spec-tag">Garansi 6 Bln</span>
+          
+          <div class="variant-pills">
+            <button class="v-pill active" onclick="pilihVarian(this, 0, 'Stainless')">Stainless</button>
+            <button class="v-pill" onclick="pilihVarian(this, 10000, 'Slip-On (+10k)')">Slip-On (+10k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 20000, 'Full System (+20k)')">FullSys (+20k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 30000, 'Titanium (+30k)')">Titanium (+30k)</button>
           </div>
+
           <div class="product-price">Rp 850.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-S Carbon Sport – Rp 850.000')">Order</a>
-            <button class="btn-detail" onclick="pesan('NSR-S Carbon Sport – Rp 850.000')">WA</button>
+            <button class="btn-checkout" onclick="prosesCheckout(this)">
+              <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Checkout
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Produk 6 -->
-      <div class="product-card reveal" data-cat="sport fullsystem">
-        <div class="product-img" onclick="pilihProduk('NSR-S PRO Full Sport Ti – Rp 1.450.000')">
+      <div class="product-card reveal" data-cat="sport fullsystem" data-baseprice="1450000" data-name="NSR-S PRO Full Sport Ti">
+        <div class="product-img">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-S PRO Full Sport Ti" class="knalpot-img">
           <div class="badge-hot">Premium</div>
           <div class="product-type">Full System</div>
@@ -607,44 +616,52 @@
         <div class="product-body">
           <div class="product-name">NSR-S PRO Full Sport Ti</div>
           <div class="product-motor">CBR 250 / R25 / GSX250 / Ninja 250</div>
-          <div class="product-specs">
-            <span class="spec-tag">Titanium</span>
-            <span class="spec-tag">Full System</span>
-            <span class="spec-tag">Garansi 1 Thn</span>
+          
+          <div class="variant-pills">
+            <button class="v-pill active" onclick="pilihVarian(this, 0, 'Stainless')">Stainless</button>
+            <button class="v-pill" onclick="pilihVarian(this, 10000, 'Slip-On (+10k)')">Slip-On (+10k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 20000, 'Full System (+20k)')">FullSys (+20k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 30000, 'Titanium (+30k)')">Titanium (+30k)</button>
           </div>
+
           <div class="product-price">Rp 1.450.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-S PRO Full Sport Ti – Rp 1.450.000')">Order</a>
-            <button class="btn-detail" onclick="pesan('NSR-S PRO Full Sport Ti – Rp 1.450.000')">WA</button>
+            <button class="btn-checkout" onclick="prosesCheckout(this)">
+              <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Checkout
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Produk 7 -->
-      <div class="product-card reveal" data-cat="matic slipon">
-        <div class="product-img" onclick="pilihProduk('NSR-M Yamaha Mio Series – Rp 375.000')">
+      <div class="product-card reveal" data-cat="matic slipon" data-baseprice="375000" data-name="NSR-M Yamaha Mio Series">
+        <div class="product-img">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-M Yamaha Mio Series" class="knalpot-img">
           <div class="product-type">Slip-On</div>
         </div>
         <div class="product-body">
           <div class="product-name">NSR-M Yamaha Mio Series</div>
           <div class="product-motor">Mio M3 / Soul GT / Fino / Aerox 155</div>
-          <div class="product-specs">
-            <span class="spec-tag">Stainless</span>
-            <span class="spec-tag">Slip-On</span>
-            <span class="spec-tag">Garansi 3 Bln</span>
+          
+          <div class="variant-pills">
+            <button class="v-pill active" onclick="pilihVarian(this, 0, 'Stainless')">Stainless</button>
+            <button class="v-pill" onclick="pilihVarian(this, 10000, 'Slip-On (+10k)')">Slip-On (+10k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 20000, 'Full System (+20k)')">FullSys (+20k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 30000, 'Titanium (+30k)')">Titanium (+30k)</button>
           </div>
+
           <div class="product-price">Rp 375.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-M Yamaha Mio Series – Rp 375.000')">Order</a>
-            <button class="btn-detail" onclick="pesan('NSR-M Yamaha Mio Series – Rp 375.000')">WA</button>
+            <button class="btn-checkout" onclick="prosesCheckout(this)">
+              <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Checkout
+            </button>
           </div>
         </div>
       </div>
 
       <!-- Produk 8 -->
-      <div class="product-card reveal" data-cat="bebek slipon">
-        <div class="product-img" onclick="pilihProduk('NSR-Shogun 125 Series – Rp 295.000')">
+      <div class="product-card reveal" data-cat="bebek slipon" data-baseprice="295000" data-name="NSR-Shogun 125 Series">
+        <div class="product-img">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-Shogun 125 Series" class="knalpot-img">
           <div class="badge-new">New</div>
           <div class="product-type">Slip-On</div>
@@ -652,15 +669,19 @@
         <div class="product-body">
           <div class="product-name">NSR-Shogun 125 Series</div>
           <div class="product-motor">Suzuki Shogun / Smash / Thunder 125</div>
-          <div class="product-specs">
-            <span class="spec-tag">Stainless</span>
-            <span class="spec-tag">Slip-On</span>
-            <span class="spec-tag">Garansi 3 Bln</span>
+          
+          <div class="variant-pills">
+            <button class="v-pill active" onclick="pilihVarian(this, 0, 'Stainless')">Stainless</button>
+            <button class="v-pill" onclick="pilihVarian(this, 10000, 'Slip-On (+10k)')">Slip-On (+10k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 20000, 'Full System (+20k)')">FullSys (+20k)</button>
+            <button class="v-pill" onclick="pilihVarian(this, 30000, 'Titanium (+30k)')">Titanium (+30k)</button>
           </div>
+
           <div class="product-price">Rp 295.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-Shogun 125 Series – Rp 295.000')">Order</a>
-            <button class="btn-detail" onclick="pesan('NSR-Shogun 125 Series – Rp 295.000')">WA</button>
+            <button class="btn-checkout" onclick="prosesCheckout(this)">
+              <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg> Checkout
+            </button>
           </div>
         </div>
       </div>
@@ -716,15 +737,7 @@
         <div class="form-group">
           <label>Produk yang Dipesan *</label>
           <select id="fProduk">
-            <option value="">-- Pilih Produk --</option>
-            <option value="NSR-1 Oval Matic – Rp 385.000">NSR-1 Oval Matic – Rp 385.000</option>
-            <option value="NSR-PRO Full System Matic – Rp 680.000">NSR-PRO Full System Matic – Rp 680.000</option>
-            <option value="NSR-B1 Bebek Standar – Rp 320.000">NSR-B1 Bebek Standar – Rp 320.000</option>
-            <option value="NSR-B PRO Full Bebek – Rp 520.000">NSR-B PRO Full Bebek – Rp 520.000</option>
-            <option value="NSR-S Carbon Sport – Rp 850.000">NSR-S Carbon Sport – Rp 850.000</option>
-            <option value="NSR-S PRO Full Sport Ti – Rp 1.450.000">NSR-S PRO Full Sport Ti – Rp 1.450.000</option>
-            <option value="NSR-M Yamaha Mio Series – Rp 375.000">NSR-M Yamaha Mio Series – Rp 375.000</option>
-            <option value="NSR-Shogun 125 Series – Rp 295.000">NSR-Shogun 125 Series – Rp 295.000</option>
+            <option value="">-- Pilih Produk dari Katalog di Atas --</option>
             <option value="Custom Order (hubungi kami)">Custom Order (hubungi kami)</option>
           </select>
         </div>
@@ -1008,22 +1021,72 @@
     });
   }
 
-  // PILIH PRODUK OTOMATIS KE FORM ORDER
-  function pilihProduk(val) {
-    const select = document.getElementById('fProduk');
-    select.value = val;
-    
-    // Memberikan efek visual (highlight) sementara pada kotak pilihan
-    select.style.borderColor = '#E84030';
-    select.style.boxShadow = '0 0 10px rgba(232, 64, 48, 0.4)';
-    
-    setTimeout(() => {
-      select.style.borderColor = 'var(--dark4)';
-      select.style.boxShadow = 'none';
-    }, 1500); // Highlight hilang setelah 1.5 detik
-    
-    // Opsional: Langsung meluncur ke area form order 
-    window.location.href = '#order';
+  // FORMAT RUPIAH
+  function formatRupiah(angka) {
+      return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  // PILIH VARIAN (MENGUBAH HARGA DI KARTU)
+  function pilihVarian(btn, addPrice, varName) {
+      // Hapus status aktif dari pill lain di dalam kartu yang sama
+      let parent = btn.parentElement;
+      parent.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active'); // Jadikan tombol ini aktif
+
+      // Cari elemen kartu utama
+      let card = btn.closest('.product-card');
+      
+      // Ambil harga dasar dari dataset HTML
+      let basePrice = parseInt(card.getAttribute('data-baseprice'));
+      
+      // Hitung harga akhir = harga dasar + harga tambahan varian
+      let finalPrice = basePrice + addPrice;
+      
+      // Tampilkan harga yang diperbarui ke layar
+      card.querySelector('.product-price').innerHTML = formatRupiah(finalPrice);
+      
+      // Simpan varian & harga akhir ke memori kartu untuk nanti dicheckout
+      card.setAttribute('data-selected-var', varName);
+      card.setAttribute('data-final-price', finalPrice);
+  }
+
+  // PROSES CHECKOUT (OTOMATIS MENGISI FORM)
+  function prosesCheckout(btn) {
+      let card = btn.closest('.product-card');
+      
+      // Ambil data yang tersimpan di kartu
+      let baseName = card.getAttribute('data-name');
+      let varName = card.getAttribute('data-selected-var') || 'Stainless'; // Default jika belum diklik
+      let finalPrice = card.getAttribute('data-final-price') || card.getAttribute('data-baseprice');
+      
+      let formatPrice = formatRupiah(parseInt(finalPrice));
+      
+      // Gabungkan nama produk, varian, dan harga akhir
+      let fullName = `${baseName} (${varName}) – ${formatPrice}`;
+
+      // Ambil elemen select form
+      let select = document.getElementById('fProduk');
+      
+      // Cek apakah opsi tersebut sudah ada di dropdown, jika belum buat baru
+      let exists = Array.from(select.options).some(opt => opt.value === fullName);
+      if (!exists) {
+          let newOpt = new Option(fullName, fullName);
+          select.add(newOpt);
+      }
+      
+      // Jadikan opsi tersebut terpilih otomatis
+      select.value = fullName;
+      
+      // Beri efek highlight merah sementara di kotak pilihan pesanan
+      select.style.borderColor = '#E84030';
+      select.style.boxShadow = '0 0 10px rgba(232, 64, 48, 0.4)';
+      setTimeout(() => {
+        select.style.borderColor = 'var(--dark4)';
+        select.style.boxShadow = 'none';
+      }, 1500);
+
+      // Meluncur ke formulir pesanan
+      window.location.href = '#order';
   }
 
   // METODE PEMBAYARAN
@@ -1039,7 +1102,7 @@
     if(type==='qris') document.getElementById('qrisInfo').classList.add('visible');
   }
 
-  // ORDER VIA WHATSAPP
+  // ORDER VIA WHATSAPP (SUBMIT)
   function kirimOrder(){
     const nama = document.getElementById('fNama').value.trim();
     const wa = document.getElementById('fWA').value.trim();
@@ -1064,7 +1127,8 @@
 *Nama:* ${nama}
 *No. WA:* ${wa}
 ━━━━━━━━━━━━━━━━━━━━━
-*Produk:* ${produk}
+*Produk Terpilih:* 
+${produk}
 *Tipe Motor:* ${motor||'-'}
 ━━━━━━━━━━━━━━━━━━━━━
 *Alamat Pengiriman:*
@@ -1080,12 +1144,6 @@ Terima kasih sudah memesan! 🏍`;
     // GANTI 628XXXXXXXXXX dengan nomor WA asli toko
     const noWA = '628XXXXXXXXXX';
     window.open('https://wa.me/' + noWA + '?text=' + encodeURIComponent(msg), '_blank');
-  }
-
-  // ORDER dari tombol WA produk
-  function pesan(produk){
-    const msg = `Halo Nesone Racing, saya ingin memesan:\n*${produk}*\n\nMohon info lebih lanjut. Terima kasih! 🏍`;
-    window.open('https://wa.me/628XXXXXXXXXX?text=' + encodeURIComponent(msg), '_blank');
   }
 
   // SCROLL REVEAL
