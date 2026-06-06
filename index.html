@@ -20,7 +20,7 @@
     --dark4: #2E2E2E;
     --gray: #888;
     --gray-light: #B0B0B0;
-    --white: #F5F5F5; /* Perbaikan warna agar lebih putih bersih */
+    --white: #F5F5F0;
     --text: #E8E8E0;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -214,15 +214,12 @@
   }
   .v-pill.active, .v-pill:hover { background: var(--red); color: #fff; border-color: var(--red); }
   
-  /* HARGA MENONJOL (HIGHLIGHT) */
+  /* HARGA NORMAL (TANPA KUNING) */
   .product-price {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-    font-size: 1.45rem; color: #111; 
-    background: #FFD700; /* Kuning emas menonjol */
-    padding: 4px 10px; border-radius: 6px; 
+    font-size: 1.45rem; color: var(--red); 
     display: inline-block; width: fit-content;
     margin-bottom: 0.75rem; margin-top: auto;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
   }
 
   .btn-checkout {
@@ -376,7 +373,7 @@
     .product-motor { font-size: 0.65rem; margin-bottom: 6px; line-height: 1.2; }
     .variant-pills { gap: 4px; margin-bottom: 6px; }
     .v-pill { font-size: 0.55rem; padding: 6px 2px; letter-spacing: 0; border-radius: 4px;}
-    .product-price { font-size: 1.1rem; margin-bottom: 8px; padding: 3px 8px; }
+    .product-price { font-size: 1.2rem; margin-bottom: 8px; }
     .btn-checkout { padding: 8px; font-size: 0.75rem; border-radius: 3px; gap: 6px; }
     .btn-checkout svg { width: 14px; height: 14px; }
     .badge-new, .badge-hot { top: 6px; left: 6px; font-size: 0.5rem; padding: 3px 6px; }
@@ -403,7 +400,6 @@
 
 <nav>
   <a href="#home" class="nav-logo">
-    <!-- Perubahan nama file logo ke yang transparan -->
     <img src="nesone_transparent.png" alt="Nesone Racing">
   </a>
   <ul class="nav-links">
@@ -431,7 +427,6 @@
   <div class="hero-grid"></div>
   <div class="hero-content reveal">
     <h1 class="hero-title" style="margin-bottom: 1.5rem;">
-      <!-- Perubahan nama file logo ke yang transparan -->
       <img src="nesone_transparent.png" alt="Nesone Racing Exhaust" class="hero-title-img">
     </h1>
     <p class="hero-desc">Knalpot racing berkualitas tinggi, 100% lokal buatan Purbalingga. Suara gahar, performa maksimal — untuk motor harian maupun kompetisi.</p>
@@ -929,7 +924,6 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="footer-logo">
-        <!-- Perubahan nama file logo ke yang transparan -->
         <img src="nesone_transparent.png" alt="Nesone Racing Logo">
       </div>
       <p class="footer-desc">Knalpot racing lokal berkualitas dari Purbalingga, Jawa Tengah. Suara gahar, performa maksimal, harga terjangkau.</p>
