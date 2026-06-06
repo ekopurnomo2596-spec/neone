@@ -162,35 +162,55 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.04);
   }
   .product-card:hover { border-color: var(--red-light); transform: translateY(-4px); box-shadow: 0 8px 20px rgba(192,40,26,0.1); }
+  
+  /* PRODUCT IMAGE & SLIDER CSS BARU */
   .product-img {
     aspect-ratio: 4/3; background: #F9F9F9;
-    display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden; border-bottom: 1px solid #F0F0F0;
   }
-  
-  .knalpot-img {
-    width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s;
+  .slider-container {
+    width: 100%; height: 100%; overflow: hidden; position: absolute; inset: 0;
   }
-  .product-img:hover .knalpot-img { transform: scale(1.05); }
+  .slider-wrapper {
+    display: flex; width: 100%; height: 100%; transition: transform 0.3s ease-in-out;
+  }
+  .knalpot-img {
+    flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;
+  }
+  .slide-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.4); color: white; border: none;
+    width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; cursor: pointer; z-index: 10; font-size: 0.8rem;
+    transition: background 0.2s;
+  }
+  .slide-nav:hover { background: var(--red); }
+  .slide-nav.prev { left: 8px; }
+  .slide-nav.next { right: 8px; }
 
   .badge-new, .badge-hot {
-    position: absolute; top: 10px; left: 10px;
+    position: absolute; top: 10px; left: 10px; z-index: 10;
     font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
     text-transform: uppercase; padding: 4px 10px; border-radius: 3px;
   }
   .badge-new { background: var(--gold); color: #1a1a00; }
   .badge-hot { background: var(--red); color: #fff; }
   .product-type {
-    position: absolute; bottom: 10px; right: 10px;
+    position: absolute; bottom: 10px; right: 10px; z-index: 10;
     font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
     background: rgba(0,0,0,0.7); color: var(--white); padding: 3px 8px; border-radius: 3px;
   }
+  
   .product-body { padding: 1rem 1.1rem; flex:1; display:flex; flex-direction:column; }
+  
+  /* PRODUCT NAME KLIKABLE */
   .product-name {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
     font-size: 1.05rem; color: var(--dark); letter-spacing: 0.02em;
-    margin-bottom: 0.25rem; line-height: 1.2;
+    margin-bottom: 0.25rem; line-height: 1.2; cursor: pointer; transition: color 0.2s;
   }
+  .product-name:hover { color: var(--red); }
+  
   .product-motor { font-size: 0.78rem; color: var(--gray); margin-bottom: 0.6rem; }
   
   /* Variant Pills Baru */
@@ -215,6 +235,32 @@
   }
   .btn-checkout:hover { background: var(--red-light); transform: translateY(-2px); }
   .btn-checkout svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* LIGHTBOX ZOOM CSS BARU */
+  .lightbox {
+    display: none; position: fixed; z-index: 9999; inset: 0;
+    background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
+  }
+  .lightbox.active { display: flex; }
+  .lb-close {
+    position: absolute; top: 20px; right: 30px; color: white;
+    font-size: 2.5rem; cursor: pointer; z-index: 10001; font-weight: bold;
+  }
+  .lb-img-container {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: auto; position: relative;
+  }
+  .lb-img {
+    max-width: 90%; max-height: 85vh; transition: transform 0.3s ease; cursor: zoom-in; object-fit: contain;
+  }
+  .lb-img.zoomed { transform: scale(2.5); cursor: zoom-out; }
+  .lb-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    font-size: 3rem; color: white; cursor: pointer; padding: 20px; user-select: none; z-index: 10001; opacity: 0.7; transition: opacity 0.2s;
+  }
+  .lb-nav:hover { opacity: 1; }
+  .lb-prev { left: 20px; }
+  .lb-next { right: 20px; }
+  .lb-hint { position: absolute; bottom: 20px; color: white; font-size: 0.9rem; z-index: 10001; background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px;}
 
   /* ORDER FORM */
   #order { background: var(--dark); }
@@ -361,23 +407,9 @@
     .order-info { position:static; }
     .value-grid { grid-template-columns:1fr; }
     
-    /* Layout Hero Tombol Sebaris di HP */
-    .hero-btns {
-      flex-wrap: nowrap;
-      gap: 6px;
-      justify-content: space-between;
-      width: 100%;
-    }
-    .hero-btns .btn {
-      flex: 1; /* Membagi ukuran rata untuk 3 tombol */
-      padding: 8px 4px;
-      font-size: 0.6rem;
-      letter-spacing: 0;
-      white-space: nowrap;
-      text-align: center;
-    }
+    .hero-btns { flex-wrap: nowrap; gap: 6px; justify-content: space-between; width: 100%; }
+    .hero-btns .btn { flex: 1; padding: 8px 4px; font-size: 0.6rem; letter-spacing: 0; white-space: nowrap; text-align: center; }
 
-    /* Layout 3 Kolom Khusus HP untuk Katalog */
     #katalog { padding: 3rem 1rem; }
     .product-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px; }
     .product-card { border-radius: 6px; }
@@ -388,7 +420,6 @@
     .v-pill { font-size: 0.45rem; padding: 2px 4px; letter-spacing: -0.2px; }
     .product-price { font-size: 0.75rem; margin-bottom: 6px; }
     
-    /* Penyesuaian Checkout Mobile */
     .btn-checkout { padding: 5px; font-size: 0.6rem; border-radius: 3px; gap: 4px; }
     .btn-checkout svg { width: 12px; height: 12px; }
     
@@ -396,20 +427,19 @@
     .product-type { bottom: 4px; right: 4px; font-size: 0.45rem; padding: 2px 4px; }
     .filter-tabs { gap: 0.3rem; }
     .filter-tab { padding: 6px 12px; font-size: 0.7rem; }
+    
+    /* Penyesuaian Lightbox mobile */
+    .lb-nav { font-size: 2rem; padding: 10px; }
+    .lb-close { right: 15px; top: 15px; font-size: 2rem; }
   }
 
-  /* HIDDEN PRODUCTS FIX */
   .product-card.hidden { display:none !important; }
-
-  /* SCROLL REVEAL */
   .reveal { opacity:0; transform:translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
-
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#home" class="nav-logo">NE<span>S</span>ONE <span style="color:var(--gray);font-weight:400;font-size:0.9rem;margin-left:4px;">RACING</span></a>
   <ul class="nav-links">
@@ -432,7 +462,6 @@
   <a href="#lokasi" onclick="toggleMenu()">Lokasi</a>
 </div>
 
-<!-- HERO -->
 <section id="home">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -451,13 +480,12 @@
 
 <hr class="divider">
 
-<!-- KATALOG -->
 <section id="katalog">
   <div class="container">
     <div class="katalog-header reveal">
       <div class="section-label">Produk Unggulan</div>
       <h2 class="section-title">Katalog Produk</h2>
-      <p class="section-sub" style="margin:0 auto;">Berbagai pilihan knalpot racing untuk motor matic, bebek, dan sport. Semua tersedia ready stock.</p>
+      <p class="section-sub" style="margin:0 auto;">Berbagai pilihan knalpot racing untuk motor matic, bebek, dan sport. Klik judul untuk reset pilihan, klik gambar untuk zoom.</p>
     </div>
 
     <div class="filter-tabs reveal">
@@ -471,18 +499,24 @@
 
     <div class="product-grid" id="productGrid">
 
-      <!-- Produk 1 -->
       <div class="product-card reveal" data-cat="matic slipon" data-baseprice="385000" data-name="NSR-1 Oval Matic">
         <div class="product-img">
-          <img src="knalpot.webp" alt="Knalpot Nesone NSR-1 Oval Matic" class="knalpot-img">
+          <div class="slider-container">
+            <div class="slider-wrapper" data-current="0">
+              <img src="knalpot.webp" alt="NSR-1 Oval Matic - Foto 1" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-1 Oval Matic - Foto 2" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-1 Oval Matic - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
+            </div>
+          </div>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
           <div class="badge-hot">Hot</div>
           <div class="product-type">Slip-On</div>
         </div>
         <div class="product-body">
-          <div class="product-name">NSR-1 Oval Matic</div>
+          <div class="product-name" onclick="resetVarian(this)" title="Klik untuk reset pilihan ke standar (tanpa add-on)">NSR-1 Oval Matic</div>
           <div class="product-motor">Honda Beat / Vario / Scoopy / PCX</div>
           
-          <!-- Varian Harga Berubah -->
           <div class="variant-pills">
             <button class="v-pill active" onclick="pilihVarian(this, 0, 'Stainless')">Stainless</button>
             <button class="v-pill" onclick="pilihVarian(this, 10000, 'Slip-On (+10k)')">Slip-On (+10k)</button>
@@ -499,15 +533,22 @@
         </div>
       </div>
 
-      <!-- Produk 2 -->
       <div class="product-card reveal" data-cat="matic fullsystem" data-baseprice="680000" data-name="NSR-PRO Full System Matic">
         <div class="product-img">
-          <img src="knalpot.webp" alt="Knalpot Nesone NSR-PRO Full System Matic" class="knalpot-img">
+          <div class="slider-container">
+            <div class="slider-wrapper" data-current="0">
+              <img src="knalpot.webp" alt="NSR-PRO Full System Matic - Foto 1" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-PRO Full System Matic - Foto 2" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-PRO Full System Matic - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
+            </div>
+          </div>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
           <div class="badge-new">New</div>
           <div class="product-type">Full System</div>
         </div>
         <div class="product-body">
-          <div class="product-name">NSR-PRO Full System Matic</div>
+          <div class="product-name" onclick="resetVarian(this)" title="Klik untuk reset pilihan ke standar (tanpa add-on)">NSR-PRO Full System Matic</div>
           <div class="product-motor">Honda Beat / Vario 110-160 / Genio</div>
           
           <div class="variant-pills">
@@ -526,14 +567,21 @@
         </div>
       </div>
 
-      <!-- Produk 3 -->
       <div class="product-card reveal" data-cat="bebek slipon" data-baseprice="320000" data-name="NSR-B1 Bebek Standar">
         <div class="product-img">
-          <img src="knalpot.webp" alt="Knalpot Nesone NSR-B1 Bebek Standar" class="knalpot-img">
+          <div class="slider-container">
+            <div class="slider-wrapper" data-current="0">
+              <img src="knalpot.webp" alt="NSR-B1 Bebek Standar - Foto 1" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-B1 Bebek Standar - Foto 2" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-B1 Bebek Standar - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
+            </div>
+          </div>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
           <div class="product-type">Slip-On</div>
         </div>
         <div class="product-body">
-          <div class="product-name">NSR-B1 Bebek Standar</div>
+          <div class="product-name" onclick="resetVarian(this)" title="Klik untuk reset pilihan ke standar (tanpa add-on)">NSR-B1 Bebek Standar</div>
           <div class="product-motor">Jupiter Z / Revo / Supra X 125 / Smash</div>
           
           <div class="variant-pills">
@@ -552,15 +600,22 @@
         </div>
       </div>
 
-      <!-- Produk 4 -->
       <div class="product-card reveal" data-cat="bebek fullsystem" data-baseprice="520000" data-name="NSR-B PRO Full Bebek">
         <div class="product-img">
-          <img src="knalpot.webp" alt="Knalpot Nesone NSR-B PRO Full Bebek" class="knalpot-img">
+          <div class="slider-container">
+            <div class="slider-wrapper" data-current="0">
+              <img src="knalpot.webp" alt="NSR-B PRO Full Bebek - Foto 1" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-B PRO Full Bebek - Foto 2" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-B PRO Full Bebek - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
+            </div>
+          </div>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
           <div class="badge-hot">Laris</div>
           <div class="product-type">Full System</div>
         </div>
         <div class="product-body">
-          <div class="product-name">NSR-B PRO Full Bebek</div>
+          <div class="product-name" onclick="resetVarian(this)" title="Klik untuk reset pilihan ke standar (tanpa add-on)">NSR-B PRO Full Bebek</div>
           <div class="product-motor">Jupiter MX / Satria FU / Vega R</div>
           
           <div class="variant-pills">
@@ -579,15 +634,22 @@
         </div>
       </div>
 
-      <!-- Produk 5 -->
       <div class="product-card reveal" data-cat="sport slipon" data-baseprice="850000" data-name="NSR-S Carbon Sport">
         <div class="product-img">
-          <img src="knalpot.webp" alt="Knalpot Nesone NSR-S Carbon Sport" class="knalpot-img">
+          <div class="slider-container">
+            <div class="slider-wrapper" data-current="0">
+              <img src="knalpot.webp" alt="NSR-S Carbon Sport - Foto 1" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-S Carbon Sport - Foto 2" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-S Carbon Sport - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
+            </div>
+          </div>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
           <div class="badge-new">New</div>
           <div class="product-type">Slip-On</div>
         </div>
         <div class="product-body">
-          <div class="product-name">NSR-S Carbon Sport</div>
+          <div class="product-name" onclick="resetVarian(this)" title="Klik untuk reset pilihan ke standar (tanpa add-on)">NSR-S Carbon Sport</div>
           <div class="product-motor">CBR 150 / R15 / GSX-R150 / Ninja 150</div>
           
           <div class="variant-pills">
@@ -606,15 +668,22 @@
         </div>
       </div>
 
-      <!-- Produk 6 -->
       <div class="product-card reveal" data-cat="sport fullsystem" data-baseprice="1450000" data-name="NSR-S PRO Full Sport Ti">
         <div class="product-img">
-          <img src="knalpot.webp" alt="Knalpot Nesone NSR-S PRO Full Sport Ti" class="knalpot-img">
+          <div class="slider-container">
+            <div class="slider-wrapper" data-current="0">
+              <img src="knalpot.webp" alt="NSR-S PRO Full Sport Ti - Foto 1" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-S PRO Full Sport Ti - Foto 2" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-S PRO Full Sport Ti - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
+            </div>
+          </div>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
           <div class="badge-hot">Premium</div>
           <div class="product-type">Full System</div>
         </div>
         <div class="product-body">
-          <div class="product-name">NSR-S PRO Full Sport Ti</div>
+          <div class="product-name" onclick="resetVarian(this)" title="Klik untuk reset pilihan ke standar (tanpa add-on)">NSR-S PRO Full Sport Ti</div>
           <div class="product-motor">CBR 250 / R25 / GSX250 / Ninja 250</div>
           
           <div class="variant-pills">
@@ -633,14 +702,21 @@
         </div>
       </div>
 
-      <!-- Produk 7 -->
       <div class="product-card reveal" data-cat="matic slipon" data-baseprice="375000" data-name="NSR-M Yamaha Mio Series">
         <div class="product-img">
-          <img src="knalpot.webp" alt="Knalpot Nesone NSR-M Yamaha Mio Series" class="knalpot-img">
+          <div class="slider-container">
+            <div class="slider-wrapper" data-current="0">
+              <img src="knalpot.webp" alt="NSR-M Yamaha Mio Series - Foto 1" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-M Yamaha Mio Series - Foto 2" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-M Yamaha Mio Series - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
+            </div>
+          </div>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
           <div class="product-type">Slip-On</div>
         </div>
         <div class="product-body">
-          <div class="product-name">NSR-M Yamaha Mio Series</div>
+          <div class="product-name" onclick="resetVarian(this)" title="Klik untuk reset pilihan ke standar (tanpa add-on)">NSR-M Yamaha Mio Series</div>
           <div class="product-motor">Mio M3 / Soul GT / Fino / Aerox 155</div>
           
           <div class="variant-pills">
@@ -659,15 +735,22 @@
         </div>
       </div>
 
-      <!-- Produk 8 -->
       <div class="product-card reveal" data-cat="bebek slipon" data-baseprice="295000" data-name="NSR-Shogun 125 Series">
         <div class="product-img">
-          <img src="knalpot.webp" alt="Knalpot Nesone NSR-Shogun 125 Series" class="knalpot-img">
+          <div class="slider-container">
+            <div class="slider-wrapper" data-current="0">
+              <img src="knalpot.webp" alt="NSR-Shogun 125 Series - Foto 1" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-Shogun 125 Series - Foto 2" class="knalpot-img" onclick="openLightbox(this)">
+              <img src="knalpot.webp" alt="NSR-Shogun 125 Series - Foto 3" class="knalpot-img" onclick="openLightbox(this)">
+            </div>
+          </div>
+          <button class="slide-nav prev" onclick="changeSlide(this, -1, event)">&#10094;</button>
+          <button class="slide-nav next" onclick="changeSlide(this, 1, event)">&#10095;</button>
           <div class="badge-new">New</div>
           <div class="product-type">Slip-On</div>
         </div>
         <div class="product-body">
-          <div class="product-name">NSR-Shogun 125 Series</div>
+          <div class="product-name" onclick="resetVarian(this)" title="Klik untuk reset pilihan ke standar (tanpa add-on)">NSR-Shogun 125 Series</div>
           <div class="product-motor">Suzuki Shogun / Smash / Thunder 125</div>
           
           <div class="variant-pills">
@@ -686,9 +769,7 @@
         </div>
       </div>
 
-    </div><!-- /product-grid -->
-
-    <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+    </div><div style="text-align:center; margin-top:2.5rem;" class="reveal">
       <p style="color:var(--dark3); font-size:0.88rem; margin-bottom:1rem;">Tidak menemukan tipe motor Anda? Hubungi kami untuk konsultasi custom order.</p>
       <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn btn-wa">💬 Tanya Custom Order</a>
     </div>
@@ -697,11 +778,9 @@
 
 <hr class="divider">
 
-<!-- ORDER FORM -->
 <section id="order">
   <div class="container">
     <div class="order-wrap">
-      <!-- Info kiri -->
       <div class="order-info reveal">
         <div class="section-label">Pemesanan</div>
         <h2 class="section-title">Form Order</h2>
@@ -720,7 +799,6 @@
         </div>
       </div>
 
-      <!-- Form kanan -->
       <div class="form-card reveal">
         <div class="form-title">Detail Pemesanan</div>
 
@@ -794,7 +872,6 @@
           </div>
         </div>
 
-        <!-- Bank Transfer Info -->
         <div class="bank-info" id="bankInfo">
           <div style="font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); margin-bottom:0.6rem;">Rekening Tujuan</div>
           <div class="bank-row">
@@ -812,7 +889,6 @@
           <div style="margin-top:0.6rem; font-size:0.76rem; color:var(--gray);">* Konfirmasi transfer via WhatsApp setelah pembayaran</div>
         </div>
 
-        <!-- QRIS Info -->
         <div class="qris-info" id="qrisInfo">
           <div class="qris-placeholder">
             <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="80">
@@ -850,7 +926,6 @@
 
 <hr class="divider">
 
-<!-- TENTANG KAMI -->
 <section id="tentang">
   <div class="container">
     <div class="about-grid">
@@ -910,7 +985,6 @@
 
 <hr class="divider">
 
-<!-- LOKASI -->
 <section id="lokasi">
   <div class="container">
     <div class="lokasi-grid">
@@ -955,7 +1029,6 @@
       </div>
 
       <div class="map-embed reveal">
-        <!-- Ganti src iframe di bawah dengan embed Google Maps lokasi asli toko Anda -->
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63321.97898657654!2d109.31729!3d-7.38597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6563e9a6e79e45%3A0xd4e1a08b4e2c1c0d!2sPurbalingga%2C%20Kec.%20Purbalingga%2C%20Kabupaten%20Purbalingga%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1717654321000!5m2!1sid!2sid"
           allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -966,7 +1039,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -1002,6 +1074,16 @@
   </div>
 </footer>
 
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+  <span class="lb-close" onclick="closeLightbox(event)">&times;</span>
+  <div class="lb-nav lb-prev" onclick="changeLbSlide(-1, event)">&#10094;</div>
+  <div class="lb-img-container" onclick="toggleZoom(event)">
+     <img id="lbImage" class="lb-img">
+  </div>
+  <div class="lb-nav lb-next" onclick="changeLbSlide(1, event)">&#10095;</div>
+  <div class="lb-hint">Klik gambar untuk Zoom</div>
+</div>
+
 <script>
   // HAMBURGER MENU
   function toggleMenu(){
@@ -1026,58 +1108,118 @@
       return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
 
-  // PILIH VARIAN (MENGUBAH HARGA DI KARTU)
-  function pilihVarian(btn, addPrice, varName) {
-      // Hapus status aktif dari pill lain di dalam kartu yang sama
-      let parent = btn.parentElement;
-      parent.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active'); // Jadikan tombol ini aktif
+  // SLIDER FOTO PRODUK
+  function changeSlide(btn, dir, event) {
+    event.stopPropagation();
+    let wrapper = btn.closest('.product-img').querySelector('.slider-wrapper');
+    let current = parseInt(wrapper.getAttribute('data-current') || 0);
+    let total = wrapper.querySelectorAll('.knalpot-img').length;
+    current = (current + dir + total) % total;
+    wrapper.setAttribute('data-current', current);
+    wrapper.style.transform = `translateX(-${current * 100}%)`;
+  }
 
-      // Cari elemen kartu utama
-      let card = btn.closest('.product-card');
-      
-      // Ambil harga dasar dari dataset HTML
+  // LIGHTBOX & ZOOM FOTO
+  let currentLbImages = [];
+  let currentLbIndex = 0;
+
+  function openLightbox(imgElement) {
+    let wrapper = imgElement.closest('.slider-wrapper');
+    currentLbImages = Array.from(wrapper.querySelectorAll('.knalpot-img')).map(img => img.src);
+    currentLbIndex = Array.from(wrapper.children).indexOf(imgElement);
+
+    updateLightboxImage();
+    document.getElementById('lightbox').classList.add('active');
+  }
+
+  function closeLightbox(event) {
+    if (event.target !== event.currentTarget && !event.target.classList.contains('lb-close')) return;
+    document.getElementById('lightbox').classList.remove('active');
+    document.getElementById('lbImage').classList.remove('zoomed');
+  }
+
+  function changeLbSlide(dir, event) {
+    if(event) event.stopPropagation();
+    currentLbIndex = (currentLbIndex + dir + currentLbImages.length) % currentLbImages.length;
+    updateLightboxImage();
+  }
+
+  function updateLightboxImage() {
+    let img = document.getElementById('lbImage');
+    img.src = currentLbImages[currentLbIndex];
+    img.classList.remove('zoomed'); 
+  }
+
+  function toggleZoom(event) {
+    event.stopPropagation();
+    let img = document.getElementById('lbImage');
+    if (event.target === img || event.currentTarget.classList.contains('lb-img-container')) {
+        img.classList.toggle('zoomed');
+    }
+  }
+
+  // RESET VARIAN (KLIK JUDUL KEMBALI KE STANDAR TANPA ADDON)
+  function resetVarian(element) {
+      let card = element.closest('.product-card');
       let basePrice = parseInt(card.getAttribute('data-baseprice'));
       
-      // Hitung harga akhir = harga dasar + harga tambahan varian
-      let finalPrice = basePrice + addPrice;
+      // Hapus semua status aktif dari pilihan
+      card.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
       
-      // Tampilkan harga yang diperbarui ke layar
-      card.querySelector('.product-price').innerHTML = formatRupiah(finalPrice);
-      
-      // Simpan varian & harga akhir ke memori kartu untuk nanti dicheckout
-      card.setAttribute('data-selected-var', varName);
-      card.setAttribute('data-final-price', finalPrice);
+      // Kembalikan harga dan varian ke standar
+      card.querySelector('.product-price').innerHTML = formatRupiah(basePrice);
+      card.setAttribute('data-selected-var', 'Standar/Tanpa Add-on');
+      card.setAttribute('data-final-price', basePrice);
+  }
+
+  // PILIH VARIAN (MENGUBAH HARGA DI KARTU / TOGGLE ADDON)
+  function pilihVarian(btn, addPrice, varName) {
+      let card = btn.closest('.product-card');
+      let basePrice = parseInt(card.getAttribute('data-baseprice'));
+      let parent = btn.parentElement;
+
+      // Jika tombol yang diklik sudah aktif, matikan (deselect)
+      if (btn.classList.contains('active')) {
+          btn.classList.remove('active');
+          let finalPrice = basePrice;
+          card.querySelector('.product-price').innerHTML = formatRupiah(finalPrice);
+          card.setAttribute('data-selected-var', 'Standar/Tanpa Add-on');
+          card.setAttribute('data-final-price', finalPrice);
+      } else {
+          // Jika belum aktif, matikan yang lain, lalu aktifkan ini
+          parent.querySelectorAll('.v-pill').forEach(p => p.classList.remove('active'));
+          btn.classList.add('active'); 
+          
+          let finalPrice = basePrice + addPrice;
+          card.querySelector('.product-price').innerHTML = formatRupiah(finalPrice);
+          card.setAttribute('data-selected-var', varName);
+          card.setAttribute('data-final-price', finalPrice);
+      }
   }
 
   // PROSES CHECKOUT (OTOMATIS MENGISI FORM)
   function prosesCheckout(btn) {
       let card = btn.closest('.product-card');
       
-      // Ambil data yang tersimpan di kartu
       let baseName = card.getAttribute('data-name');
-      let varName = card.getAttribute('data-selected-var') || 'Stainless'; // Default jika belum diklik
+      // Default jika belum ada varian yang dipilih sama sekali
+      let varName = card.getAttribute('data-selected-var') || 'Standar/Tanpa Add-on';
       let finalPrice = card.getAttribute('data-final-price') || card.getAttribute('data-baseprice');
       
       let formatPrice = formatRupiah(parseInt(finalPrice));
       
-      // Gabungkan nama produk, varian, dan harga akhir
       let fullName = `${baseName} (${varName}) – ${formatPrice}`;
 
-      // Ambil elemen select form
       let select = document.getElementById('fProduk');
       
-      // Cek apakah opsi tersebut sudah ada di dropdown, jika belum buat baru
       let exists = Array.from(select.options).some(opt => opt.value === fullName);
       if (!exists) {
           let newOpt = new Option(fullName, fullName);
           select.add(newOpt);
       }
       
-      // Jadikan opsi tersebut terpilih otomatis
       select.value = fullName;
       
-      // Beri efek highlight merah sementara di kotak pilihan pesanan
       select.style.borderColor = '#E84030';
       select.style.boxShadow = '0 0 10px rgba(232, 64, 48, 0.4)';
       setTimeout(() => {
@@ -1085,7 +1227,6 @@
         select.style.boxShadow = 'none';
       }, 1500);
 
-      // Meluncur ke formulir pesanan
       window.location.href = '#order';
   }
 
@@ -1093,7 +1234,6 @@
   function showPayInfo(type){
     document.getElementById('bankInfo').classList.remove('visible');
     document.getElementById('qrisInfo').classList.remove('visible');
-    // Update pill styles
     document.querySelectorAll('.pill').forEach(p=>{
       p.classList.remove('selected');
       if(p.querySelector('input') && p.querySelector('input').checked) p.classList.add('selected');
@@ -1127,8 +1267,7 @@
 *Nama:* ${nama}
 *No. WA:* ${wa}
 ━━━━━━━━━━━━━━━━━━━━━
-*Produk Terpilih:* 
-${produk}
+*Produk Terpilih:* ${produk}
 *Tipe Motor:* ${motor||'-'}
 ━━━━━━━━━━━━━━━━━━━━━
 *Alamat Pengiriman:*
