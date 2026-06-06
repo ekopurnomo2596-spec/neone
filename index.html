@@ -22,6 +22,7 @@
     --gray-light: #B0B0B0;
     --white: #F5F5F0;
     --text: #E8E8E0;
+    --neon-green: #39FF14; /* Warna hijau neon untuk logo */
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior: smooth; }
@@ -36,12 +37,32 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 2rem; height: 60px;
   }
-  .nav-logo {
-    display: flex; align-items: center; text-decoration: none;
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  
+  /* CSS LOGO KUSTOM */
+  .css-logo {
+    display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+    background: #000; border: 3px solid var(--neon-green); border-radius: 50%;
+    padding: 0.5em 1.5em; line-height: 1; text-decoration: none; transition: transform 0.3s;
   }
-  .nav-logo img {
-    height: 40px; width: auto; object-fit: contain;
+  .logo-main {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-style: italic;
+    font-size: 2.2em; color: #FFF; letter-spacing: 0.05em;
   }
+  .logo-n {
+    background: linear-gradient(160deg, var(--neon-green) 45%, #FFF 45%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .logo-sub {
+    font-family: 'Barlow', sans-serif; font-size: 0.5em; color: #FFF;
+    letter-spacing: 0.3em; margin-top: 0.2em; margin-right: -0.3em;
+  }
+  
+  /* SKALA LOGO DI BERBAGAI TEMPAT */
+  .nav-logo .css-logo { font-size: 12px; border-width: 2px; }
+  .hero-title .css-logo { font-size: 32px; border-width: 4px; box-shadow: 0 10px 30px rgba(57,255,20,0.15); margin: 0 auto; }
+  .footer-logo .css-logo { font-size: 14px; border-width: 2px; }
+
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--gray-light); text-decoration: none;
@@ -86,10 +107,6 @@
     position: relative; z-index:2;
     max-width: 900px; padding: 0 2rem; margin: 0 auto;
     text-align: center;
-  }
-  .hero-title-img {
-    max-width: 320px; width: 90%; height: auto; display: block; margin: 0 auto 1.5rem;
-    filter: drop-shadow(0px 10px 20px rgba(0,255,0,0.15));
   }
   .hero-desc {
     font-size: 1.05rem; color: var(--gray-light); max-width: 520px;
@@ -214,10 +231,10 @@
   }
   .v-pill.active, .v-pill:hover { background: var(--red); color: #fff; border-color: var(--red); }
   
-  /* HARGA NORMAL (TANPA KUNING) */
+  /* HARGA MENONJOL - UBAH JADI HITAM */
   .product-price {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-    font-size: 1.45rem; color: var(--red); 
+    font-size: 1.45rem; color: #000; /* Mengubah warna harga menjadi hitam legam */
     display: inline-block; width: fit-content;
     margin-bottom: 0.75rem; margin-top: auto;
   }
@@ -373,7 +390,7 @@
     .product-motor { font-size: 0.65rem; margin-bottom: 6px; line-height: 1.2; }
     .variant-pills { gap: 4px; margin-bottom: 6px; }
     .v-pill { font-size: 0.55rem; padding: 6px 2px; letter-spacing: 0; border-radius: 4px;}
-    .product-price { font-size: 1.2rem; margin-bottom: 8px; }
+    .product-price { font-size: 1.1rem; margin-bottom: 8px; }
     .btn-checkout { padding: 8px; font-size: 0.75rem; border-radius: 3px; gap: 6px; }
     .btn-checkout svg { width: 14px; height: 14px; }
     .badge-new, .badge-hot { top: 6px; left: 6px; font-size: 0.5rem; padding: 3px 6px; }
@@ -399,8 +416,12 @@
 <body>
 
 <nav>
+  <!-- LOGO CSS UNTUK NAVBAR -->
   <a href="#home" class="nav-logo">
-    <img src="nesone_transparent.png" alt="Nesone Racing">
+    <div class="css-logo">
+      <span class="logo-main"><span class="logo-n">N</span>ESONE</span>
+      <span class="logo-sub">EXHAUST SYSTEM</span>
+    </div>
   </a>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
@@ -426,10 +447,14 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content reveal">
-    <h1 class="hero-title" style="margin-bottom: 1.5rem;">
-      <img src="nesone_transparent.png" alt="Nesone Racing Exhaust" class="hero-title-img">
+    <h1 class="hero-title" style="margin-bottom: 1.5rem; display: flex; justify-content: center;">
+      <!-- LOGO CSS UNTUK HERO (BESAR) -->
+      <div class="css-logo">
+        <span class="logo-main"><span class="logo-n">N</span>ESONE</span>
+        <span class="logo-sub">EXHAUST SYSTEM</span>
+      </div>
     </h1>
-    <p class="hero-desc">Knalpot racing berkualitas tinggi, 100% lokal buatan Purbalingga. Suara gahar, performa maksimal — untuk motor harian maupun kompetisi.</p>
+    <p class="hero-desc" style="margin-top: 1.5rem;">Knalpot racing berkualitas tinggi, 100% lokal buatan Purbalingga. Suara gahar, performa maksimal — untuk motor harian maupun kompetisi.</p>
     <div class="hero-btns">
       <a href="#katalog" class="btn btn-red">Lihat Katalog</a>
       <a href="#order" class="btn btn-outline">Order Sekarang</a>
@@ -924,7 +949,11 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="footer-logo">
-        <img src="nesone_transparent.png" alt="Nesone Racing Logo">
+        <!-- LOGO CSS UNTUK FOOTER -->
+        <div class="css-logo">
+          <span class="logo-main"><span class="logo-n">N</span>ESONE</span>
+          <span class="logo-sub">EXHAUST SYSTEM</span>
+        </div>
       </div>
       <p class="footer-desc">Knalpot racing lokal berkualitas dari Purbalingga, Jawa Tengah. Suara gahar, performa maksimal, harga terjangkau.</p>
     </div>
