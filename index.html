@@ -37,11 +37,11 @@
     padding: 0 2rem; height: 60px;
   }
   .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900; font-size: 1.4rem; letter-spacing: 0.05em;
-    color: var(--white); text-decoration: none;
+    display: flex; align-items: center; text-decoration: none;
   }
-  .nav-logo span { color: var(--red-light); }
+  .nav-logo img {
+    height: 40px; width: auto; object-fit: contain;
+  }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--gray-light); text-decoration: none;
@@ -74,7 +74,7 @@
     position: absolute; inset:0;
     background:
       radial-gradient(ellipse at 70% 50%, rgba(192,40,26,0.18) 0%, transparent 60%),
-      radial-gradient(ellipse at 20% 80%, rgba(212,160,23,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, rgba(0,255,0,0.05) 0%, transparent 50%),
       var(--dark);
   }
   .hero-grid {
@@ -87,18 +87,13 @@
     max-width: 900px; padding: 0 2rem; margin: 0 auto;
     text-align: center;
   }
-  .hero-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900; font-size: clamp(2rem, 7vw, 4.5rem);
-    line-height: 1.1; text-transform: uppercase; letter-spacing: -0.01em;
-    color: var(--white);
-    margin-bottom: 0.5rem;
+  .hero-title-img {
+    max-width: 320px; width: 90%; height: auto; display: block; margin: 0 auto 1.5rem;
+    filter: drop-shadow(0px 10px 20px rgba(0,255,0,0.15));
   }
-  .hero-title .accent { color: var(--red-light); }
-  .hero-title .sub { color: var(--gold); font-weight: 800; }
   .hero-desc {
     font-size: 1.05rem; color: var(--gray-light); max-width: 520px;
-    margin: 1.5rem auto 2.5rem;
+    margin: 0 auto 2.5rem;
   }
   .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
   .btn {
@@ -219,9 +214,15 @@
   }
   .v-pill.active, .v-pill:hover { background: var(--red); color: #fff; border-color: var(--red); }
   
+  /* HARGA MENONJOL (HIGHLIGHT) */
   .product-price {
-    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
-    font-size: 1.35rem; color: var(--red-dark); margin-bottom: 0.75rem; margin-top: auto;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 1.45rem; color: #111; 
+    background: #FFD700; /* Kuning emas menonjol */
+    padding: 4px 10px; border-radius: 6px; 
+    display: inline-block; width: fit-content;
+    margin-bottom: 0.75rem; margin-top: auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
   }
 
   .btn-checkout {
@@ -324,17 +325,6 @@
   .btn-copy:hover { background: #E0E0E0; border-color: #CCC; }
   .btn-copy.copied { background: var(--dark); color: white; border-color: var(--dark); }
 
-  /* TENTANG KAMI */
-  #tentang { background: var(--dark2); }
-  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center; }
-  .about-visual { background: var(--dark3); border: 1px solid var(--dark4); border-radius: 12px; padding: 2.5rem; text-align: center; position: relative; overflow: hidden; }
-  .about-visual::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at center, rgba(192,40,26,0.12) 0%, transparent 70%); }
-  .about-logo-big { font-family:'Barlow Condensed', sans-serif; font-weight:900; font-size: 3.5rem; text-transform:uppercase; color:var(--white); letter-spacing:0.02em; line-height:1; margin-bottom:0.5rem; }
-  .about-logo-big span { color:var(--red-light); }
-  .about-logo-sub { font-size:0.78rem; color:var(--gray); letter-spacing:0.2em; text-transform:uppercase; }
-  .about-divider { width:60px; height:3px; background:var(--red); margin:1.5rem auto; }
-  .about-tagline { font-size:1rem; color:var(--gold-light); font-style:italic; }
-
   /* TESTIMONI */
   #testimoni { background: var(--dark); border-bottom: 1px solid var(--dark4); }
   .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
@@ -360,9 +350,9 @@
   /* FOOTER */
   footer { background: var(--dark); border-top: 1px solid var(--dark4); padding: 3rem 2rem 1.5rem; }
   .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:2rem; max-width:1100px; margin:0 auto 2rem; }
-  .footer-logo { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.5rem; color:var(--white); margin-bottom:0.75rem; }
-  .footer-logo span { color:var(--red-light); }
-  .footer-desc { font-size:0.85rem; color:var(--gray); line-height:1.7; }
+  .footer-logo { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.5rem; color:var(--white); margin-bottom:0.75rem; display:flex; align-items:center;}
+  .footer-logo img { height: 35px; width: auto; object-fit: contain; }
+  .footer-desc { font-size:0.85rem; color:var(--gray); line-height:1.7; margin-top:0.5rem;}
   .footer-col h4 { font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); margin-bottom:0.75rem; }
   .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
   .footer-col ul li a { font-size:0.85rem; color:var(--gray-light); text-decoration:none; transition:color 0.2s; }
@@ -386,7 +376,7 @@
     .product-motor { font-size: 0.65rem; margin-bottom: 6px; line-height: 1.2; }
     .variant-pills { gap: 4px; margin-bottom: 6px; }
     .v-pill { font-size: 0.55rem; padding: 6px 2px; letter-spacing: 0; border-radius: 4px;}
-    .product-price { font-size: 0.95rem; margin-bottom: 8px; }
+    .product-price { font-size: 1.1rem; margin-bottom: 8px; padding: 3px 8px; }
     .btn-checkout { padding: 8px; font-size: 0.75rem; border-radius: 3px; gap: 6px; }
     .btn-checkout svg { width: 14px; height: 14px; }
     .badge-new, .badge-hot { top: 6px; left: 6px; font-size: 0.5rem; padding: 3px 6px; }
@@ -412,12 +402,13 @@
 <body>
 
 <nav>
-  <a href="#home" class="nav-logo">NE<span>S</span>ONE <span style="color:var(--gray);font-weight:400;font-size:0.9rem;margin-left:4px;">RACING</span></a>
+  <a href="#home" class="nav-logo">
+    <img src="nesone.webp" alt="Nesone Racing">
+  </a>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#katalog">Katalog</a></li>
     <li><a href="#order">Order</a></li>
-    <li><a href="#tentang">Tentang</a></li>
     <li><a href="#testimoni">Testimoni</a></li>
     <li><a href="#lokasi">Lokasi</a></li>
     <li><a href="#order" class="nav-cta">Order Sekarang</a></li>
@@ -430,7 +421,6 @@
   <a href="#home" onclick="toggleMenu()">Home</a>
   <a href="#katalog" onclick="toggleMenu()">Katalog</a>
   <a href="#order" onclick="toggleMenu()">Order</a>
-  <a href="#tentang" onclick="toggleMenu()">Tentang Kami</a>
   <a href="#testimoni" onclick="toggleMenu()">Testimoni</a>
   <a href="#lokasi" onclick="toggleMenu()">Lokasi</a>
 </div>
@@ -439,8 +429,8 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content reveal">
-    <h1 class="hero-title">
-      <span class="sub">Nesone</span> <span class="accent">Racing</span> Exhaust
+    <h1 class="hero-title" style="margin-bottom: 1.5rem;">
+      <img src="nesone.webp" alt="Nesone Racing Exhaust" class="hero-title-img">
     </h1>
     <p class="hero-desc">Knalpot racing berkualitas tinggi, 100% lokal buatan Purbalingga. Suara gahar, performa maksimal — untuk motor harian maupun kompetisi.</p>
     <div class="hero-btns">
@@ -830,42 +820,6 @@
 
 <hr class="divider">
 
-<section id="tentang">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-visual reveal">
-        <div style="position:relative; z-index:1;">
-          <div class="about-logo-big">NE<span>S</span>ONE<br><span style="color:var(--gold);">Racing</span></div>
-          <div class="about-logo-sub">Exhaust · Purbalingga</div>
-          <div class="about-divider"></div>
-          <div class="about-tagline">"Suara Racing, Kualitas Lokal"</div>
-          <div style="margin-top:1.5rem; display:flex; justify-content:center; gap:1.5rem; font-size:0.82rem; color:var(--gray);">
-            <div>✔ 100% Lokal</div>
-            <div>✔ Ready Stock</div>
-            <div>✔ Garansi Asli</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal">
-        <div class="section-label">Siapa Kami</div>
-        <h2 class="section-title">Tentang Kami</h2>
-        <p style="color:var(--gray-light); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
-          <strong style="color:var(--white);">Nesone Racing Exhaust</strong> adalah produsen knalpot racing lokal yang berbasis di Purbalingga, Jawa Tengah. Kami hadir untuk memenuhi kebutuhan para pecinta otomotif yang menginginkan performa maksimal dengan harga yang terjangkau.
-        </p>
-        <p style="color:var(--gray-light); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
-          Setiap produk kami dibuat dengan material pilihan — stainless steel, carbon, hingga titanium — melalui proses produksi yang teliti dan terstandar. Mulai dari motor matic, bebek, hingga sport, semua tersedia dengan berbagai pilihan tipe slip-on maupun full system.
-        </p>
-        <p style="color:var(--gray-light); font-size:0.95rem; line-height:1.8;">
-          Kepuasan pelanggan adalah prioritas utama kami. Dengan garansi produk dan pelayanan purna jual yang responsif, Nesone Racing Exhaust siap menjadi pilihan pertama Anda.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
 <!-- SECTION TESTIMONI -->
 <section id="testimoni">
   <div class="container">
@@ -972,7 +926,9 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="footer-logo">NE<span>S</span>ONE Racing</div>
+      <div class="footer-logo">
+        <img src="nesone.webp" alt="Nesone Racing Logo">
+      </div>
       <p class="footer-desc">Knalpot racing lokal berkualitas dari Purbalingga, Jawa Tengah. Suara gahar, performa maksimal, harga terjangkau.</p>
     </div>
     <div class="footer-col">
