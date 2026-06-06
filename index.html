@@ -166,6 +166,7 @@
     aspect-ratio: 4/3; background: #F9F9F9;
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden; border-bottom: 1px solid #F0F0F0;
+    cursor: pointer; /* Memberi tanda bahwa gambar bisa diklik */
   }
   
   /* Styling gambar produk */
@@ -174,6 +175,10 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s;
+  }
+  .product-img:hover .knalpot-img {
+    transform: scale(1.05); /* Efek zoom saat gambar dihover */
   }
 
   .badge-new, .badge-hot {
@@ -242,7 +247,7 @@
     width:100%; background: var(--dark3); border: 1px solid var(--dark4);
     color: var(--white); padding: 10px 13px; border-radius: 5px;
     font-family: 'Barlow', sans-serif; font-size:0.92rem;
-    outline:none; transition: border-color 0.2s;
+    outline:none; transition: all 0.3s;
     -webkit-appearance: none;
   }
   input[type=text]:focus, input[type=tel]:focus, textarea:focus, select:focus { border-color: var(--red-light); }
@@ -369,6 +374,22 @@
     .order-info { position:static; }
     .value-grid { grid-template-columns:1fr; }
     
+    /* Layout Hero Tombol Sebaris di HP */
+    .hero-btns {
+      flex-wrap: nowrap;
+      gap: 6px;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .hero-btns .btn {
+      flex: 1; /* Membagi ruang sama rata */
+      padding: 8px 4px;
+      font-size: 0.6rem; /* Ukuran font lebih kecil agar muat */
+      letter-spacing: 0;
+      white-space: nowrap; /* Mencegah teks turun ke baris baru */
+      text-align: center;
+    }
+
     /* Layout 3 Kolom Khusus HP untuk Katalog */
     #katalog { padding: 3rem 1rem; }
     .product-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px; }
@@ -464,7 +485,7 @@
 
       <!-- Produk 1 -->
       <div class="product-card reveal" data-cat="matic slipon">
-        <div class="product-img">
+        <div class="product-img" onclick="pilihProduk('NSR-1 Oval Matic – Rp 385.000')">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-1 Oval Matic" class="knalpot-img">
           <div class="badge-hot">Hot</div>
           <div class="product-type">Slip-On</div>
@@ -479,7 +500,7 @@
           </div>
           <div class="product-price"><span class="price-before">Rp 450.000</span>Rp 385.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order">Order</a>
+            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-1 Oval Matic – Rp 385.000')">Order</a>
             <button class="btn-detail" onclick="pesan('NSR-1 Oval Matic – Rp 385.000')">WA</button>
           </div>
         </div>
@@ -487,7 +508,7 @@
 
       <!-- Produk 2 -->
       <div class="product-card reveal" data-cat="matic fullsystem">
-        <div class="product-img">
+        <div class="product-img" onclick="pilihProduk('NSR-PRO Full System Matic – Rp 680.000')">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-PRO Full System Matic" class="knalpot-img">
           <div class="badge-new">New</div>
           <div class="product-type">Full System</div>
@@ -502,7 +523,7 @@
           </div>
           <div class="product-price">Rp 680.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order">Order</a>
+            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-PRO Full System Matic – Rp 680.000')">Order</a>
             <button class="btn-detail" onclick="pesan('NSR-PRO Full System Matic – Rp 680.000')">WA</button>
           </div>
         </div>
@@ -510,7 +531,7 @@
 
       <!-- Produk 3 -->
       <div class="product-card reveal" data-cat="bebek slipon">
-        <div class="product-img">
+        <div class="product-img" onclick="pilihProduk('NSR-B1 Bebek Standar – Rp 320.000')">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-B1 Bebek Standar" class="knalpot-img">
           <div class="product-type">Slip-On</div>
         </div>
@@ -524,7 +545,7 @@
           </div>
           <div class="product-price">Rp 320.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order">Order</a>
+            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-B1 Bebek Standar – Rp 320.000')">Order</a>
             <button class="btn-detail" onclick="pesan('NSR-B1 Bebek Standar – Rp 320.000')">WA</button>
           </div>
         </div>
@@ -532,7 +553,7 @@
 
       <!-- Produk 4 -->
       <div class="product-card reveal" data-cat="bebek fullsystem">
-        <div class="product-img">
+        <div class="product-img" onclick="pilihProduk('NSR-B PRO Full Bebek – Rp 520.000')">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-B PRO Full Bebek" class="knalpot-img">
           <div class="badge-hot">Laris</div>
           <div class="product-type">Full System</div>
@@ -547,7 +568,7 @@
           </div>
           <div class="product-price"><span class="price-before">Rp 600.000</span>Rp 520.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order">Order</a>
+            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-B PRO Full Bebek – Rp 520.000')">Order</a>
             <button class="btn-detail" onclick="pesan('NSR-B PRO Full Bebek – Rp 520.000')">WA</button>
           </div>
         </div>
@@ -555,7 +576,7 @@
 
       <!-- Produk 5 -->
       <div class="product-card reveal" data-cat="sport slipon">
-        <div class="product-img">
+        <div class="product-img" onclick="pilihProduk('NSR-S Carbon Sport – Rp 850.000')">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-S Carbon Sport" class="knalpot-img">
           <div class="badge-new">New</div>
           <div class="product-type">Slip-On</div>
@@ -570,7 +591,7 @@
           </div>
           <div class="product-price">Rp 850.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order">Order</a>
+            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-S Carbon Sport – Rp 850.000')">Order</a>
             <button class="btn-detail" onclick="pesan('NSR-S Carbon Sport – Rp 850.000')">WA</button>
           </div>
         </div>
@@ -578,7 +599,7 @@
 
       <!-- Produk 6 -->
       <div class="product-card reveal" data-cat="sport fullsystem">
-        <div class="product-img">
+        <div class="product-img" onclick="pilihProduk('NSR-S PRO Full Sport Ti – Rp 1.450.000')">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-S PRO Full Sport Ti" class="knalpot-img">
           <div class="badge-hot">Premium</div>
           <div class="product-type">Full System</div>
@@ -593,7 +614,7 @@
           </div>
           <div class="product-price">Rp 1.450.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order">Order</a>
+            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-S PRO Full Sport Ti – Rp 1.450.000')">Order</a>
             <button class="btn-detail" onclick="pesan('NSR-S PRO Full Sport Ti – Rp 1.450.000')">WA</button>
           </div>
         </div>
@@ -601,7 +622,7 @@
 
       <!-- Produk 7 -->
       <div class="product-card reveal" data-cat="matic slipon">
-        <div class="product-img">
+        <div class="product-img" onclick="pilihProduk('NSR-M Yamaha Mio Series – Rp 375.000')">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-M Yamaha Mio Series" class="knalpot-img">
           <div class="product-type">Slip-On</div>
         </div>
@@ -615,7 +636,7 @@
           </div>
           <div class="product-price">Rp 375.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order">Order</a>
+            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-M Yamaha Mio Series – Rp 375.000')">Order</a>
             <button class="btn-detail" onclick="pesan('NSR-M Yamaha Mio Series – Rp 375.000')">WA</button>
           </div>
         </div>
@@ -623,7 +644,7 @@
 
       <!-- Produk 8 -->
       <div class="product-card reveal" data-cat="bebek slipon">
-        <div class="product-img">
+        <div class="product-img" onclick="pilihProduk('NSR-Shogun 125 Series – Rp 295.000')">
           <img src="knalpot.webp" alt="Knalpot Nesone NSR-Shogun 125 Series" class="knalpot-img">
           <div class="badge-new">New</div>
           <div class="product-type">Slip-On</div>
@@ -638,7 +659,7 @@
           </div>
           <div class="product-price">Rp 295.000</div>
           <div class="product-actions">
-            <a href="#order" class="btn-order">Order</a>
+            <a href="#order" class="btn-order" onclick="pilihProduk('NSR-Shogun 125 Series – Rp 295.000')">Order</a>
             <button class="btn-detail" onclick="pesan('NSR-Shogun 125 Series – Rp 295.000')">WA</button>
           </div>
         </div>
@@ -696,15 +717,15 @@
           <label>Produk yang Dipesan *</label>
           <select id="fProduk">
             <option value="">-- Pilih Produk --</option>
-            <option>NSR-1 Oval Matic – Rp 385.000</option>
-            <option>NSR-PRO Full System Matic – Rp 680.000</option>
-            <option>NSR-B1 Bebek Standar – Rp 320.000</option>
-            <option>NSR-B PRO Full Bebek – Rp 520.000</option>
-            <option>NSR-S Carbon Sport – Rp 850.000</option>
-            <option>NSR-S PRO Full Sport Ti – Rp 1.450.000</option>
-            <option>NSR-M Yamaha Mio Series – Rp 375.000</option>
-            <option>NSR-Shogun 125 Series – Rp 295.000</option>
-            <option>Custom Order (hubungi kami)</option>
+            <option value="NSR-1 Oval Matic – Rp 385.000">NSR-1 Oval Matic – Rp 385.000</option>
+            <option value="NSR-PRO Full System Matic – Rp 680.000">NSR-PRO Full System Matic – Rp 680.000</option>
+            <option value="NSR-B1 Bebek Standar – Rp 320.000">NSR-B1 Bebek Standar – Rp 320.000</option>
+            <option value="NSR-B PRO Full Bebek – Rp 520.000">NSR-B PRO Full Bebek – Rp 520.000</option>
+            <option value="NSR-S Carbon Sport – Rp 850.000">NSR-S Carbon Sport – Rp 850.000</option>
+            <option value="NSR-S PRO Full Sport Ti – Rp 1.450.000">NSR-S PRO Full Sport Ti – Rp 1.450.000</option>
+            <option value="NSR-M Yamaha Mio Series – Rp 375.000">NSR-M Yamaha Mio Series – Rp 375.000</option>
+            <option value="NSR-Shogun 125 Series – Rp 295.000">NSR-Shogun 125 Series – Rp 295.000</option>
+            <option value="Custom Order (hubungi kami)">Custom Order (hubungi kami)</option>
           </select>
         </div>
 
@@ -985,6 +1006,24 @@
         card.classList.add('hidden');
       }
     });
+  }
+
+  // PILIH PRODUK OTOMATIS KE FORM ORDER
+  function pilihProduk(val) {
+    const select = document.getElementById('fProduk');
+    select.value = val;
+    
+    // Memberikan efek visual (highlight) sementara pada kotak pilihan
+    select.style.borderColor = '#E84030';
+    select.style.boxShadow = '0 0 10px rgba(232, 64, 48, 0.4)';
+    
+    setTimeout(() => {
+      select.style.borderColor = 'var(--dark4)';
+      select.style.boxShadow = 'none';
+    }, 1500); // Highlight hilang setelah 1.5 detik
+    
+    // Opsional: Langsung meluncur ke area form order 
+    window.location.href = '#order';
   }
 
   // METODE PEMBAYARAN
