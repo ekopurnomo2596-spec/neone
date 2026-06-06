@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nesone Racing Exhaust – Purbalingga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0281A;
+    --red-dark: #8B1A10;
+    --red-light: #E84030;
+    --gold: #D4A017;
+    --gold-light: #F0C040;
+    --dark: #0F0F0F;
+    --dark2: #1A1A1A;
+    --dark3: #242424;
+    --dark4: #2E2E2E;
+    --gray: #888;
+    --gray-light: #B0B0B0;
+    --white: #F5F5F0;
+    --text: #E8E8E0;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--dark); color: var(--text); font-family: 'Barlow', sans-serif; font-size: 16px; line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:999;
+    background: rgba(10,10,10,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(192,40,26,0.3);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: 1.4rem; letter-spacing: 0.05em;
+    color: var(--white); text-decoration: none;
+  }
+  .nav-logo span { color: var(--red-light); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--gray-light); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--red-light); }
+  .nav-cta {
+    background: var(--red); color: #fff !important;
+    padding: 8px 18px; border-radius: 4px !important;
+  }
+  .nav-cta:hover { background: var(--red-light); color: #fff !important; }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+  .hamburger span { display:block; width:24px; height:2px; background:var(--gray-light); transition:0.3s; }
+  .mobile-menu {
+    display:none; position:fixed; top:60px; left:0; right:0; z-index:998;
+    background: rgba(10,10,10,0.98); padding:1.5rem; border-bottom:1px solid var(--dark4);
+  }
+  .mobile-menu.open { display:block; }
+  .mobile-menu a { display:block; padding:0.75rem 0; color:var(--gray-light); text-decoration:none; font-size:0.95rem; letter-spacing:0.05em; text-transform:uppercase; border-bottom:1px solid var(--dark4); }
+  .mobile-menu a:hover { color:var(--red-light); }
+
+  /* HERO */
+  #home {
+    min-height: 100vh; padding-top: 60px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 70% 50%, rgba(192,40,26,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(212,160,23,0.08) 0%, transparent 50%),
+      var(--dark);
+  }
+  .hero-grid {
+    position: absolute; inset:0; opacity:0.04;
+    background-image: linear-gradient(var(--white) 1px, transparent 1px), linear-gradient(90deg, var(--white) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content {
+    position: relative; z-index:2;
+    max-width: 900px; padding: 0 2rem; margin: 0 auto;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block; background: rgba(192,40,26,0.2); border: 1px solid rgba(192,40,26,0.5);
+    color: var(--red-light); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; padding: 6px 16px; border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900; font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.9; text-transform: uppercase; letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .hero-title .accent { color: var(--red-light); }
+  .hero-title .sub { font-size: 0.38em; display:block; color: var(--gold); letter-spacing: 0.2em; font-weight: 800; }
+  .hero-desc {
+    font-size: 1.05rem; color: var(--gray-light); max-width: 520px;
+    margin: 1.5rem auto 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 13px 28px;
+    font-family: 'Barlow', sans-serif; font-weight: 600;
+    font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase;
+    text-decoration: none; border-radius: 4px; cursor: pointer;
+    transition: all 0.2s; border: none;
+  }
+  .btn-red { background: var(--red); color: #fff; }
+  .btn-red:hover { background: var(--red-light); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.3); }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+  .btn-wa { background: #25D366; color: #fff; }
+  .btn-wa:hover { background: #1fbb59; transform: translateY(-2px); }
+  .hero-stats {
+    position: relative; z-index:2;
+    display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    padding: 2.5rem 2rem; margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 2.2rem; color: var(--white); letter-spacing: -0.02em;
+  }
+  .stat-num span { color: var(--red-light); }
+  .stat-label { font-size: 0.78rem; color: var(--gray); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* SECTION BASE */
+  section { padding: 5rem 2rem; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--red-light);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.2rem); text-transform: uppercase;
+    color: var(--white); line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .section-sub { color: var(--gray-light); max-width: 520px; font-size: 0.95rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* DIVIDER */
+  .divider {
+    border: none; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(192,40,26,0.4), transparent);
+    margin: 0;
+  }
+
+  /* KATALOG */
+  #katalog { background: var(--dark2); }
+  .katalog-header { text-align: center; margin-bottom: 3rem; }
+  .filter-tabs { display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center; margin-bottom:2.5rem; }
+  .filter-tab {
+    padding: 8px 18px; border-radius: 20px; font-size: 0.82rem;
+    font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; border: 1px solid var(--dark4); background: var(--dark3);
+    color: var(--gray-light); transition: all 0.2s;
+  }
+  .filter-tab.active, .filter-tab:hover { background: var(--red); border-color: var(--red); color: #fff; }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+  .product-card {
+    background: var(--dark3); border: 1px solid var(--dark4);
+    border-radius: 8px; overflow: hidden; transition: all 0.25s;
+    display: flex; flex-direction: column;
+  }
+  .product-card:hover { border-color: rgba(192,40,26,0.5); transform: translateY(-4px); }
+  .product-img {
+    aspect-ratio: 4/3; background: var(--dark4);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .product-img svg { width: 80px; opacity: 0.25; }
+  .product-img .exhaust-icon {
+    font-size: 4rem; opacity: 0.15;
+  }
+  .exhaust-visual {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  }
+  .badge-new, .badge-hot {
+    position: absolute; top: 10px; left: 10px;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 3px;
+  }
+  .badge-new { background: var(--gold); color: #1a1a00; }
+  .badge-hot { background: var(--red); color: #fff; }
+  .product-type {
+    position: absolute; bottom: 10px; right: 10px;
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    background: rgba(0,0,0,0.7); color: var(--gray-light); padding: 3px 8px; border-radius: 3px;
+  }
+  .product-body { padding: 1rem 1.1rem; flex:1; display:flex; flex-direction:column; }
+  .product-name {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    font-size: 1.05rem; color: var(--white); letter-spacing: 0.02em;
+    margin-bottom: 0.25rem; line-height: 1.2;
+  }
+  .product-motor { font-size: 0.78rem; color: var(--gray); margin-bottom: 0.6rem; }
+  .product-specs { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.75rem; }
+  .spec-tag {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 3px;
+    background: rgba(192,40,26,0.15); color: var(--red-light); border: 1px solid rgba(192,40,26,0.2);
+  }
+  .product-price {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+    font-size: 1.35rem; color: var(--gold); margin-bottom: 0.75rem; margin-top: auto;
+  }
+  .product-price .price-before {
+    font-size: 0.85rem; font-weight: 400; color: var(--gray);
+    text-decoration: line-through; margin-right: 0.4rem;
+  }
+  .product-actions { display:flex; gap:0.5rem; }
+  .btn-order {
+    flex:1; padding: 9px; text-align: center; font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase; border-radius: 4px; cursor: pointer;
+    background: var(--red); color: #fff; border: none; text-decoration:none;
+    transition: background 0.2s;
+  }
+  .btn-order:hover { background: var(--red-light); }
+  .btn-detail {
+    padding: 9px 12px; font-size: 0.82rem; font-weight: 600;
+    border: 1px solid var(--dark4); border-radius: 4px; cursor: pointer;
+    background: transparent; color: var(--gray-light); transition: all 0.2s;
+  }
+  .btn-detail:hover { border-color: var(--gray); color: var(--white); }
+
+  /* SVG exhaust illustrations */
+  .exhaust-svg { width:180px; height:110px; }
+
+  /* ORDER FORM */
+  #order { background: var(--dark); }
+  .order-wrap { display:grid; grid-template-columns: 1fr 1.1fr; gap:3rem; align-items:start; }
+  .order-info { position: sticky; top: 80px; }
+  .order-features { list-style:none; margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem; }
+  .order-features li { display:flex; align-items:flex-start; gap:0.75rem; font-size:0.9rem; color:var(--gray-light); }
+  .order-features li::before { content:'✓'; color:var(--gold); font-weight:700; flex-shrink:0; margin-top:2px; }
+  .form-card {
+    background: var(--dark2); border: 1px solid var(--dark4);
+    border-radius: 12px; padding: 2rem;
+  }
+  .form-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.3rem; color:var(--white); margin-bottom:1.5rem; }
+  .form-group { margin-bottom:1.1rem; }
+  label { display:block; font-size:0.8rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); margin-bottom:0.4rem; }
+  input[type=text], input[type=tel], textarea, select {
+    width:100%; background: var(--dark3); border: 1px solid var(--dark4);
+    color: var(--white); padding: 10px 13px; border-radius: 5px;
+    font-family: 'Barlow', sans-serif; font-size:0.92rem;
+    outline:none; transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  input[type=text]:focus, input[type=tel]:focus, textarea:focus, select:focus { border-color: var(--red-light); }
+  select option { background: var(--dark3); }
+  textarea { resize:vertical; min-height:80px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; }
+
+  /* PILL BUTTONS - metode pembayaran */
+  .pill-group { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.4rem; }
+  .pill {
+    padding: 8px 16px; border-radius: 20px; font-size:0.82rem; font-weight:600;
+    border: 1px solid var(--dark4); background: var(--dark3); color: var(--gray-light);
+    cursor: pointer; transition: all 0.2s; letter-spacing:0.04em;
+    display:flex; align-items:center; gap:6px;
+  }
+  .pill:hover { border-color: var(--gray); color: var(--white); }
+  .pill.selected { background: rgba(192,40,26,0.2); border-color: var(--red-light); color: var(--white); }
+  .pill input[type=radio] { display:none; }
+
+  /* Bank info panel */
+  .bank-info {
+    display:none; background: var(--dark3); border:1px solid var(--dark4);
+    border-radius:6px; padding:1rem; margin-top:0.75rem; font-size:0.85rem;
+  }
+  .bank-info.visible { display:block; }
+  .bank-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid var(--dark4); }
+  .bank-row:last-child { border:none; }
+  .bank-label { color:var(--gray); font-size:0.78rem; }
+  .bank-val { color:var(--white); font-weight:600; font-size:0.88rem; }
+
+  .qris-info {
+    display:none; background:var(--dark3); border:1px solid var(--dark4);
+    border-radius:6px; padding:1rem; margin-top:0.75rem; text-align:center;
+  }
+  .qris-info.visible { display:block; }
+  .qris-placeholder {
+    width:120px; height:120px; background:var(--white); border-radius:6px;
+    margin:0 auto 0.75rem; display:flex; align-items:center; justify-content:center;
+    font-size:0.7rem; color:#333; font-weight:600;
+  }
+  .qris-note { font-size:0.78rem; color:var(--gray-light); }
+
+  .form-submit { width:100%; margin-top:1.25rem; padding:14px; font-size:1rem; }
+
+  /* TENTANG KAMI */
+  #tentang { background: var(--dark2); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center; }
+  .about-visual {
+    background: var(--dark3); border: 1px solid var(--dark4);
+    border-radius: 12px; padding: 2.5rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .about-visual::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse at center, rgba(192,40,26,0.12) 0%, transparent 70%);
+  }
+  .about-logo-big {
+    font-family:'Barlow Condensed', sans-serif; font-weight:900;
+    font-size: 3.5rem; text-transform:uppercase; color:var(--white);
+    letter-spacing:0.02em; line-height:1; margin-bottom:0.5rem;
+  }
+  .about-logo-big span { color:var(--red-light); }
+  .about-logo-sub { font-size:0.78rem; color:var(--gray); letter-spacing:0.2em; text-transform:uppercase; }
+  .about-divider { width:60px; height:3px; background:var(--red); margin:1.5rem auto; }
+  .about-tagline { font-size:1rem; color:var(--gold-light); font-style:italic; }
+  .value-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem; }
+  .value-card {
+    background:var(--dark3); border:1px solid var(--dark4); border-radius:8px;
+    padding:1rem 1.1rem;
+  }
+  .value-icon { font-size:1.4rem; margin-bottom:0.4rem; }
+  .value-title { font-weight:600; color:var(--white); font-size:0.9rem; margin-bottom:0.25rem; }
+  .value-desc { font-size:0.8rem; color:var(--gray-light); }
+
+  /* LOKASI */
+  #lokasi { background: var(--dark); }
+  .lokasi-grid { display:grid; grid-template-columns:1fr 1.6fr; gap:2.5rem; align-items:start; }
+  .lokasi-info { }
+  .lokasi-detail { display:flex; flex-direction:column; gap:1.1rem; margin-top:1.5rem; }
+  .lokasi-item { display:flex; gap:1rem; align-items:flex-start; }
+  .lokasi-item-icon {
+    width:40px; height:40px; flex-shrink:0;
+    background:rgba(192,40,26,0.15); border:1px solid rgba(192,40,26,0.3);
+    border-radius:8px; display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem;
+  }
+  .lokasi-item-text strong { display:block; color:var(--white); font-size:0.88rem; margin-bottom:2px; }
+  .lokasi-item-text span { font-size:0.82rem; color:var(--gray-light); line-height:1.5; }
+  .map-embed {
+    background: var(--dark3); border:1px solid var(--dark4); border-radius:10px;
+    overflow:hidden; aspect-ratio: 4/3; position:relative;
+  }
+  .map-embed iframe { width:100%; height:100%; border:none; display:block; }
+  .map-fallback {
+    width:100%; height:100%; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:1rem;
+    color:var(--gray-light); font-size:0.9rem; padding:2rem; text-align:center;
+  }
+  .map-fallback svg { width:48px; opacity:0.3; }
+  .map-fallback a { color:var(--red-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark2); border-top: 1px solid var(--dark4);
+    padding: 3rem 2rem 1.5rem;
+  }
+  .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:2rem; max-width:1100px; margin:0 auto 2rem; }
+  .footer-brand { }
+  .footer-logo { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.5rem; color:var(--white); margin-bottom:0.75rem; }
+  .footer-logo span { color:var(--red-light); }
+  .footer-desc { font-size:0.85rem; color:var(--gray); line-height:1.7; }
+  .footer-col h4 { font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); margin-bottom:0.75rem; }
+  .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
+  .footer-col ul li a { font-size:0.85rem; color:var(--gray-light); text-decoration:none; transition:color 0.2s; }
+  .footer-col ul li a:hover { color:var(--red-light); }
+  .footer-bottom { border-top:1px solid var(--dark4); padding-top:1.5rem; text-align:center; font-size:0.78rem; color:var(--gray); max-width:1100px; margin:0 auto; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nav-links { display:none; }
+    .hamburger { display:flex; }
+    .order-wrap, .about-grid, .lokasi-grid, .footer-grid { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
+    .order-info { position:static; }
+    .value-grid { grid-template-columns:1fr; }
+    .hero-stats { gap:1.5rem; }
+    .product-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  }
+
+  /* HIDDEN PRODUCTS */
+  .product-card[data-cat]:not([data-cat="semua"]) { }
+  .product-card.hidden { display:none; }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity:0; transform:translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">NE<span>S</span>ONE <span style="color:var(--gray);font-weight:400;font-size:0.9rem;margin-left:4px;">RACING</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#katalog">Katalog</a></li>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#lokasi">Lokasi</a></li>
+    <li><a href="#order" class="nav-cta">Order Sekarang</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="#katalog" onclick="toggleMenu()">Katalog</a>
+  <a href="#order" onclick="toggleMenu()">Order</a>
+  <a href="#tentang" onclick="toggleMenu()">Tentang Kami</a>
+  <a href="#lokasi" onclick="toggleMenu()">Lokasi</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content reveal">
+    <div class="hero-badge">🔥 Knalpot Racing Lokal Terbaik</div>
+    <h1 class="hero-title">
+      <span class="sub">Nesone</span>
+      <span class="accent">Racing</span><br>Exhaust
+    </h1>
+    <p class="hero-desc">Knalpot racing berkualitas tinggi, 100% lokal buatan Purbalingga. Suara gahar, performa maksimal — untuk motor harian maupun kompetisi.</p>
+    <div class="hero-btns">
+      <a href="#katalog" class="btn btn-red">Lihat Katalog</a>
+      <a href="#order" class="btn btn-outline">Order Sekarang</a>
+      <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn btn-wa">WhatsApp Kami</a>
+    </div>
+  </div>
+  <div class="hero-stats reveal">
+    <div class="stat"><div class="stat-num">500<span>+</span></div><div class="stat-label">Produk Terjual</div></div>
+    <div class="stat"><div class="stat-num">4.9<span>★</span></div><div class="stat-label">Rating Toko</div></div>
+    <div class="stat"><div class="stat-num">30<span>+</span></div><div class="stat-label">Varian Motor</div></div>
+    <div class="stat"><div class="stat-num">100<span>%</span></div><div class="stat-label">Garansi Kualitas</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- KATALOG -->
+<section id="katalog">
+  <div class="container">
+    <div class="katalog-header reveal">
+      <div class="section-label">Produk Unggulan</div>
+      <h2 class="section-title">Katalog Produk</h2>
+      <p class="section-sub">Berbagai pilihan knalpot racing untuk motor matic, bebek, dan sport. Semua tersedia ready stock.</p>
+    </div>
+
+    <div class="filter-tabs reveal">
+      <button class="filter-tab active" onclick="filterCat(this,'semua')">Semua</button>
+      <button class="filter-tab" onclick="filterCat(this,'matic')">Matic</button>
+      <button class="filter-tab" onclick="filterCat(this,'bebek')">Bebek</button>
+      <button class="filter-tab" onclick="filterCat(this,'sport')">Sport</button>
+      <button class="filter-tab" onclick="filterCat(this,'slipon')">Slip-On</button>
+      <button class="filter-tab" onclick="filterCat(this,'fullsystem')">Full System</button>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+
+      <!-- Produk 1 -->
+      <div class="product-card reveal" data-cat="matic slipon">
+        <div class="product-img">
+          <svg class="exhaust-svg" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="40" width="120" height="18" rx="9" fill="#C0281A" opacity="0.7"/>
+            <rect x="100" y="30" width="60" height="38" rx="19" fill="#8B1A10" opacity="0.8"/>
+            <rect x="155" y="38" width="18" height="22" rx="4" fill="#C0281A"/>
+            <circle cx="30" cy="49" r="8" fill="#1A1A1A" stroke="#C0281A" stroke-width="1.5"/>
+            <rect x="8" y="44" width="30" height="10" rx="5" fill="#D4A017" opacity="0.5"/>
+          </svg>
+          <div class="badge-hot">Hot</div>
+          <div class="product-type">Slip-On</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">NSR-1 Oval Matic</div>
+          <div class="product-motor">Honda Beat / Vario / Scoopy / PCX</div>
+          <div class="product-specs">
+            <span class="spec-tag">Stainless</span>
+            <span class="spec-tag">Slip-On</span>
+            <span class="spec-tag">Garansi 3 Bln</span>
+          </div>
+          <div class="product-price"><span class="price-before">Rp 450.000</span>Rp 385.000</div>
+          <div class="product-actions">
+            <a href="#order" class="btn-order">Order</a>
+            <button class="btn-detail" onclick="pesan('NSR-1 Oval Matic – Rp 385.000')">WA</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 2 -->
+      <div class="product-card reveal" data-cat="matic fullsystem">
+        <div class="product-img">
+          <svg class="exhaust-svg" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="35" width="140" height="14" rx="7" fill="#888" opacity="0.5"/>
+            <rect x="100" y="25" width="70" height="48" rx="8" fill="#C0281A" opacity="0.85"/>
+            <rect x="5" y="38" width="50" height="8" rx="4" fill="#D4A017" opacity="0.6"/>
+            <rect x="166" y="35" width="10" height="28" rx="3" fill="#8B1A10"/>
+            <circle cx="25" cy="42" r="6" fill="#1a1a1a" stroke="#888" stroke-width="1"/>
+            <circle cx="55" cy="42" r="6" fill="#1a1a1a" stroke="#888" stroke-width="1"/>
+          </svg>
+          <div class="badge-new">New</div>
+          <div class="product-type">Full System</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">NSR-PRO Full System Matic</div>
+          <div class="product-motor">Honda Beat / Vario 110-160 / Genio</div>
+          <div class="product-specs">
+            <span class="spec-tag">Stainless</span>
+            <span class="spec-tag">Full System</span>
+            <span class="spec-tag">Garansi 6 Bln</span>
+          </div>
+          <div class="product-price">Rp 680.000</div>
+          <div class="product-actions">
+            <a href="#order" class="btn-order">Order</a>
+            <button class="btn-detail" onclick="pesan('NSR-PRO Full System Matic – Rp 680.000')">WA</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 3 -->
+      <div class="product-card reveal" data-cat="bebek slipon">
+        <div class="product-img">
+          <svg class="exhaust-svg" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="42" width="130" height="16" rx="8" fill="#555" opacity="0.6"/>
+            <ellipse cx="140" cy="50" rx="32" ry="25" fill="#C0281A" opacity="0.8"/>
+            <rect x="168" y="42" width="8" height="16" rx="3" fill="#8B1A10"/>
+            <rect x="8" y="46" width="40" height="8" rx="4" fill="#D4A017" opacity="0.5"/>
+          </svg>
+          <div class="product-type">Slip-On</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">NSR-B1 Bebek Standar</div>
+          <div class="product-motor">Jupiter Z / Revo / Supra X 125 / Smash</div>
+          <div class="product-specs">
+            <span class="spec-tag">Stainless</span>
+            <span class="spec-tag">Slip-On</span>
+            <span class="spec-tag">Garansi 3 Bln</span>
+          </div>
+          <div class="product-price">Rp 320.000</div>
+          <div class="product-actions">
+            <a href="#order" class="btn-order">Order</a>
+            <button class="btn-detail" onclick="pesan('NSR-B1 Bebek Standar – Rp 320.000')">WA</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 4 -->
+      <div class="product-card reveal" data-cat="bebek fullsystem">
+        <div class="product-img">
+          <svg class="exhaust-svg" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 50 Q40 30 80 45 L160 45" stroke="#C0281A" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.7"/>
+            <rect x="120" y="28" width="50" height="42" rx="6" fill="#8B1A10" opacity="0.9"/>
+            <rect x="166" y="36" width="10" height="26" rx="3" fill="#C0281A"/>
+          </svg>
+          <div class="badge-hot">Laris</div>
+          <div class="product-type">Full System</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">NSR-B PRO Full Bebek</div>
+          <div class="product-motor">Jupiter MX / Satria FU / Vega R</div>
+          <div class="product-specs">
+            <span class="spec-tag">Stainless</span>
+            <span class="spec-tag">Full System</span>
+            <span class="spec-tag">Garansi 6 Bln</span>
+          </div>
+          <div class="product-price"><span class="price-before">Rp 600.000</span>Rp 520.000</div>
+          <div class="product-actions">
+            <a href="#order" class="btn-order">Order</a>
+            <button class="btn-detail" onclick="pesan('NSR-B PRO Full Bebek – Rp 520.000')">WA</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 5 -->
+      <div class="product-card reveal" data-cat="sport slipon">
+        <div class="product-img">
+          <svg class="exhaust-svg" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="38" width="110" height="20" rx="4" fill="#444" opacity="0.5"/>
+            <rect x="100" y="24" width="65" height="50" rx="10" fill="#C0281A" opacity="0.9"/>
+            <rect x="160" y="33" width="14" height="32" rx="4" fill="#8B1A10"/>
+            <rect x="10" y="43" width="60" height="10" rx="3" fill="#D4A017" opacity="0.5"/>
+            <rect x="5" y="42" width="15" height="12" rx="3" fill="#555" opacity="0.6"/>
+          </svg>
+          <div class="badge-new">New</div>
+          <div class="product-type">Slip-On</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">NSR-S Carbon Sport</div>
+          <div class="product-motor">CBR 150 / R15 / GSX-R150 / Ninja 150</div>
+          <div class="product-specs">
+            <span class="spec-tag">Carbon</span>
+            <span class="spec-tag">Slip-On</span>
+            <span class="spec-tag">Garansi 6 Bln</span>
+          </div>
+          <div class="product-price">Rp 850.000</div>
+          <div class="product-actions">
+            <a href="#order" class="btn-order">Order</a>
+            <button class="btn-detail" onclick="pesan('NSR-S Carbon Sport – Rp 850.000')">WA</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 6 -->
+      <div class="product-card reveal" data-cat="sport fullsystem">
+        <div class="product-img">
+          <svg class="exhaust-svg" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 55 C30 30 60 25 90 40 L160 40" stroke="#C0281A" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.8"/>
+            <rect x="115" y="22" width="58" height="54" rx="8" fill="#8B1A10" opacity="0.95"/>
+            <rect x="169" y="30" width="8" height="38" rx="3" fill="#C0281A"/>
+            <text x="144" y="52" font-size="9" fill="#D4A017" text-anchor="middle" font-family="sans-serif" opacity="0.8">NESONE</text>
+          </svg>
+          <div class="badge-hot">Premium</div>
+          <div class="product-type">Full System</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">NSR-S PRO Full Sport Ti</div>
+          <div class="product-motor">CBR 250 / R25 / GSX250 / Ninja 250</div>
+          <div class="product-specs">
+            <span class="spec-tag">Titanium</span>
+            <span class="spec-tag">Full System</span>
+            <span class="spec-tag">Garansi 1 Thn</span>
+          </div>
+          <div class="product-price">Rp 1.450.000</div>
+          <div class="product-actions">
+            <a href="#order" class="btn-order">Order</a>
+            <button class="btn-detail" onclick="pesan('NSR-S PRO Full Sport Ti – Rp 1.450.000')">WA</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 7 -->
+      <div class="product-card reveal" data-cat="matic slipon">
+        <div class="product-img">
+          <svg class="exhaust-svg" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="40" width="120" height="18" rx="9" fill="#C0281A" opacity="0.6"/>
+            <ellipse cx="148" cy="49" rx="25" ry="20" fill="#8B1A10" opacity="0.9"/>
+            <rect x="170" y="41" width="6" height="16" rx="2" fill="#C0281A"/>
+            <rect x="10" y="44" width="55" height="10" rx="5" fill="#D4A017" opacity="0.4"/>
+          </svg>
+          <div class="product-type">Slip-On</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">NSR-M Yamaha Mio Series</div>
+          <div class="product-motor">Mio M3 / Soul GT / Fino / Aerox 155</div>
+          <div class="product-specs">
+            <span class="spec-tag">Stainless</span>
+            <span class="spec-tag">Slip-On</span>
+            <span class="spec-tag">Garansi 3 Bln</span>
+          </div>
+          <div class="product-price">Rp 375.000</div>
+          <div class="product-actions">
+            <a href="#order" class="btn-order">Order</a>
+            <button class="btn-detail" onclick="pesan('NSR-M Yamaha Mio Series – Rp 375.000')">WA</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produk 8 -->
+      <div class="product-card reveal" data-cat="bebek slipon">
+        <div class="product-img">
+          <svg class="exhaust-svg" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="38" width="140" height="22" rx="4" fill="#555" opacity="0.4"/>
+            <rect x="110" y="26" width="60" height="46" rx="5" fill="#C0281A" opacity="0.85"/>
+            <rect x="165" y="35" width="10" height="28" rx="3" fill="#8B1A10"/>
+            <rect x="8" y="44" width="35" height="10" rx="4" fill="#D4A017" opacity="0.6"/>
+          </svg>
+          <div class="badge-new">New</div>
+          <div class="product-type">Slip-On</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">NSR-Shogun 125 Series</div>
+          <div class="product-motor">Suzuki Shogun / Smash / Thunder 125</div>
+          <div class="product-specs">
+            <span class="spec-tag">Stainless</span>
+            <span class="spec-tag">Slip-On</span>
+            <span class="spec-tag">Garansi 3 Bln</span>
+          </div>
+          <div class="product-price">Rp 295.000</div>
+          <div class="product-actions">
+            <a href="#order" class="btn-order">Order</a>
+            <button class="btn-detail" onclick="pesan('NSR-Shogun 125 Series – Rp 295.000')">WA</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /product-grid -->
+
+    <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+      <p style="color:var(--gray-light); font-size:0.88rem; margin-bottom:1rem;">Tidak menemukan tipe motor Anda? Hubungi kami untuk konsultasi custom order.</p>
+      <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn btn-wa">💬 Tanya Custom Order</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ORDER FORM -->
+<section id="order">
+  <div class="container">
+    <div class="order-wrap">
+      <!-- Info kiri -->
+      <div class="order-info reveal">
+        <div class="section-label">Pemesanan</div>
+        <h2 class="section-title">Form Order</h2>
+        <p class="section-sub">Isi formulir di bawah dan pesanan Anda akan langsung diteruskan via WhatsApp ke tim kami.</p>
+        <ul class="order-features">
+          <li>Respon cepat, dibalas dalam 1×24 jam</li>
+          <li>Pengiriman ke seluruh Indonesia</li>
+          <li>Free ongkir area Purbalingga & sekitarnya</li>
+          <li>Garansi produk asli Nesone Racing</li>
+          <li>Bisa konsultasi kesesuaian motor Anda</li>
+        </ul>
+        <div style="margin-top:2rem; padding:1.25rem; background:var(--dark3); border:1px solid var(--dark4); border-radius:8px;">
+          <div style="font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); margin-bottom:0.75rem;">Jam Operasional</div>
+          <div style="font-size:0.9rem; color:var(--gray-light);">Senin – Sabtu: <strong style="color:var(--white)">08.00 – 17.00 WIB</strong></div>
+          <div style="font-size:0.9rem; color:var(--gray-light); margin-top:4px;">Minggu: <strong style="color:var(--white)">08.00 – 13.00 WIB</strong></div>
+        </div>
+      </div>
+
+      <!-- Form kanan -->
+      <div class="form-card reveal">
+        <div class="form-title">Detail Pemesanan</div>
+
+        <div class="form-group">
+          <label>Nama Lengkap *</label>
+          <input type="text" id="fNama" placeholder="Nama sesuai KTP">
+        </div>
+
+        <div class="form-group">
+          <label>No. WhatsApp *</label>
+          <input type="tel" id="fWA" placeholder="08xxxxxxxxxx">
+        </div>
+
+        <div class="form-group">
+          <label>Produk yang Dipesan *</label>
+          <select id="fProduk">
+            <option value="">-- Pilih Produk --</option>
+            <option>NSR-1 Oval Matic – Rp 385.000</option>
+            <option>NSR-PRO Full System Matic – Rp 680.000</option>
+            <option>NSR-B1 Bebek Standar – Rp 320.000</option>
+            <option>NSR-B PRO Full Bebek – Rp 520.000</option>
+            <option>NSR-S Carbon Sport – Rp 850.000</option>
+            <option>NSR-S PRO Full Sport Ti – Rp 1.450.000</option>
+            <option>NSR-M Yamaha Mio Series – Rp 375.000</option>
+            <option>NSR-Shogun 125 Series – Rp 295.000</option>
+            <option>Custom Order (hubungi kami)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Tipe Motor</label>
+          <input type="text" id="fMotor" placeholder="Contoh: Honda Beat FI 2021">
+        </div>
+
+        <div class="form-group">
+          <label>Alamat Pengiriman *</label>
+          <textarea id="fAlamat" placeholder="Nama jalan, nomor, RT/RW, kelurahan..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Kode Pos *</label>
+            <input type="text" id="fKodePos" placeholder="53XXX" maxlength="5">
+          </div>
+          <div class="form-group">
+            <label>Kabupaten / Kota *</label>
+            <input type="text" id="fKabupaten" placeholder="Contoh: Purbalingga">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Provinsi *</label>
+          <select id="fProvinsi">
+            <option value="">-- Pilih Provinsi --</option>
+            <option>Jawa Tengah</option><option>Jawa Barat</option><option>Jawa Timur</option>
+            <option>DKI Jakarta</option><option>DI Yogyakarta</option><option>Banten</option>
+            <option>Sumatera Utara</option><option>Sumatera Selatan</option><option>Riau</option>
+            <option>Kalimantan Barat</option><option>Kalimantan Selatan</option><option>Kalimantan Timur</option>
+            <option>Sulawesi Selatan</option><option>Sulawesi Utara</option><option>Bali</option>
+            <option>NTB</option><option>NTT</option><option>Papua</option><option>Lainnya</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Metode Pembayaran *</label>
+          <div class="pill-group" id="metodePembayaran">
+            <label class="pill" id="pillBT">
+              <input type="radio" name="metode" value="bank_transfer" onchange="showPayInfo('bank')">
+              🏦 Bank Transfer
+            </label>
+            <label class="pill" id="pillQR">
+              <input type="radio" name="metode" value="qris" onchange="showPayInfo('qris')">
+              ⬜ QRIS
+            </label>
+            <label class="pill" id="pillCOD">
+              <input type="radio" name="metode" value="cod" onchange="showPayInfo('cod')">
+              🏠 COD (Ambil Langsung)
+            </label>
+          </div>
+        </div>
+
+        <!-- Bank Transfer Info -->
+        <div class="bank-info" id="bankInfo">
+          <div style="font-size:0.78rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray); margin-bottom:0.6rem;">Rekening Tujuan</div>
+          <div class="bank-row">
+            <span class="bank-label">BRI</span>
+            <span class="bank-val">1234-XXXXX-XX (a.n Nesone Racing)</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">BCA</span>
+            <span class="bank-val">XXXX-XXXXX (a.n Nesone Racing)</span>
+          </div>
+          <div class="bank-row">
+            <span class="bank-label">Mandiri</span>
+            <span class="bank-val">XXXX-XXXXX-XXXXX (a.n Nesone Racing)</span>
+          </div>
+          <div style="margin-top:0.6rem; font-size:0.76rem; color:var(--gray);">* Konfirmasi transfer via WhatsApp setelah pembayaran</div>
+        </div>
+
+        <!-- QRIS Info -->
+        <div class="qris-info" id="qrisInfo">
+          <div class="qris-placeholder">
+            <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" width="80">
+              <rect x="5" y="5" width="20" height="20" rx="2" stroke="#333" stroke-width="2" fill="none"/>
+              <rect x="9" y="9" width="12" height="12" rx="1" fill="#333"/>
+              <rect x="35" y="5" width="20" height="20" rx="2" stroke="#333" stroke-width="2" fill="none"/>
+              <rect x="39" y="9" width="12" height="12" rx="1" fill="#333"/>
+              <rect x="5" y="35" width="20" height="20" rx="2" stroke="#333" stroke-width="2" fill="none"/>
+              <rect x="9" y="39" width="12" height="12" rx="1" fill="#333"/>
+              <rect x="35" y="35" width="4" height="4" fill="#333"/>
+              <rect x="41" y="35" width="4" height="4" fill="#333"/>
+              <rect x="47" y="35" width="8" height="4" fill="#333"/>
+              <rect x="35" y="41" width="8" height="4" fill="#333"/>
+              <rect x="47" y="41" width="8" height="4" fill="#333"/>
+              <rect x="43" y="47" width="12" height="8" fill="#333"/>
+            </svg>
+            <div style="font-size:0.6rem; color:#666; margin-top:4px;">QRIS Nesone Racing</div>
+          </div>
+          <div class="qris-note">Scan QRIS di atas, lalu kirim bukti pembayaran ke WhatsApp kami. Ganti dengan QRIS resmi toko.</div>
+        </div>
+
+        <div class="form-group" style="margin-top:0.75rem;">
+          <label>Catatan (opsional)</label>
+          <textarea id="fCatatan" placeholder="Contoh: warna silencer hitam, ukuran knalpot tertentu, dll..." rows="2"></textarea>
+        </div>
+
+        <button class="btn btn-wa form-submit" onclick="kirimOrder()">
+          💬 Kirim Order via WhatsApp
+        </button>
+        <p style="font-size:0.75rem; color:var(--gray); text-align:center; margin-top:0.75rem;">Data Anda aman dan hanya digunakan untuk keperluan pemesanan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TENTANG KAMI -->
+<section id="tentang">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div style="position:relative; z-index:1;">
+          <div class="about-logo-big">NE<span>S</span>ONE<br><span style="color:var(--gold);">Racing</span></div>
+          <div class="about-logo-sub">Exhaust · Purbalingga</div>
+          <div class="about-divider"></div>
+          <div class="about-tagline">"Suara Racing, Kualitas Lokal"</div>
+          <div style="margin-top:1.5rem; display:flex; justify-content:center; gap:1.5rem; font-size:0.82rem; color:var(--gray);">
+            <div>✔ 100% Lokal</div>
+            <div>✔ Ready Stock</div>
+            <div>✔ Garansi Asli</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="section-label">Siapa Kami</div>
+        <h2 class="section-title">Tentang Kami</h2>
+        <p style="color:var(--gray-light); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
+          <strong style="color:var(--white);">Nesone Racing Exhaust</strong> adalah produsen knalpot racing lokal yang berbasis di Purbalingga, Jawa Tengah. Kami hadir untuk memenuhi kebutuhan para pecinta otomotif yang menginginkan performa maksimal dengan harga yang terjangkau.
+        </p>
+        <p style="color:var(--gray-light); font-size:0.95rem; line-height:1.8; margin-bottom:1rem;">
+          Setiap produk kami dibuat dengan material pilihan — stainless steel, carbon, hingga titanium — melalui proses produksi yang teliti dan terstandar. Mulai dari motor matic, bebek, hingga sport, semua tersedia dengan berbagai pilihan tipe slip-on maupun full system.
+        </p>
+        <p style="color:var(--gray-light); font-size:0.95rem; line-height:1.8;">
+          Kepuasan pelanggan adalah prioritas utama kami. Dengan garansi produk dan pelayanan purna jual yang responsif, Nesone Racing Exhaust siap menjadi pilihan pertama Anda.
+        </p>
+
+        <div class="value-grid">
+          <div class="value-card">
+            <div class="value-icon">🔧</div>
+            <div class="value-title">Kualitas Terjamin</div>
+            <div class="value-desc">Material premium, proses produksi terstandar dan dicek satu per satu.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🏆</div>
+            <div class="value-title">Lokal Asli</div>
+            <div class="value-desc">Produk buatan Purbalingga, mendukung industri lokal Indonesia.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">📦</div>
+            <div class="value-title">Pengiriman Cepat</div>
+            <div class="value-desc">Ready stock, dikirim ke seluruh Indonesia via ekspedisi terpercaya.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">💬</div>
+            <div class="value-title">Konsultasi Gratis</div>
+            <div class="value-desc">Tim kami siap membantu memilih knalpot yang tepat untuk motor Anda.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- LOKASI -->
+<section id="lokasi">
+  <div class="container">
+    <div class="lokasi-grid">
+      <div class="lokasi-info reveal">
+        <div class="section-label">Kunjungi Kami</div>
+        <h2 class="section-title">Lokasi Toko</h2>
+        <p class="section-sub">Datang langsung ke workshop kami atau hubungi via WhatsApp untuk konsultasi dan pemesanan.</p>
+        <div class="lokasi-detail">
+          <div class="lokasi-item">
+            <div class="lokasi-item-icon">📍</div>
+            <div class="lokasi-item-text">
+              <strong>Alamat Workshop</strong>
+              <span>Jl. [Nama Jalan], No. XX, Kelurahan [Kelurahan],<br>Purbalingga, Jawa Tengah 53314</span>
+            </div>
+          </div>
+          <div class="lokasi-item">
+            <div class="lokasi-item-icon">📱</div>
+            <div class="lokasi-item-text">
+              <strong>WhatsApp / Telp</strong>
+              <span>08XX-XXXX-XXXX (Ganti dengan nomor asli)</span>
+            </div>
+          </div>
+          <div class="lokasi-item">
+            <div class="lokasi-item-icon">🕐</div>
+            <div class="lokasi-item-text">
+              <strong>Jam Buka</strong>
+              <span>Senin – Sabtu: 08.00 – 17.00 WIB<br>Minggu: 08.00 – 13.00 WIB</span>
+            </div>
+          </div>
+          <div class="lokasi-item">
+            <div class="lokasi-item-icon">🛒</div>
+            <div class="lokasi-item-text">
+              <strong>Juga Tersedia di Shopee</strong>
+              <span><a href="https://shopee.co.id/nesone_racingexhaust" target="_blank" style="color:var(--red-light); text-decoration:none;">shopee.co.id/nesone_racingexhaust</a></span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn btn-wa" style="font-size:0.85rem; padding:11px 20px;">💬 Chat WhatsApp</a>
+          <a href="https://maps.google.com/?q=Purbalingga,Jawa+Tengah" target="_blank" class="btn btn-outline" style="font-size:0.85rem; padding:11px 20px;">🗺 Buka Google Maps</a>
+        </div>
+      </div>
+
+      <div class="map-embed reveal">
+        <!-- Ganti src iframe di bawah dengan embed Google Maps lokasi asli toko Anda -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63321.97898657654!2d109.31729!3d-7.38597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6563e9a6e79e45%3A0xd4e1a08b4e2c1c0d!2sPurbalingga%2C%20Kec.%20Purbalingga%2C%20Kabupaten%20Purbalingga%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1717654321000!5m2!1sid!2sid"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Lokasi Nesone Racing Exhaust Purbalingga">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">NE<span>S</span>ONE Racing</div>
+      <p class="footer-desc">Knalpot racing lokal berkualitas dari Purbalingga, Jawa Tengah. Suara gahar, performa maksimal, harga terjangkau.</p>
+      <div style="display:flex; gap:0.75rem; margin-top:1rem;">
+        <a href="https://shopee.co.id/nesone_racingexhaust" target="_blank" style="display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; color:var(--gray-light); text-decoration:none; padding:6px 12px; border:1px solid var(--dark4); border-radius:4px;">🛒 Shopee</a>
+        <a href="https://wa.me/628XXXXXXXXXX" target="_blank" style="display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; color:var(--gray-light); text-decoration:none; padding:6px 12px; border:1px solid var(--dark4); border-radius:4px;">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigasi</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#katalog">Katalog Produk</a></li>
+        <li><a href="#order">Form Order</a></li>
+        <li><a href="#tentang">Tentang Kami</a></li>
+        <li><a href="#lokasi">Lokasi</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Informasi</h4>
+      <ul>
+        <li><a href="#order">Cara Order</a></li>
+        <li><a href="#order">Metode Pembayaran</a></li>
+        <li><a href="https://wa.me/628XXXXXXXXXX" target="_blank">Custom Order</a></li>
+        <li><a href="https://shopee.co.id/nesone_racingexhaust" target="_blank">Toko Shopee</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Nesone Racing Exhaust – Purbalingga, Jawa Tengah. Semua hak dilindungi.
+  </div>
+</footer>
+
+<script>
+  // HAMBURGER MENU
+  function toggleMenu(){
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  // FILTER KATALOG
+  function filterCat(btn, cat){
+    document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#productGrid .product-card').forEach(card=>{
+      if(cat==='semua' || card.dataset.cat.includes(cat)){
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  // METODE PEMBAYARAN
+  function showPayInfo(type){
+    document.getElementById('bankInfo').classList.remove('visible');
+    document.getElementById('qrisInfo').classList.remove('visible');
+    // Update pill styles
+    document.querySelectorAll('.pill').forEach(p=>{
+      p.classList.remove('selected');
+      if(p.querySelector('input') && p.querySelector('input').checked) p.classList.add('selected');
+    });
+    if(type==='bank') document.getElementById('bankInfo').classList.add('visible');
+    if(type==='qris') document.getElementById('qrisInfo').classList.add('visible');
+  }
+
+  // ORDER VIA WHATSAPP
+  function kirimOrder(){
+    const nama = document.getElementById('fNama').value.trim();
+    const wa = document.getElementById('fWA').value.trim();
+    const produk = document.getElementById('fProduk').value;
+    const motor = document.getElementById('fMotor').value.trim();
+    const alamat = document.getElementById('fAlamat').value.trim();
+    const kodepos = document.getElementById('fKodePos').value.trim();
+    const kabupaten = document.getElementById('fKabupaten').value.trim();
+    const provinsi = document.getElementById('fProvinsi').value;
+    const metodeSel = document.querySelector('input[name="metode"]:checked');
+    const catatan = document.getElementById('fCatatan').value.trim();
+
+    if(!nama || !wa || !produk || !alamat || !kodepos || !kabupaten || !provinsi || !metodeSel){
+      alert('Mohon lengkapi semua kolom yang wajib diisi (*)');
+      return;
+    }
+
+    const metodeMap = { bank_transfer:'Bank Transfer', qris:'QRIS', cod:'COD / Ambil Langsung' };
+    const msg =
+`*ORDER NESONE RACING EXHAUST*
+━━━━━━━━━━━━━━━━━━━━━
+*Nama:* ${nama}
+*No. WA:* ${wa}
+━━━━━━━━━━━━━━━━━━━━━
+*Produk:* ${produk}
+*Tipe Motor:* ${motor||'-'}
+━━━━━━━━━━━━━━━━━━━━━
+*Alamat Pengiriman:*
+${alamat}
+Kode Pos: ${kodepos}
+${kabupaten}, ${provinsi}
+━━━━━━━━━━━━━━━━━━━━━
+*Metode Pembayaran:* ${metodeMap[metodeSel.value]}
+*Catatan:* ${catatan||'-'}
+━━━━━━━━━━━━━━━━━━━━━
+Terima kasih sudah memesan! 🏍`;
+
+    // GANTI 628XXXXXXXXXX dengan nomor WA asli toko
+    const noWA = '628XXXXXXXXXX';
+    window.open('https://wa.me/' + noWA + '?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  // ORDER dari tombol WA produk
+  function pesan(produk){
+    const msg = `Halo Nesone Racing, saya ingin memesan:\n*${produk}*\n\nMohon info lebih lanjut. Terima kasih! 🏍`;
+    window.open('https://wa.me/628XXXXXXXXXX?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  // SCROLL REVEAL
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
