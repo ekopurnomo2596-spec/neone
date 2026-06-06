@@ -323,7 +323,7 @@
   .form-card .pill:hover, .modal-content .pill:hover { border-color: var(--dark); color: var(--dark); }
   .form-card .pill.selected, .modal-content .pill.selected { background: var(--dark); border-color: var(--dark); color: #fff; }
 
-  /* TOMBOL LANJUT PEMBAYARAN WARNA HIJAU ELEGANT */
+  /* TOMBOL LANJUT PEMBAYARAN */
   .form-submit { 
     width:100%; margin-top:1.25rem; padding:14px; font-size:1rem; 
     background: #2E7D32; color: white; border:none; border-radius: 8px; 
@@ -357,11 +357,13 @@
   .acc-item { border: 1px solid #EAEAEA; border-radius: 8px; margin-bottom: 0.5rem; overflow: hidden; }
   .acc-header {
     background: #F5F5F5; padding: 12px 15px; font-weight: 600; font-size: 0.9rem;
-    cursor: pointer; display: flex; align-items: center; gap: 10px; color: #444;
+    cursor: pointer; display: flex; align-items: center; justify-content: space-between; color: #444;
     transition: background 0.2s; margin: 0;
   }
   .acc-header input[type="radio"] { cursor: pointer; pointer-events: none; }
   .acc-header:hover { background: #EFEFEF; }
+  .acc-icon { font-size: 0.75rem; transition: transform 0.3s; color: #666; }
+  .acc-item.active .acc-icon { transform: rotate(180deg); color: var(--dark); }
   .acc-content {
     display: none; padding: 15px; background: #FFF; border-top: 1px solid #EAEAEA;
     font-size: 0.85rem; color: #555; line-height: 1.6;
@@ -554,6 +556,7 @@
 
     <div class="product-grid" id="productGrid">
 
+      <!-- Katalog Produk Tetap Sama -->
       <div class="product-card reveal" data-cat="matic slipon" data-baseprice="385000" data-name="NSR-1 Oval Matic">
         <div class="product-img">
           <div class="slider-container">
@@ -1058,7 +1061,10 @@
     
     <div class="acc-item">
       <div class="acc-header" onclick="togglePaymentAccordion(this)">
-        <input type="radio" name="metode_modal" value="Bank Transfer"> 🏦 Transfer Bank
+        <div style="display:flex; align-items:center; gap:10px;">
+          <input type="radio" name="metode_modal" value="Bank Transfer"> 🏦 Transfer Bank
+        </div>
+        <span class="acc-icon">▼</span>
       </div>
       <div class="acc-content">
         <div style="font-size:0.78rem; font-weight:700; color:#666; margin-bottom:0.6rem;">Rekening Tujuan:</div>
@@ -1086,7 +1092,10 @@
 
     <div class="acc-item">
       <div class="acc-header" onclick="togglePaymentAccordion(this)">
-        <input type="radio" name="metode_modal" value="QRIS"> ⬜ QRIS / E-Wallet
+        <div style="display:flex; align-items:center; gap:10px;">
+          <input type="radio" name="metode_modal" value="QRIS"> ⬜ QRIS / E-Wallet
+        </div>
+        <span class="acc-icon">▼</span>
       </div>
       <div class="acc-content" style="text-align:center;">
         <div style="width:120px; height:120px; background:#F0F0F0; border:1px solid #CCC; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; color:#666; font-weight:bold;">Gambar QRIS</div>
@@ -1324,7 +1333,9 @@
     }
 
     let pNama = orderData.prodInfo ? orderData.prodInfo.nama : orderData.produk;
+    let hargaProduk = orderData.prodInfo ? ` - <strong>Rp ${orderData.prodInfo.basePrice.toLocaleString('id-ID')}</strong>` : "";
     let pAddon = orderData.prodInfo ? orderData.prodInfo.varian : "-";
+    let hargaAddon = (orderData.prodInfo && orderData.prodInfo.addPrice > 0) ? ` <strong>(+Rp ${orderData.prodInfo.addPrice.toLocaleString('id-ID')})</strong>` : "";
 
     document.getElementById('summaryBox').innerHTML = `
       <strong>👤 Data Pemesan:</strong><br>
@@ -1333,8 +1344,8 @@
       Alamat: ${orderData.alamat}, Kel. ${orderData.kelurahan}, Kec. ${orderData.kecamatan}, ${orderData.kabupaten}, ${orderData.provKodepos}<br><br>
       
       <strong>📦 Detail Pesanan:</strong><br>
-      Produk: <span style="color:var(--red); font-weight:600;">${pNama}</span><br>
-      Add-on: <strong>${pAddon}</strong><br>
+      Produk: <span style="color:var(--red); font-weight:600;">${pNama}</span>${hargaProduk}<br>
+      Add-on: <strong>${pAddon}</strong>${hargaAddon}<br>
       Ekspedisi: ${orderData.ekspedisi}<br>
       Catatan: ${orderData.catatan || '-'}
       ${detailHargaHtml}
@@ -1402,7 +1413,7 @@
 
     const msg =
 `*ORDER NESONE RACING EXHAUST*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━
+__________
 *DATA PEMESAN:*
 - *Nama Penerima:* ${orderData.nama}
 - *No. Telepon:* ${orderData.wa}
@@ -1424,7 +1435,7 @@
 
 *CATATAN:*
 - ${orderData.catatan || '-'}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+__________`;
 
     const waLink = 'https://api.whatsapp.com/send/?phone=6285868872566&text=' + encodeURIComponent(msg) + '&type=phone_number&app_absent=0';
     window.open(waLink, '_blank');
